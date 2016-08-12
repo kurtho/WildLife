@@ -1,0 +1,414 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		291D20E31D5DC18000FD8BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291D20E21D5DC18000FD8BB1 /* AppDelegate.swift */; };
+		291D20E81D5DC18000FD8BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 291D20E61D5DC18000FD8BB1 /* Main.storyboard */; };
+		291D20EA1D5DC18000FD8BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 291D20E91D5DC18000FD8BB1 /* Assets.xcassets */; };
+		291D20ED1D5DC18000FD8BB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 291D20EB1D5DC18000FD8BB1 /* LaunchScreen.storyboard */; };
+		291D20F51D5DC19E00FD8BB1 /* IntroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291D20F41D5DC19E00FD8BB1 /* IntroCollectionViewCell.swift */; };
+		291D20F71D5DC1AC00FD8BB1 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291D20F61D5DC1AC00FD8BB1 /* IntroViewController.swift */; };
+		291D20FB1D5DCA9D00FD8BB1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291D20FA1D5DCA9D00FD8BB1 /* LoginViewController.swift */; };
+		291D20FD1D5DD14F00FD8BB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 291D20FC1D5DD14F00FD8BB1 /* GoogleService-Info.plist */; };
+		291D21071D5DD79300FD8BB1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291D21041D5DD79300FD8BB1 /* FBSDKCoreKit.framework */; };
+		291D21081D5DD79300FD8BB1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291D21051D5DD79300FD8BB1 /* FBSDKLoginKit.framework */; };
+		291D21091D5DD79300FD8BB1 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291D21061D5DD79300FD8BB1 /* FBSDKShareKit.framework */; };
+		C1CD67DD7C53BF38BC3F08EA /* Pods_WildLifeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E94AD3FD8753B21D43B7E4 /* Pods_WildLifeApp.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		20C2B1FEA20779B855FB0527 /* Pods-WildLifeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WildLifeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-WildLifeApp/Pods-WildLifeApp.release.xcconfig"; sourceTree = "<group>"; };
+		287FF0F323C97CCE28DB253B /* Pods-WildLifeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WildLifeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WildLifeApp/Pods-WildLifeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		291D20DF1D5DC18000FD8BB1 /* WildLifeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildLifeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		291D20E21D5DC18000FD8BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = WildLifeApp/AppDelegate.swift; sourceTree = "<group>"; };
+		291D20E71D5DC18000FD8BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		291D20E91D5DC18000FD8BB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		291D20EC1D5DC18000FD8BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		291D20EE1D5DC18000FD8BB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		291D20F41D5DC19E00FD8BB1 /* IntroCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroCollectionViewCell.swift; path = ../IntroCollectionViewCell.swift; sourceTree = "<group>"; };
+		291D20F61D5DC1AC00FD8BB1 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewController.swift; path = ../IntroViewController.swift; sourceTree = "<group>"; };
+		291D20FA1D5DCA9D00FD8BB1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		291D20FC1D5DD14F00FD8BB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/Google Plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		291D21041D5DD79300FD8BB1 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		291D21051D5DD79300FD8BB1 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		291D21061D5DD79300FD8BB1 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		66E94AD3FD8753B21D43B7E4 /* Pods_WildLifeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WildLifeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		291D20DC1D5DC18000FD8BB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291D21091D5DD79300FD8BB1 /* FBSDKShareKit.framework in Frameworks */,
+				C1CD67DD7C53BF38BC3F08EA /* Pods_WildLifeApp.framework in Frameworks */,
+				291D21071D5DD79300FD8BB1 /* FBSDKCoreKit.framework in Frameworks */,
+				291D21081D5DD79300FD8BB1 /* FBSDKLoginKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		291D20D61D5DC18000FD8BB1 = {
+			isa = PBXGroup;
+			children = (
+				291D20E61D5DC18000FD8BB1 /* Main.storyboard */,
+				291D20E21D5DC18000FD8BB1 /* AppDelegate.swift */,
+				291D20E11D5DC18000FD8BB1 /* WildLifeApp */,
+				291D20E01D5DC18000FD8BB1 /* Products */,
+				FBC09F4B98538C9DB758D20A /* Pods */,
+				5A4E45D1FB6E1BFA7CB8067B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		291D20E01D5DC18000FD8BB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				291D20DF1D5DC18000FD8BB1 /* WildLifeApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		291D20E11D5DC18000FD8BB1 /* WildLifeApp */ = {
+			isa = PBXGroup;
+			children = (
+				291D20F91D5DC62900FD8BB1 /* Loggin */,
+				291D20F81D5DC1C400FD8BB1 /* Other */,
+			);
+			path = WildLifeApp;
+			sourceTree = "<group>";
+		};
+		291D20F81D5DC1C400FD8BB1 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				291D20E91D5DC18000FD8BB1 /* Assets.xcassets */,
+				291D20EE1D5DC18000FD8BB1 /* Info.plist */,
+				291D20EB1D5DC18000FD8BB1 /* LaunchScreen.storyboard */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		291D20F91D5DC62900FD8BB1 /* Loggin */ = {
+			isa = PBXGroup;
+			children = (
+				291D20F41D5DC19E00FD8BB1 /* IntroCollectionViewCell.swift */,
+				291D20F61D5DC1AC00FD8BB1 /* IntroViewController.swift */,
+				291D20FA1D5DCA9D00FD8BB1 /* LoginViewController.swift */,
+				291D20FC1D5DD14F00FD8BB1 /* GoogleService-Info.plist */,
+			);
+			name = Loggin;
+			sourceTree = "<group>";
+		};
+		5A4E45D1FB6E1BFA7CB8067B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				291D21041D5DD79300FD8BB1 /* FBSDKCoreKit.framework */,
+				291D21051D5DD79300FD8BB1 /* FBSDKLoginKit.framework */,
+				291D21061D5DD79300FD8BB1 /* FBSDKShareKit.framework */,
+				66E94AD3FD8753B21D43B7E4 /* Pods_WildLifeApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FBC09F4B98538C9DB758D20A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				287FF0F323C97CCE28DB253B /* Pods-WildLifeApp.debug.xcconfig */,
+				20C2B1FEA20779B855FB0527 /* Pods-WildLifeApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		291D20DE1D5DC18000FD8BB1 /* WildLifeApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 291D20F11D5DC18000FD8BB1 /* Build configuration list for PBXNativeTarget "WildLifeApp" */;
+			buildPhases = (
+				CF3E20A953B312CAB85FCAF9 /* [CP] Check Pods Manifest.lock */,
+				291D20DB1D5DC18000FD8BB1 /* Sources */,
+				291D20DC1D5DC18000FD8BB1 /* Frameworks */,
+				291D20DD1D5DC18000FD8BB1 /* Resources */,
+				EAA98CE4A30241CD581B0BE9 /* [CP] Embed Pods Frameworks */,
+				9C32DFE4ECA7ABFD38400523 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WildLifeApp;
+			productName = WildLifeApp;
+			productReference = 291D20DF1D5DC18000FD8BB1 /* WildLifeApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		291D20D71D5DC18000FD8BB1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Kurt;
+				TargetAttributes = {
+					291D20DE1D5DC18000FD8BB1 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 291D20DA1D5DC18000FD8BB1 /* Build configuration list for PBXProject "WildLifeApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 291D20D61D5DC18000FD8BB1;
+			productRefGroup = 291D20E01D5DC18000FD8BB1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				291D20DE1D5DC18000FD8BB1 /* WildLifeApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		291D20DD1D5DC18000FD8BB1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291D20FD1D5DD14F00FD8BB1 /* GoogleService-Info.plist in Resources */,
+				291D20ED1D5DC18000FD8BB1 /* LaunchScreen.storyboard in Resources */,
+				291D20EA1D5DC18000FD8BB1 /* Assets.xcassets in Resources */,
+				291D20E81D5DC18000FD8BB1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9C32DFE4ECA7ABFD38400523 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WildLifeApp/Pods-WildLifeApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF3E20A953B312CAB85FCAF9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EAA98CE4A30241CD581B0BE9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WildLifeApp/Pods-WildLifeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		291D20DB1D5DC18000FD8BB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				291D20FB1D5DCA9D00FD8BB1 /* LoginViewController.swift in Sources */,
+				291D20F71D5DC1AC00FD8BB1 /* IntroViewController.swift in Sources */,
+				291D20E31D5DC18000FD8BB1 /* AppDelegate.swift in Sources */,
+				291D20F51D5DC19E00FD8BB1 /* IntroCollectionViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		291D20E61D5DC18000FD8BB1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				291D20E71D5DC18000FD8BB1 /* Base */,
+			);
+			name = Main.storyboard;
+			path = WildLifeApp;
+			sourceTree = "<group>";
+		};
+		291D20EB1D5DC18000FD8BB1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				291D20EC1D5DC18000FD8BB1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		291D20EF1D5DC18000FD8BB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		291D20F01D5DC18000FD8BB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		291D20F21D5DC18000FD8BB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 287FF0F323C97CCE28DB253B /* Pods-WildLifeApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WildLifeApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks ~/Documents/Ways/FacebookSDK";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.self.WildLifeApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		291D20F31D5DC18000FD8BB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20C2B1FEA20779B855FB0527 /* Pods-WildLifeApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = WildLifeApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks ~/Documents/Ways/FacebookSDK";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.self.WildLifeApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		291D20DA1D5DC18000FD8BB1 /* Build configuration list for PBXProject "WildLifeApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291D20EF1D5DC18000FD8BB1 /* Debug */,
+				291D20F01D5DC18000FD8BB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		291D20F11D5DC18000FD8BB1 /* Build configuration list for PBXNativeTarget "WildLifeApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				291D20F21D5DC18000FD8BB1 /* Debug */,
+				291D20F31D5DC18000FD8BB1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 291D20D71D5DC18000FD8BB1 /* Project object */;
+}
