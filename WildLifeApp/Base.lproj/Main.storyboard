@@ -195,7 +195,19 @@
                     <view key="view" contentMode="scaleToFill" id="86M-54-7MV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3T-Vg-zYp">
+                                <rect key="frame" x="42" y="40" width="88" height="30"/>
+                                <state key="normal" title="FB LOG OUT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.25490196079999999" green="0.36470588240000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="M3T-Vg-zYp" firstAttribute="leading" secondItem="86M-54-7MV" secondAttribute="leadingMargin" constant="22" id="7gm-5t-c6p"/>
+                            <constraint firstItem="M3T-Vg-zYp" firstAttribute="top" secondItem="PiY-Db-1WN" secondAttribute="bottom" constant="20" id="o9I-Kv-IOP"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="PHO-rV-C6Y"/>
                 </viewController>

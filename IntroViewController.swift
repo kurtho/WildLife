@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FirebaseAuth
 class IntroViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -18,7 +18,14 @@ class IntroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nextButton.hidden = true
-        
+        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
+            if user != nil {
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+                let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
+                self.presentViewController(homeView, animated: true, completion: nil)
+            }
+            
+        }
     }
     
     override func didReceiveMemoryWarning() {
