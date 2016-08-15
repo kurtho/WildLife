@@ -18,14 +18,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Optional: Place the button in the center of your view.
+        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
+            if user != nil {
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+                let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
+                self.presentViewController(homeView, animated: true, completion: nil)
+            }
+            
+        }
+        
+        
+        
+        
+        
         loginButton.center = self.view.center
+        self.view!.addSubview(loginButton)
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         self.loginButton.delegate = self
-        self.view!.addSubview(loginButton)
         
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,11 +43,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)  {
         let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
         FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-            
             print("user logged in firebase")
         }
         print("User log in*****")
@@ -45,11 +53,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         
-
-
         print("User did log out *****")
     }
 
-    
 
+}
+
+
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
