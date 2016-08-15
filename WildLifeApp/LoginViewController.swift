@@ -10,14 +10,52 @@ import UIKit
 import FBSDKLoginKit
 import FirebaseAuth
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
-
-    
-    @IBOutlet weak var fbButton: FBSDKLoginButton!
-
     var loginButton: FBSDKLoginButton = FBSDKLoginButton()
+
+    @IBOutlet weak var signLabel: UILabel!
+    @IBOutlet weak var fbView: UIView!
+    @IBOutlet weak var createAccount: UIButton!
+    @IBOutlet weak var signButton: UIButton!
+    
+    @IBOutlet weak var accountField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
+    @IBAction func logIn(sender: AnyObject) {
+        if signLabel.text != "Sign Up"{
+            login()
+        }else {
+            if passwordField.text?.characters.count < 8 {
+                let alertButton = UIAlertController(title: "密碼至少要八位數", message: nil, preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
+                alertButton.addAction(okAction)
+                self.presentViewController(alertButton, animated: true, completion: nil)
+            }else {
+                createAccountFunc()
+            }
+        }
+    }
+    
+    @IBAction func createAccount(sender: AnyObject) {
+        signLabel.text = "Sign in"
+        FIRAuth.auth()?.createUserWithEmail(accountField.text!, password:passwordField.text!, completion: {
+                user, error in
+                    if error != nil {
+                        self.accountRepeatly()
+        //                self.login()
+                        print("123124")
+        //                                means accout has been created
+                    }else {
+                        print("user created")
+                        self.login()
+                    }
+                })
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenTappedAround()
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             if user != nil {
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -26,18 +64,20 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             }
             
         }
-        
-        
-        
-        
-        
-        loginButton.center = self.view.center
-        self.view!.addSubview(loginButton)
+
+        self.loginButton.center = self.fbView.center
+        self.view!.addSubview(self.loginButton)
         loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         self.loginButton.delegate = self
         
     }
 
+    override func viewWillAppear(animated: Bool) {
+        self.view.layoutIfNeeded()
+        self.loginButton.center = self.fbView.center
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,13 +91,65 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User log in*****")
     }
     
+    
+    
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        
         print("User did log out *****")
     }
 
+    
+    
+    
+    
+    
+    func createAccountFunc() {
+        FIRAuth.auth()?.createUserWithEmail(accountField.text!, password: passwordField.text!, completion: {
+            user, error in
+            if error != nil {
+                print("create incorrect")
+            } else {
+                print("user create success")
+            }
+        })
+    }
+    
+    func login() {
+        FIRAuth.auth()?.signInWithEmail(accountField.text!, password: passwordField.text!, completion: {
+            user, error in
+            if error != nil {
+                self.alertWrongPassWordOrAccount()
+                //                password or email is incorrect
+                print("incorrect")
+            } else {
+                print("user login success")
+            }
+        })
+    }
+    
+    func alertWrongPassWordOrAccount() {
+        let alertButton = UIAlertController(title: "帳號或密碼錯誤", message: nil, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
+        alertButton.addAction(okAction)
+        self.presentViewController(alertButton, animated: true, completion: nil)
+    }
 
+    func accountRepeatly() {
+        let alertButton = UIAlertController(title: "此帳號已有人使用", message: nil, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
+        alertButton.addAction(okAction)
+        self.presentViewController(alertButton, animated: true, completion: nil)
+    }
+    
 }
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
 
 
