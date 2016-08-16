@@ -30,7 +30,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             print("test~~~")
         
         }else {
-            if passwordField.text?.characters.count < 8 {
+            if accountField.text?.characters.count < 8 {
+                accountRepeatly()
+            } else if passwordField.text?.characters.count < 8 {
             let alertButton = UIAlertController(title: "密碼至少要八位數", message: nil, preferredStyle: .Alert)
             let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
                     alertButton.addAction(okAction)
@@ -60,21 +62,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             createAccount.setTitle("Back To Sign Up", forState: .Normal)
         }
         
-
-        
-        
-//        FIRAuth.auth()?.createUserWithEmail(accountField.text!, password:passwordField.text!, completion: {
-//                user, error in
-//                    if error != nil {
-//                        self.accountRepeatly()
-//        //                self.login()
-//                        print("123124")
-//        //                                means accout has been created
-//                    }else {
-//                        print("user created")
-//                        self.login()
-//                    }
-//                })
     }
     
     
@@ -129,6 +116,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         FIRAuth.auth()?.createUserWithEmail(accountField.text!, password: passwordField.text!, completion: {
             user, error in
             if error != nil {
+                self.accountAlreadyExist()
                 print("create incorrect")
             } else {
                 print("user create success")
@@ -163,6 +151,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             alert.addAction(okAction)
             self.presentViewController(alert, animated: true, completion: nil)
         }
+    }
+    
+    func accountAlreadyExist() {
         let alertButton = UIAlertController(title: "此帳號已有人使用", message: nil, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
         alertButton.addAction(okAction)
