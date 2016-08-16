@@ -21,8 +21,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var passwordField: UITextField!
     
     @IBAction func logIn(sender: AnyObject) {
-        if signLabel.text != "Sign Up"{
+        if signButton.titleLabel?.text == " Sign In " {
             login()
+            print("test~~~")
+            
         }else {
             if passwordField.text?.characters.count < 8 {
                 let alertButton = UIAlertController(title: "密碼至少要八位數", message: nil, preferredStyle: .Alert)
@@ -36,20 +38,31 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     @IBAction func createAccount(sender: AnyObject) {
-//        signLabel.text = "Sign In"
-        signLabel.hidden = true
-        FIRAuth.auth()?.createUserWithEmail(accountField.text!, password:passwordField.text!, completion: {
-                user, error in
-                    if error != nil {
-                        self.accountRepeatly()
-        //                self.login()
-                        print("123124")
-        //                                means accout has been created
-                    }else {
-                        print("user created")
-                        self.login()
-                    }
-                })
+        if signButton.titleLabel?.text == " Sign In " {
+            signLabel.text = "Sign Up"
+            signButton.backgroundColor = UIColor(red: 82/255, green: 190/255, blue: 91/255, alpha: 1)
+            signButton.titleLabel?.text = "Sign Up"
+        }else if signButton.titleLabel?.text == "Sign Up" {
+            signLabel.text = "Sign In"
+            signButton.backgroundColor = UIColor(red: 4/255, green: 175/255, blue: 200/255, alpha: 1)
+            signButton.titleLabel?.text = " Sign In "
+        }
+        
+
+        
+        
+//        FIRAuth.auth()?.createUserWithEmail(accountField.text!, password:passwordField.text!, completion: {
+//                user, error in
+//                    if error != nil {
+//                        self.accountRepeatly()
+//        //                self.login()
+//                        print("123124")
+//        //                                means accout has been created
+//                    }else {
+//                        print("user created")
+//                        self.login()
+//                    }
+//                })
     }
     
     
@@ -76,7 +89,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewWillAppear(animated: Bool) {
         self.view.layoutIfNeeded()
         self.loginButton.center = self.fbView.center
-        
+        signLabel.text = "Sign Up"
+        signButton.backgroundColor = UIColor(red: 82/255, green: 190/255, blue: 91/255, alpha: 1)
+        signButton.titleLabel?.text = "Sign Up"
     }
     
     override func didReceiveMemoryWarning() {
