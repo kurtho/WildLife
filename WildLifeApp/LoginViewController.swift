@@ -9,16 +9,13 @@
 import UIKit
 import FBSDKLoginKit
 import FirebaseAuth
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
     var loginButton: FBSDKLoginButton = FBSDKLoginButton()
 
     @IBOutlet weak var signLabel: UILabel!
     @IBOutlet weak var fbView: UIView!
     @IBOutlet weak var createAccount: UIButton!
     @IBOutlet weak var signButton: UIButton!
-    
-
-    
     
     @IBOutlet weak var accountField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -53,8 +50,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             signButton.setTitle("Sign Up", forState: .Normal)
             createAccount.setTitle("Create Account", forState: .Normal)
             
-            
-            
         }else if signButton.titleLabel?.text == "Sign Up" {
             signLabel.text = "Sign In"
             signButton.backgroundColor = UIColor(red: 4/255, green: 175/255, blue: 200/255, alpha: 1)
@@ -75,7 +70,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
                 let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
                 self.presentViewController(homeView, animated: true, completion: nil)
             }
-            
         }
 
         self.loginButton.center = self.fbView.center
@@ -160,6 +154,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         self.presentViewController(alertButton, animated: true, completion: nil)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        print("return ~~~~")
+        return true
+    }
+    
 }
 
 extension UIViewController {
@@ -170,6 +170,7 @@ extension UIViewController {
     func dismissKeyboard() {
         view.endEditing(true)
     }
-}
+    
 
+}
 

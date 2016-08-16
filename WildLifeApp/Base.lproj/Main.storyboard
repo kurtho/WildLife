@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f53-FI-q5o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -137,14 +137,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lKA-65-bSR">
-                                <rect key="frame" x="20" y="550" width="150" height="30"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="g5b-fm-yM0"/>
-                                    <constraint firstAttribute="width" constant="150" id="qLu-c2-F1u"/>
-                                </constraints>
-                            </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="732-rC-cYh">
                                 <rect key="frame" x="190" y="209" width="220" height="30"/>
                                 <constraints>
@@ -198,19 +190,27 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lKA-65-bSR">
+                                <rect key="frame" x="225" y="550" width="150" height="30"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="1cV-wI-bZc"/>
+                                    <constraint firstAttribute="height" constant="30" id="lba-z0-dxT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="leadingMargin" secondItem="lKA-65-bSR" secondAttribute="leading" id="0UG-AY-UGt"/>
                             <constraint firstItem="lKA-65-bSR" firstAttribute="centerY" secondItem="ZFN-Yp-vpK" secondAttribute="centerY" id="2vh-Y7-7vh"/>
                             <constraint firstItem="ThR-aS-hWI" firstAttribute="centerX" secondItem="QPH-6f-GeU" secondAttribute="centerX" id="486-dy-Iff"/>
                             <constraint firstItem="ThR-aS-hWI" firstAttribute="top" secondItem="QPH-6f-GeU" secondAttribute="bottom" constant="8" id="4Bo-Ne-1Il"/>
+                            <constraint firstItem="bSv-Pc-epz" firstAttribute="top" secondItem="lKA-65-bSR" secondAttribute="bottom" constant="20" id="74G-Pq-nlk"/>
                             <constraint firstItem="QPH-6f-GeU" firstAttribute="top" secondItem="732-rC-cYh" secondAttribute="bottom" constant="8" id="F61-cC-5LM"/>
                             <constraint firstItem="732-rC-cYh" firstAttribute="centerX" secondItem="ZFN-Yp-vpK" secondAttribute="centerX" id="FPy-qZ-3yv"/>
                             <constraint firstItem="PYM-xj-hUt" firstAttribute="centerX" secondItem="QPH-6f-GeU" secondAttribute="centerX" id="IDk-M4-EGJ"/>
+                            <constraint firstItem="lKA-65-bSR" firstAttribute="centerX" secondItem="ZFN-Yp-vpK" secondAttribute="centerX" id="PcS-fa-TxV"/>
                             <constraint firstItem="732-rC-cYh" firstAttribute="top" secondItem="xkB-7n-Tql" secondAttribute="bottom" constant="189" id="XOw-gr-UXE"/>
                             <constraint firstItem="QPH-6f-GeU" firstAttribute="centerX" secondItem="732-rC-cYh" secondAttribute="centerX" id="YXW-Bx-CSy"/>
-                            <constraint firstItem="bSv-Pc-epz" firstAttribute="top" secondItem="lKA-65-bSR" secondAttribute="bottom" constant="20" id="atX-9x-cZE"/>
                             <constraint firstItem="PYM-xj-hUt" firstAttribute="top" secondItem="QPH-6f-GeU" secondAttribute="bottom" constant="120" id="nqp-rP-9nx"/>
                             <constraint firstItem="Dqt-mV-Jbf" firstAttribute="top" secondItem="xkB-7n-Tql" secondAttribute="bottom" constant="113" id="oKS-Y0-WLd"/>
                             <constraint firstItem="BPs-76-943" firstAttribute="centerX" secondItem="ThR-aS-hWI" secondAttribute="centerX" id="ubf-FT-vjn"/>
