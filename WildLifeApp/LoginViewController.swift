@@ -36,7 +36,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     @IBAction func createAccount(sender: AnyObject) {
-        signLabel.text = "Sign in"
+//        signLabel.text = "Sign In"
+        signLabel.hidden = true
         FIRAuth.auth()?.createUserWithEmail(accountField.text!, password:passwordField.text!, completion: {
                 user, error in
                     if error != nil {
@@ -134,6 +135,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
 
     func accountRepeatly() {
+        if accountField.text?.characters.count <= 8 {
+            let alert = UIAlertController(title: "帳號太短了", message: nil, preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
+            alert.addAction(okAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
         let alertButton = UIAlertController(title: "此帳號已有人使用", message: nil, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
         alertButton.addAction(okAction)
