@@ -98,6 +98,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         signLabel.text = "Sign Up"
         signButton.backgroundColor = UIColor(red: 82/255, green: 190/255, blue: 91/255, alpha: 1)
         signButton.titleLabel?.text = "Sign Up"
+        signButton.layer.cornerRadius = signButton.frame.height / 6
     }
     
     override func didReceiveMemoryWarning() {
