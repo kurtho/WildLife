@@ -93,8 +93,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewWillAppear(animated: Bool) {
         self.view.layoutIfNeeded()
         self.loginButton.center = self.fbView.center
-        signLabel.text = "Sign In"
-        signButton.backgroundColor = UIColor(red: 82/255, green: 190/255, blue: 91/255, alpha: 1)
         signButton.layer.cornerRadius = signButton.frame.height / 6
     }
     
