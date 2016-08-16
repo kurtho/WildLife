@@ -18,25 +18,28 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var signButton: UIButton!
     
     
+
+    
+    
     
     @IBOutlet weak var accountField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
     @IBAction func logIn(sender: AnyObject) {
-        if signButton.titleLabel?.text == " Sign In " {
-            login()
-            print("test~~~")
-            
-        }else {
-            if passwordField.text?.characters.count < 8 {
-                let alertButton = UIAlertController(title: "密碼至少要八位數", message: nil, preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
-                alertButton.addAction(okAction)
-                self.presentViewController(alertButton, animated: true, completion: nil)
-            }else {
-                createAccountFunc()
-            }
-        }
+//        if signButton.titleLabel?.text == " Sign In " {
+//            login()
+//            print("test~~~")
+//            
+//        }else {
+//            if passwordField.text?.characters.count < 8 {
+//                let alertButton = UIAlertController(title: "密碼至少要八位數", message: nil, preferredStyle: .Alert)
+//                let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
+//                alertButton.addAction(okAction)
+//                self.presentViewController(alertButton, animated: true, completion: nil)
+//            }else {
+//                createAccountFunc()
+//            }
+//        }
     }
     
     @IBAction func createAccount(sender: AnyObject) {
@@ -47,10 +50,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             createAccount.setTitle("Create Account", forState: .Normal)
             
             
+            
         }else if signButton.titleLabel?.text == "Sign Up" {
             signLabel.text = "Sign In"
             signButton.backgroundColor = UIColor(red: 4/255, green: 175/255, blue: 200/255, alpha: 1)
-//            createAccount.titleLabel?.text = "Back To Sign Up"
             createAccount.setTitle("Back To Sign Up", forState: .Normal)
         }
         
