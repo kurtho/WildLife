@@ -17,29 +17,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var createAccount: UIButton!
     @IBOutlet weak var signButton: UIButton!
     
-    
-
-    
-    
-    
     @IBOutlet weak var accountField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
     @IBAction func logIn(sender: AnyObject) {
-//        if signButton.titleLabel?.text == " Sign In " {
-//            login()
-//            print("test~~~")
-//            
-//        }else {
-//            if passwordField.text?.characters.count < 8 {
-//                let alertButton = UIAlertController(title: "密碼至少要八位數", message: nil, preferredStyle: .Alert)
-//                let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
-//                alertButton.addAction(okAction)
-//                self.presentViewController(alertButton, animated: true, completion: nil)
-//            }else {
-//                createAccountFunc()
-//            }
-//        }
+        if signButton.titleLabel?.text == " Sign In " {
+            login()
+            print("test~~~")
+            
+        }else {
+            if passwordField.text?.characters.count < 8 {
+                let alertButton = UIAlertController(title: "密碼至少要八位數", message: nil, preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
+                alertButton.addAction(okAction)
+                self.presentViewController(alertButton, animated: true, completion: nil)
+            }else {
+                createAccountFunc()
+            }
+        }
     }
     
     @IBAction func createAccount(sender: AnyObject) {
@@ -98,9 +93,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     override func viewWillAppear(animated: Bool) {
         self.view.layoutIfNeeded()
         self.loginButton.center = self.fbView.center
-        signLabel.text = "Sign Up"
+        signLabel.text = "Sign In"
         signButton.backgroundColor = UIColor(red: 82/255, green: 190/255, blue: 91/255, alpha: 1)
-        signButton.titleLabel?.text = "Sign Up"
         signButton.layer.cornerRadius = signButton.frame.height / 6
     }
     
