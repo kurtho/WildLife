@@ -17,6 +17,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var createAccount: UIButton!
     @IBOutlet weak var signButton: UIButton!
     
+    
+    
     @IBOutlet weak var accountField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
@@ -42,14 +44,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             signLabel.text = "Sign Up"
             signButton.backgroundColor = UIColor(red: 82/255, green: 190/255, blue: 91/255, alpha: 1)
             signButton.titleLabel?.text = "Sign Up"
-//            createAccount.titleLabel?.text = "Create Account"
+            createAccount.setTitle("Create Account", forState: .Normal)
             
             
         }else if signButton.titleLabel?.text == "Sign Up" {
             signLabel.text = "Sign In"
             signButton.backgroundColor = UIColor(red: 4/255, green: 175/255, blue: 200/255, alpha: 1)
-            signButton.titleLabel?.text = " Sign In "
-            createAccount.titleLabel?.text = "Back To Sign Up"
+//            createAccount.titleLabel?.text = "Back To Sign Up"
+            createAccount.setTitle("Back To Sign Up", forState: .Normal)
         }
         
 
