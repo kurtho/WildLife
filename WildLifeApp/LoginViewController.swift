@@ -20,22 +20,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var accountField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
-    @IBAction func logIn(sender: AnyObject) {
+    
+    @IBAction func signButton(sender: AnyObject) {
         if signButton.titleLabel?.text == " Sign In " {
             login()
             print("test~~~")
-            
+        
         }else {
             if passwordField.text?.characters.count < 8 {
-                let alertButton = UIAlertController(title: "密碼至少要八位數", message: nil, preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
-                alertButton.addAction(okAction)
-                self.presentViewController(alertButton, animated: true, completion: nil)
+            let alertButton = UIAlertController(title: "密碼至少要八位數", message: nil, preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
+                    alertButton.addAction(okAction)
+            self.presentViewController(alertButton, animated: true, completion: nil)
+    
             }else {
                 createAccountFunc()
+                }
             }
         }
-    }
+    
+
     
     @IBAction func createAccount(sender: AnyObject) {
         if signButton.titleLabel?.text == " Sign In " {
@@ -43,8 +47,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
             signButton.backgroundColor = UIColor(red: 82/255, green: 190/255, blue: 91/255, alpha: 1)
             signButton.titleLabel?.text = "Sign Up"
             createAccount.setTitle("Create Account", forState: .Normal)
-            
-            
+
             
         }else if signButton.titleLabel?.text == "Sign Up" {
             signLabel.text = "Sign In"
@@ -115,9 +118,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("User did log out *****")
     }
 
-    
-    
-    
     
     
     func createAccountFunc() {

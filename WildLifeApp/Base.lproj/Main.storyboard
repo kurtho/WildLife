@@ -174,7 +174,7 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="logIn:" destination="f53-FI-q5o" eventType="touchUpInside" id="Ynb-JR-gyh"/>
+                                    <action selector="signButton:" destination="f53-FI-q5o" eventType="touchUpInside" id="w6N-FR-eLe"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPs-76-943">
