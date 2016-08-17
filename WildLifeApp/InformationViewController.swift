@@ -8,28 +8,58 @@
 
 import UIKit
 
-class InformationViewController: UIViewController {
+class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    var imagePicker = UIImagePickerController()
+     var infos = Infos.init(name: "", photo: "", skill: [""], content: "", id: 0, place: "", info: "")
 
+    @IBOutlet weak var myButton: UIButton!
+    @IBOutlet weak var myView: UIView!
+    @IBOutlet weak var myImage: UIImageView!
+    
+    
+    @IBAction func imageButton(sender: AnyObject) {
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        imagePicker.allowsEditing = false
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
+
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.myView.clipsToBounds = true
+        self.myView.layer.cornerRadius = self.myView.frame.size.height / 2
+    }
+    override func viewWillAppear(animated: Bool) {
+        CurrentUser.shareInstance.infos = infos
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let image = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        self.myImage.image = image
+        UIImageWriteToSavedPhotosAlbum(self.myImage.image!, nil, nil, nil)
+        self.dismissViewControllerAnimated(true, completion: nil)
+        saveSelectedImage(image)
+        print("my share instance ~~~\(CurrentUser.shareInstance.infos?.photo)")
     }
-    */
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+        self.myImage.image = UIImage(named: (CurrentUser.shareInstance.infos?.photo)!)
+    }
+    
+    func saveSelectedImage(image: UIImage) {
+        myImage.image = image
+        
+    }
 
+    
 }
