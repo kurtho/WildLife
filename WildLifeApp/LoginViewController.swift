@@ -26,9 +26,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     @IBAction func signButton(sender: AnyObject) {
         if signButton.titleLabel?.text == " Sign In " {
             login()
-            print("test~~~")
-        
-        }else {
+        } else {
             if accountField.text?.characters.count < 8 {
                 accountRepeatly()
             } else if passwordField.text?.characters.count < 8 {
@@ -128,6 +126,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             } else {
                 print("user create success")
             }
+            
         })
     }
     
@@ -169,11 +168,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         self.presentViewController(alertButton, animated: true, completion: nil)
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        print("return ~~~~")
-        return true
-    }
+//    func textFieldShouldReturn(textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        print("return ~~~~")
+//        return true
+//    }
+//          it is not working
     
 }
 
