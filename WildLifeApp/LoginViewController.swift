@@ -19,6 +19,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
     @IBOutlet weak var accountField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var loadIng: UIActivityIndicatorView!
+    
     
     
     @IBAction func signButton(sender: AnyObject) {
@@ -91,12 +93,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)  {
+        loadIng.startAnimating()
+        if error != nil {
+            loadIng.stopAnimating()
+        }else if (result.isCancelled) {
+            loadIng.stopAnimating()
+        }else {
         let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
         FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
             print("user logged in firebase")
+            
+            }
         }
         print("User log in*****")
     }
+        
     
     
     
@@ -107,10 +118,12 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
     
     func createAccountFunc() {
+        self.loadIng.startAnimating()
         FIRAuth.auth()?.createUserWithEmail(accountField.text!, password: passwordField.text!, completion: {
             user, error in
             if error != nil {
                 self.accountAlreadyExist()
+                self.loadIng.stopAnimating()
                 print("create incorrect")
             } else {
                 print("user create success")
@@ -119,11 +132,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     }
     
     func login() {
+        self.loadIng.startAnimating()
         FIRAuth.auth()?.signInWithEmail(accountField.text!, password: passwordField.text!, completion: {
             user, error in
             if error != nil {
                 self.alertWrongPassWordOrAccount()
-                //                password or email is incorrect
+                self.loadIng.stopAnimating()
+//                password or email is incorrect
                 print("incorrect")
             } else {
                 print("user login success")
