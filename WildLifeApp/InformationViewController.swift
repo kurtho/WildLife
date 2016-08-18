@@ -33,6 +33,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         self.myView.layer.cornerRadius = self.myView.frame.size.height / 2
     }
     override func viewWillAppear(animated: Bool) {
+
         myImage.image = CurrentUser.shareInstance.pic
         print("curr~~~~in view will appear \(CurrentUser.shareInstance.pic)")
     }
@@ -47,7 +48,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         let image = info["UIImagePickerControllerOriginalImage"] as! UIImage
         CurrentUser.shareInstance.pic = image
         self.myImage.image = image
-        UIImageWriteToSavedPhotosAlbum(self.myImage.image!, nil, nil, nil)
+//        UIImageWriteToSavedPhotosAlbum(self.myImage.image!, nil, nil, nil)
         self.dismissViewControllerAnimated(true, completion: nil)
         saveSelectedImage(image)
         print("my share instance ~~~\(CurrentUser.shareInstance.pic)")
