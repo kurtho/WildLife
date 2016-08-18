@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-class Infos {
+class Infos: NSObject {
     var id: Int?
     var name: String
     var photo: String
@@ -30,4 +31,6 @@ class Infos {
 class CurrentUser {
     static let shareInstance = CurrentUser()
     var infos: Infos?
+    var pic = UIImage()
+
 }

@@ -33,7 +33,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         self.myView.layer.cornerRadius = self.myView.frame.size.height / 2
     }
     override func viewWillAppear(animated: Bool) {
-        CurrentUser.shareInstance.infos = infos
+        myImage.image = CurrentUser.shareInstance.pic
+        print("curr~~~~in view will appear \(CurrentUser.shareInstance.pic)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,21 +45,20 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        CurrentUser.shareInstance.pic = image
         self.myImage.image = image
         UIImageWriteToSavedPhotosAlbum(self.myImage.image!, nil, nil, nil)
         self.dismissViewControllerAnimated(true, completion: nil)
         saveSelectedImage(image)
-        print("my share instance ~~~\(CurrentUser.shareInstance.infos?.photo)")
+        print("my share instance ~~~\(CurrentUser.shareInstance.pic)")
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.myImage.image = UIImage(named: (CurrentUser.shareInstance.infos?.photo)!)
-    }
+
     
     func saveSelectedImage(image: UIImage) {
         myImage.image = image
-        
+        CurrentUser.shareInstance.pic = image
+        print("share instance pic ~~~~\(CurrentUser.shareInstance.pic)")
     }
 
     
