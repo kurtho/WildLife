@@ -73,7 +73,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         self.loginButton.center = self.fbView.center
         self.view!.addSubview(self.loginButton)
 //        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        loginButton.readPermissions = ["email"]
         self.loginButton.delegate = self
     }
 
@@ -105,16 +104,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         
 //      upload user data
     func handleRegister() {
-        let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
-        let userReference = ref.child("user")
-        let value = ["email": accountField.text!]
-        userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
-            if err != nil {
-                print(err)
-                return
-            }
-            print("Saved user successfully into Firebase db")
-        })
+
     }
     
     
@@ -133,11 +123,21 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 self.loadIng.stopAnimating()
                 print("create incorrect")
             } else {
-                self.handleRegister()
+                guard let uid = user?.uid else {
+                    return
+                }
                 print("user create success")
+                let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
+                let userReference = ref.child("users").child(uid)
+                let value = ["email": self.accountField.text!]
+                userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
+                    if err != nil {
+                        print(err)
+                        return
+                    }
+                    print("Saved user successfully into Firebase db")
+                })
             }
-         
-            
         })
     }
     
