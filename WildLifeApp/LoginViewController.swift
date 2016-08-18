@@ -73,6 +73,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         self.loginButton.center = self.fbView.center
         self.view!.addSubview(self.loginButton)
 //        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        loginButton.readPermissions = ["email"]
         self.loginButton.delegate = self
     }
 
@@ -132,6 +133,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 self.loadIng.stopAnimating()
                 print("create incorrect")
             } else {
+                self.handleRegister()
                 print("user create success")
             }
          
