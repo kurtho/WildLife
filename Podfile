@@ -9,8 +9,9 @@ target 'WildLifeApp' do
   pod 'SDWebImage'
   pod 'Alamofire'
   pod 'SwiftyJSON'
-  pod 'Firebase'
+  pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/Core'
   use_frameworks!
 
   # Pods for WildLifeApp

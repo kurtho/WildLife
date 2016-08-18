@@ -8,7 +8,9 @@
 
 import UIKit
 import FBSDKLoginKit
-import FirebaseAuth
+import Firebase
+
+
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
     var loginButton: FBSDKLoginButton = FBSDKLoginButton()
 
@@ -41,7 +43,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             }
         }
     
-
     
     @IBAction func createAccount(sender: AnyObject) {
         if signButton.titleLabel?.text == " Sign In " {
@@ -56,11 +57,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             signButton.setTitle(" Sign In ", forState: .Normal)
             createAccount.setTitle("Back To Sign Up", forState: .Normal)
         }
-        
     }
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
@@ -71,12 +70,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 self.presentViewController(homeView, animated: true, completion: nil)
             }
         }
-
         self.loginButton.center = self.fbView.center
         self.view!.addSubview(self.loginButton)
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+//        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         self.loginButton.delegate = self
-        
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -89,7 +86,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+//  MARK: - Firebase
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)  {
         loadIng.startAnimating()
         if error != nil {
@@ -100,13 +97,24 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
         FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
             print("user logged in firebase")
-            
             }
         }
         print("User log in*****")
     }
         
-    
+//      upload user data
+    func handleRegister() {
+        let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
+        let userReference = ref.child("user")
+        let value = ["email": accountField.text!]
+        userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
+            if err != nil {
+                print(err)
+                return
+            }
+            print("Saved user successfully into Firebase db")
+        })
+    }
     
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
@@ -126,6 +134,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             } else {
                 print("user create success")
             }
+         
             
         })
     }
@@ -140,6 +149,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
 //                password or email is incorrect
                 print("incorrect")
             } else {
+                self.handleRegister()
                 print("user login success")
             }
         })
