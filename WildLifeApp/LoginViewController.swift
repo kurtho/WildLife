@@ -52,7 +52,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             signLabel.text = "Sign Up"
             signButton.backgroundColor = UIColor(red: 82/255, green: 190/255, blue: 91/255, alpha: 1)
             signButton.setTitle("Sign Up", forState: .Normal)
-            createAccount.setTitle("Create Account", forState: .Normal)
+            createAccount.setTitle("Already Have Account", forState: .Normal)
             
         }else if signButton.titleLabel?.text == "Sign Up" {
             signLabel.text = "Sign In"

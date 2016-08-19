@@ -70,7 +70,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info["UIImagePickerControllerEditedImage"] as! UIImage
-        CurrentUser.shareInstance.pic = image
         self.myImage.image = image
 //        UIImageWriteToSavedPhotosAlbum(self.myImage.image!, nil, nil, nil)
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -82,9 +81,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     func saveSelectedImage(image: UIImage) {
         myImage.image = image
-        CurrentUser.shareInstance.pic = image
-        print("share instance pic ~~~~\(CurrentUser.shareInstance.pic)")
-    }
+        }
 
     
     private func uploadImageWithUID(uid: String, values: [String: AnyObject]) {
