@@ -12,10 +12,9 @@ import Firebase
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
-    
 
 
-//     var infos = Infos.init(name: "", photo: "", skill: [""], content: "", id: 0, place: "", info: "")
+
 
     @IBOutlet weak var myButton: UIButton!
     @IBOutlet weak var myView: UIView!
@@ -31,11 +30,10 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 
     @IBAction func uploadButton(sender: AnyObject) {
         let imageName = NSUUID().UUIDString
-        let storageRef = FIRStorage.storage().reference().child("profileImage").child(imageName)
-        let user: FIRUser?
-        guard let uid = user?.uid else {
-            return
-        } 
+        let storageRef = FIRStorage.storage().reference().child("profileImage").child("\(imageName).jpg")
+//        var user: FIRUser?
+        let uid =  CurrentUser.shareInstance.infos?.id
+        print("user~~~\(uid)")
         if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if error != nil {
@@ -43,14 +41,14 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 }
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                     let values = ["profileImageURL": profileImageUrl]
-                    self.uploadImageWithUID(uid, values: values)
+                    self.uploadImageWithUID(uid!, values: values)
                     print("upload img ~~~~")
                 }
                 
                 print(metadata)
             })
         }
-     print("upload~~~")
+     print("testtest~~~~")
     }
     
     
@@ -100,5 +98,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             print("Saved user successfully into Firebase db")
         })
     }
-    
+
+
+
 }

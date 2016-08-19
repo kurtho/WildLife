@@ -13,7 +13,10 @@ import Firebase
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
     var loginButton: FBSDKLoginButton = FBSDKLoginButton()
+    let userInfos = Infos.init(name: "", photo: "", skill: [""], content: "", id: "", place: "", info: "")
 
+    
+    
     @IBOutlet weak var signLabel: UILabel!
     @IBOutlet weak var fbView: UIView!
     @IBOutlet weak var createAccount: UIButton!
@@ -62,6 +65,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        CurrentUser.shareInstance.infos = userInfos
+
         hideKeyboardWhenTappedAround()
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             if user != nil {
@@ -112,7 +117,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         print("User did log out *****")
     }
 
-    
+
     
     func createAccountFunc() {
         self.loadIng.startAnimating()
@@ -126,6 +131,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 guard let uid = user?.uid else {
                     return
                 }
+                self.userInfos.id = uid
+                print("uid~~~~\(self.self.userInfos.id)")
                 print("user create success")
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(uid)
