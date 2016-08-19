@@ -21,6 +21,7 @@
 		29641F551D615AAE00B941F4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29641F541D615AAE00B941F4 /* HomeViewController.swift */; };
 		29641F991D63EC1E00B941F4 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29641F981D63EC1E00B941F4 /* InformationViewController.swift */; };
 		29641F9B1D644D0900B941F4 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29641F9A1D644D0900B941F4 /* File.swift */; };
+		29ECAC8B1D67BC9800B87333 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ECAC8A1D67BC9800B87333 /* Function.swift */; };
 		C1CD67DD7C53BF38BC3F08EA /* Pods_WildLifeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E94AD3FD8753B21D43B7E4 /* Pods_WildLifeApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		29641F541D615AAE00B941F4 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		29641F981D63EC1E00B941F4 /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		29641F9A1D644D0900B941F4 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		29ECAC8A1D67BC9800B87333 /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		66E94AD3FD8753B21D43B7E4 /* Pods_WildLifeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WildLifeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -98,6 +100,7 @@
 				291D20EE1D5DC18000FD8BB1 /* Info.plist */,
 				291D20FC1D5DD14F00FD8BB1 /* GoogleService-Info.plist */,
 				291D20EB1D5DC18000FD8BB1 /* LaunchScreen.storyboard */,
+				29ECAC8A1D67BC9800B87333 /* Function.swift */,
 				29641F9A1D644D0900B941F4 /* File.swift */,
 			);
 			name = Other;
@@ -272,6 +275,7 @@
 				291D20E31D5DC18000FD8BB1 /* AppDelegate.swift in Sources */,
 				291D20F51D5DC19E00FD8BB1 /* IntroCollectionViewCell.swift in Sources */,
 				29641F991D63EC1E00B941F4 /* InformationViewController.swift in Sources */,
+				29ECAC8B1D67BC9800B87333 /* Function.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

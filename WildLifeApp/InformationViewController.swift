@@ -48,7 +48,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 print(metadata)
             })
         }
-     print("testtest~~~~")
     }
     
     
@@ -74,7 +73,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        UIImageWriteToSavedPhotosAlbum(self.myImage.image!, nil, nil, nil)
         self.dismissViewControllerAnimated(true, completion: nil)
         saveSelectedImage(image)
-        print("info~~\(info)")
     }
     
 
@@ -84,7 +82,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         }
 
     
-    private func uploadDataWithUID(uid: String, values: [String: AnyObject]) {
+    private func uploadDataWithUID(uid: String, values: [NSObject: AnyObject]) {
         let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
         let userReference = ref.child("users").child(uid)
         userReference.updateChildValues(values, withCompletionBlock: {(err, ref) in
@@ -92,7 +90,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 print(err)
                 return
             }
-            print("Saved user successfully into Firebase db")
+            print("Saved user successfully into Firebase db 123")
         })
     }
 

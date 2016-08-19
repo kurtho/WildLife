@@ -72,7 +72,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 self.userInfos.id = (user?.uid)!
                 self.loginButton.readPermissions = ["email"]
                 
-                print("使用者的fb資料~~~\(FIRAuth.auth()?.currentUser?.email)")
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(self.userInfos.id)
                 let value = ["email": (FIRAuth.auth()?.currentUser?.email)!]
@@ -215,16 +214,4 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
 }
 
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-
-    
-}
 

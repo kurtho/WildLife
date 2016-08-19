@@ -18,6 +18,13 @@ class HomeViewController: UIViewController {
         let viewController : UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("LogginView")
         self.presentViewController(viewController, animated: true, completion: nil)
     }
+    
+    
+    @IBAction func alertButton(sender: AnyObject) {
+        alert("這是title", contain: "這是內文")
+    }
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +38,8 @@ class HomeViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
+    
 
 }

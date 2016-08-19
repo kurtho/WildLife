@@ -279,19 +279,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M3T-Vg-zYp">
-                                <rect key="frame" x="42" y="40" width="88" height="30"/>
-                                <state key="normal" title="FB LOG OUT">
+                                <rect key="frame" x="42" y="40" width="66" height="30"/>
+                                <state key="normal" title="LOG OUT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="logOut:" destination="oa7-Al-IJR" eventType="touchUpInside" id="Uge-Ng-NBH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Au-VN-sdi">
+                                <rect key="frame" x="42" y="95" width="83" height="30"/>
+                                <state key="normal" title="Alert Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="alertButton:" destination="oa7-Al-IJR" eventType="touchUpInside" id="Re1-UC-mwP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.25490196079999999" green="0.36470588240000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="M3T-Vg-zYp" firstAttribute="leading" secondItem="86M-54-7MV" secondAttribute="leadingMargin" constant="22" id="7gm-5t-c6p"/>
+                            <constraint firstItem="3Au-VN-sdi" firstAttribute="top" secondItem="M3T-Vg-zYp" secondAttribute="bottom" constant="25" id="ZMN-45-KhS"/>
                             <constraint firstItem="M3T-Vg-zYp" firstAttribute="top" secondItem="PiY-Db-1WN" secondAttribute="bottom" constant="20" id="o9I-Kv-IOP"/>
+                            <constraint firstItem="3Au-VN-sdi" firstAttribute="leading" secondItem="86M-54-7MV" secondAttribute="leadingMargin" constant="22" id="rYe-yo-egK"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="PHO-rV-C6Y"/>
