@@ -71,6 +71,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             if user != nil {
                 self.userInfos.id = (user?.uid)!
+                print("user info ******\(self.userInfos.id)")
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
                 let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
                 self.presentViewController(homeView, animated: true, completion: nil)
