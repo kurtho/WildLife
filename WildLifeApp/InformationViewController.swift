@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
-     var infos = Infos.init(name: "", photo: "", skill: [""], content: "", id: 0, place: "", info: "")
+
+
+//     var infos = Infos.init(name: "", photo: "", skill: [""], content: "", id: 0, place: "", info: "")
 
     @IBOutlet weak var myButton: UIButton!
     @IBOutlet weak var myView: UIView!
@@ -19,11 +22,13 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func imageButton(sender: AnyObject) {
         imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
-        imagePicker.allowsEditing = false
+//        imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        imagePicker.allowsEditing = true
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
 
+    @IBAction func uploadButton(sender: AnyObject) {
+    }
     
     
     
@@ -33,9 +38,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         self.myView.layer.cornerRadius = self.myView.frame.size.height / 2
     }
     override func viewWillAppear(animated: Bool) {
-
-        myImage.image = CurrentUser.shareInstance.pic
-        print("curr~~~~in view will appear \(CurrentUser.shareInstance.pic)")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,13 +48,13 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let image = info["UIImagePickerControllerOriginalImage"] as! UIImage
+        let image = info["UIImagePickerControllerEditedImage"] as! UIImage
         CurrentUser.shareInstance.pic = image
         self.myImage.image = image
 //        UIImageWriteToSavedPhotosAlbum(self.myImage.image!, nil, nil, nil)
         self.dismissViewControllerAnimated(true, completion: nil)
         saveSelectedImage(image)
-        print("my share instance ~~~\(CurrentUser.shareInstance.pic)")
+        print("info~~\(info)")
     }
     
 

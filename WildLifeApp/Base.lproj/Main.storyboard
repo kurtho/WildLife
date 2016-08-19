@@ -381,27 +381,30 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4c-KL-svN">
-                                <rect key="frame" x="277" y="406" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="275" y="406" width="50" height="30"/>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="uploadButton:" destination="WLa-K0-R5y" eventType="touchUpInside" id="5oG-a6-rwC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="k7u-Ou-sQ7" firstAttribute="centerX" secondItem="aq9-Vh-l7e" secondAttribute="centerX" id="3H6-DH-Yw8"/>
-                            <constraint firstItem="X4c-KL-svN" firstAttribute="centerX" secondItem="kQP-j1-oT4" secondAttribute="centerX" id="9bU-a7-0Va"/>
                             <constraint firstItem="aq9-Vh-l7e" firstAttribute="centerX" secondItem="6vu-gh-weG" secondAttribute="centerX" id="AWb-k7-Cj0"/>
                             <constraint firstItem="dEv-9K-B0x" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="72" id="Ggc-SH-EeU"/>
+                            <constraint firstItem="X4c-KL-svN" firstAttribute="top" secondItem="V8q-0r-5H9" secondAttribute="bottom" constant="15" id="HQG-xx-js5"/>
                             <constraint firstItem="k7u-Ou-sQ7" firstAttribute="top" secondItem="aq9-Vh-l7e" secondAttribute="bottom" constant="8" id="OsQ-SW-30W"/>
                             <constraint firstItem="fcA-3N-s3K" firstAttribute="centerX" secondItem="6vu-gh-weG" secondAttribute="centerX" id="YhL-wf-xmI"/>
                             <constraint firstItem="aq9-Vh-l7e" firstAttribute="centerY" secondItem="6vu-gh-weG" secondAttribute="centerY" id="aBL-DD-6ea"/>
                             <constraint firstItem="V8q-0r-5H9" firstAttribute="centerX" secondItem="k7u-Ou-sQ7" secondAttribute="centerX" id="ano-nx-Bbr"/>
                             <constraint firstItem="dEv-9K-B0x" firstAttribute="centerX" secondItem="6vu-gh-weG" secondAttribute="centerX" id="fcZ-dx-iWo"/>
                             <constraint firstItem="aq9-Vh-l7e" firstAttribute="centerX" secondItem="6vu-gh-weG" secondAttribute="centerX" id="ghb-mj-ubg"/>
-                            <constraint firstItem="X4c-KL-svN" firstAttribute="top" secondItem="kQP-j1-oT4" secondAttribute="bottom" constant="164" id="gpj-2G-Wch"/>
                             <constraint firstItem="yPY-Ts-DgK" firstAttribute="centerX" secondItem="kQP-j1-oT4" secondAttribute="centerX" id="ini-Tp-U6r"/>
                             <constraint firstItem="fcA-3N-s3K" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="34" id="jIV-Pe-iyZ"/>
                             <constraint firstItem="V8q-0r-5H9" firstAttribute="top" secondItem="k7u-Ou-sQ7" secondAttribute="bottom" constant="8" id="ovA-Om-n9G"/>
                             <constraint firstItem="yPY-Ts-DgK" firstAttribute="top" secondItem="kQP-j1-oT4" secondAttribute="bottom" constant="1" id="p50-pn-aOW"/>
+                            <constraint firstItem="X4c-KL-svN" firstAttribute="centerX" secondItem="V8q-0r-5H9" secondAttribute="centerX" id="wd1-GW-BFy"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

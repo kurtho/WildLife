@@ -127,6 +127,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                     return
                 }
                 print("user create success")
+                
+                
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(uid)
                 let value = ["email": self.accountField.text!]
