@@ -70,6 +70,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         hideKeyboardWhenTappedAround()
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             if user != nil {
+                self.userInfos.id = (user?.uid)!
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
                 let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
                 self.presentViewController(homeView, animated: true, completion: nil)
@@ -151,13 +152,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     func login() {
         self.loadIng.startAnimating()
         FIRAuth.auth()?.signInWithEmail(accountField.text!, password: passwordField.text!, completion: {
-            user, error in
+            (user: FIRUser?, error) in
             if error != nil {
                 self.alertWrongPassWordOrAccount()
                 self.loadIng.stopAnimating()
 //                password or email is incorrect
                 print("incorrect")
             } else {
+                self.userInfos.id = (user?.uid)!
                 self.handleRegister()
                 print("user login success")
             }
