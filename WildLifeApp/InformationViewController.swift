@@ -32,7 +32,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func uploadButton(sender: AnyObject) {
         let imageName = NSUUID().UUIDString
         let storageRef = FIRStorage.storage().reference().child("profileImage").child(imageName)
-        var user: FIRUser?
+        let user: FIRUser?
         guard let uid = user?.uid else {
             return
         } 
