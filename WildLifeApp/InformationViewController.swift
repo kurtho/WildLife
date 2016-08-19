@@ -41,7 +41,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 }
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                     let values = ["profileImageURL": profileImageUrl]
-                    self.uploadImageWithUID(uid!, values: values)
+                    self.uploadDataWithUID(uid!, values: values)
                     print("upload img ~~~~")
                 }
                 
@@ -84,7 +84,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         }
 
     
-    private func uploadImageWithUID(uid: String, values: [String: AnyObject]) {
+    private func uploadDataWithUID(uid: String, values: [String: AnyObject]) {
         let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
         let userReference = ref.child("users").child(uid)
         userReference.updateChildValues(values, withCompletionBlock: {(err, ref) in

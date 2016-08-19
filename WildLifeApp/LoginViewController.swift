@@ -134,7 +134,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                     return
                 }
                 self.userInfos.id = uid
-                print("uid~~~~\(self.self.userInfos.id)")
                 print("user create success")
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(uid)
@@ -162,6 +161,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             } else {
                 self.userInfos.id = (user?.uid)!
                 self.handleRegister()
+                
+                
                 print("user login success")
             }
         })
@@ -209,5 +210,6 @@ extension UIViewController {
     }
     
 
+    
 }
 
