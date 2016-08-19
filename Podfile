@@ -12,6 +12,7 @@ target 'WildLifeApp' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
+  pod 'Firebase/Storage'
   use_frameworks!
 
   # Pods for WildLifeApp

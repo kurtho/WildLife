@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="WLa-K0-R5y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f53-FI-q5o">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -300,7 +300,7 @@
             </objects>
             <point key="canvasLocation" x="3692" y="25"/>
         </scene>
-        <!--Information View Controller-->
+        <!--Item-->
         <scene sceneID="cnu-Nd-WDJ">
             <objects>
                 <viewController id="WLa-K0-R5y" customClass="InformationViewController" customModule="WildLifeApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -412,6 +412,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="abs-cY-i4T"/>
                     <connections>
                         <outlet property="myButton" destination="yPY-Ts-DgK" id="TrF-Je-CUY"/>
                         <outlet property="myImage" destination="kQP-j1-oT4" id="Xu6-qX-vdb"/>
@@ -420,7 +421,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hv-3u-gYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1899" y="298"/>
+            <point key="canvasLocation" x="3692" y="1482"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="L9e-g0-9Mq">
@@ -434,6 +435,7 @@
                     <connections>
                         <segue destination="oa7-Al-IJR" kind="relationship" relationship="viewControllers" id="sie-gu-TRr"/>
                         <segue destination="tlz-tJ-lUG" kind="relationship" relationship="viewControllers" id="y2V-qa-OQ6"/>
+                        <segue destination="WLa-K0-R5y" kind="relationship" relationship="viewControllers" id="dII-C2-cK5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1O-AN-P49" userLabel="First Responder" sceneMemberID="firstResponder"/>

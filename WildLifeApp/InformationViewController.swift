@@ -9,8 +9,10 @@
 import UIKit
 import Firebase
 
+
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
+    
 
 
 //     var infos = Infos.init(name: "", photo: "", skill: [""], content: "", id: 0, place: "", info: "")
@@ -28,6 +30,27 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     }
 
     @IBAction func uploadButton(sender: AnyObject) {
+        let imageName = NSUUID().UUIDString
+        let storageRef = FIRStorage.storage().reference().child("profileImage").child(imageName)
+        var user: FIRUser?
+        guard let uid = user?.uid else {
+            return
+        } 
+        if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                if error != nil {
+                    print(error)
+                }
+                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                    let values = ["profileImageURL": profileImageUrl]
+                    self.uploadImageWithUID(uid, values: values)
+                    print("upload img ~~~~")
+                }
+                
+                print(metadata)
+            })
+        }
+     print("upload~~~")
     }
     
     
@@ -65,5 +88,17 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         print("share instance pic ~~~~\(CurrentUser.shareInstance.pic)")
     }
 
+    
+    private func uploadImageWithUID(uid: String, values: [String: AnyObject]) {
+        let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
+        let userReference = ref.child("users").child(uid)
+        userReference.updateChildValues(values, withCompletionBlock: {(err, ref) in
+            if err != nil {
+                print(err)
+                return
+            }
+            print("Saved user successfully into Firebase db")
+        })
+    }
     
 }

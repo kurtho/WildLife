@@ -117,7 +117,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     func createAccountFunc() {
         self.loadIng.startAnimating()
         FIRAuth.auth()?.createUserWithEmail(accountField.text!, password: passwordField.text!, completion: {
-            user, error in
+            (user: FIRUser?, error) in
             if error != nil {
                 self.accountAlreadyExist()
                 self.loadIng.stopAnimating()
@@ -127,8 +127,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                     return
                 }
                 print("user create success")
-                
-                
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(uid)
                 let value = ["email": self.accountField.text!]
