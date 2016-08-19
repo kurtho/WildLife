@@ -72,10 +72,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 self.userInfos.id = (user?.uid)!
                 self.loginButton.readPermissions = ["email"]
                 
-                
+                print("使用者的fb資料~~~\(FIRAuth.auth()?.currentUser?.email)")
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(self.userInfos.id)
-                let value = ["email": "ahopdanzer@GGGG.com"]
+                let value = ["email": (FIRAuth.auth()?.currentUser?.email)!]
                 userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
                     if err != nil {
                         print(err)
