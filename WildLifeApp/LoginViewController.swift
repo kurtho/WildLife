@@ -66,12 +66,26 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     override func viewDidLoad() {
         super.viewDidLoad()
         CurrentUser.shareInstance.infos = userInfos
-
         hideKeyboardWhenTappedAround()
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             if user != nil {
                 self.userInfos.id = (user?.uid)!
-                print("user info ******\(self.userInfos.id)")
+                self.loginButton.readPermissions = ["email"]
+                
+                
+                let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
+                let userReference = ref.child("users").child(self.userInfos.id)
+                let value = ["email": "ahopdanzer@GGGG.com"]
+                userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
+                    if err != nil {
+                        print(err)
+                        return
+                    }
+                    print("Saved user successfully into Firebase db")
+                })
+                
+                
+                
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
                 let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
                 self.presentViewController(homeView, animated: true, completion: nil)
@@ -81,6 +95,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         self.view!.addSubview(self.loginButton)
 //        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         self.loginButton.delegate = self
+        
     }
 
     override func viewWillAppear(animated: Bool) {
