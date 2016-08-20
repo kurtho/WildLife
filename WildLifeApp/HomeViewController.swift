@@ -13,7 +13,6 @@ class HomeViewController: UIViewController {
     @IBAction func logOut(sender: AnyObject) {
         try! FIRAuth.auth()!.signOut()
         FBSDKAccessToken.setCurrentAccessToken(nil)
-        
         let mainStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController : UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("LogginView")
         self.presentViewController(viewController, animated: true, completion: nil)

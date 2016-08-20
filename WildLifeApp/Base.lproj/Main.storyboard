@@ -348,13 +348,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About Me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcA-3N-s3K">
-                                <rect key="frame" x="246" y="54" width="108" height="30"/>
+                                <rect key="frame" x="246" y="35" width="108" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dEv-9K-B0x">
-                                <rect key="frame" x="225" y="92" width="150" height="150"/>
+                                <rect key="frame" x="225" y="73" width="150" height="150"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hualien" translatesAutoresizingMaskIntoConstraints="NO" id="kQP-j1-oT4">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -372,11 +372,18 @@
                                     <constraint firstAttribute="width" constant="150" id="ocA-7t-I3k"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4c-KL-svN">
+                                <rect key="frame" x="275" y="406" width="50" height="30"/>
+                                <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="uploadButton:" destination="WLa-K0-R5y" eventType="touchUpInside" id="5oG-a6-rwC"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPY-Ts-DgK">
-                                <rect key="frame" x="248" y="243" width="103" height="40"/>
+                                <rect key="frame" x="249" y="231" width="103" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="3Cc-cL-krN"/>
+                                    <constraint firstAttribute="height" constant="30" id="3Cc-cL-krN"/>
                                     <constraint firstAttribute="width" constant="100" id="tHP-ln-2op"/>
                                 </constraints>
                                 <state key="normal" title="Select A Image">
@@ -391,19 +398,12 @@
                                     <action selector="imageButton:" destination="WLa-K0-R5y" eventType="touchUpInside" id="3Ta-Ne-WOF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X4c-KL-svN">
-                                <rect key="frame" x="275" y="406" width="50" height="30"/>
-                                <state key="normal" title="Upload"/>
-                                <connections>
-                                    <action selector="uploadButton:" destination="WLa-K0-R5y" eventType="touchUpInside" id="5oG-a6-rwC"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="k7u-Ou-sQ7" firstAttribute="centerX" secondItem="aq9-Vh-l7e" secondAttribute="centerX" id="3H6-DH-Yw8"/>
                             <constraint firstItem="aq9-Vh-l7e" firstAttribute="centerX" secondItem="6vu-gh-weG" secondAttribute="centerX" id="AWb-k7-Cj0"/>
-                            <constraint firstItem="dEv-9K-B0x" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="72" id="Ggc-SH-EeU"/>
+                            <constraint firstItem="dEv-9K-B0x" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="53" id="Ggc-SH-EeU"/>
                             <constraint firstItem="X4c-KL-svN" firstAttribute="top" secondItem="V8q-0r-5H9" secondAttribute="bottom" constant="15" id="HQG-xx-js5"/>
                             <constraint firstItem="k7u-Ou-sQ7" firstAttribute="top" secondItem="aq9-Vh-l7e" secondAttribute="bottom" constant="8" id="OsQ-SW-30W"/>
                             <constraint firstItem="fcA-3N-s3K" firstAttribute="centerX" secondItem="6vu-gh-weG" secondAttribute="centerX" id="YhL-wf-xmI"/>
@@ -412,9 +412,9 @@
                             <constraint firstItem="dEv-9K-B0x" firstAttribute="centerX" secondItem="6vu-gh-weG" secondAttribute="centerX" id="fcZ-dx-iWo"/>
                             <constraint firstItem="aq9-Vh-l7e" firstAttribute="centerX" secondItem="6vu-gh-weG" secondAttribute="centerX" id="ghb-mj-ubg"/>
                             <constraint firstItem="yPY-Ts-DgK" firstAttribute="centerX" secondItem="kQP-j1-oT4" secondAttribute="centerX" id="ini-Tp-U6r"/>
-                            <constraint firstItem="fcA-3N-s3K" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="34" id="jIV-Pe-iyZ"/>
+                            <constraint firstItem="fcA-3N-s3K" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="15" id="jIV-Pe-iyZ"/>
                             <constraint firstItem="V8q-0r-5H9" firstAttribute="top" secondItem="k7u-Ou-sQ7" secondAttribute="bottom" constant="8" id="ovA-Om-n9G"/>
-                            <constraint firstItem="yPY-Ts-DgK" firstAttribute="top" secondItem="kQP-j1-oT4" secondAttribute="bottom" constant="1" id="p50-pn-aOW"/>
+                            <constraint firstItem="yPY-Ts-DgK" firstAttribute="top" secondItem="kQP-j1-oT4" secondAttribute="bottom" constant="8" id="p50-pn-aOW"/>
                             <constraint firstItem="X4c-KL-svN" firstAttribute="centerX" secondItem="V8q-0r-5H9" secondAttribute="centerX" id="wd1-GW-BFy"/>
                         </constraints>
                         <variation key="default">
