@@ -24,7 +24,6 @@ class IntroViewController: UIViewController {
                 let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
                 self.presentViewController(homeView, animated: true, completion: nil)
             }
-            
         }
     }
     

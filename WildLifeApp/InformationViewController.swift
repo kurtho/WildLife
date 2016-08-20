@@ -88,9 +88,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         userReference.updateChildValues(values, withCompletionBlock: {(err, ref) in
             if err != nil {
                 print(err)
-                return
+//  用這方法取得裡面的uid
             }
-            print("Saved user successfully into Firebase db 123")
+            print("Saved user successfully into Firebase db")
         })
     }
 

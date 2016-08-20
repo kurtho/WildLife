@@ -33,13 +33,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             login()
         } else {
             if accountField.text?.characters.count < 8 {
-                accountRepeatly()
+                alert("帳號太短", contain: "知道了")
             } else if passwordField.text?.characters.count < 8 {
-            let alertButton = UIAlertController(title: "密碼至少要八位數", message: nil, preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
-                    alertButton.addAction(okAction)
-            self.presentViewController(alertButton, animated: true, completion: nil)
-    
+                alert("密碼至少要八位數", contain: "知道了")
             }else {
                 createAccountFunc()
                 }
@@ -124,10 +120,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     }
         
 //      upload user data
-    func handleRegister() {
 
-    }
-    
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User did log out *****")
@@ -140,7 +133,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         FIRAuth.auth()?.createUserWithEmail(accountField.text!, password: passwordField.text!, completion: {
             (user: FIRUser?, error) in
             if error != nil {
-                self.accountAlreadyExist()
+                self.alert("此帳號已有人使用", contain: "知道了")
                 self.loadIng.stopAnimating()
                 print("create incorrect")
             } else {
@@ -168,42 +161,19 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         FIRAuth.auth()?.signInWithEmail(accountField.text!, password: passwordField.text!, completion: {
             (user: FIRUser?, error) in
             if error != nil {
-                self.alertWrongPassWordOrAccount()
+                self.alert("帳號密碼錯誤", contain: "知道了")
                 self.loadIng.stopAnimating()
 //                password or email is incorrect
                 print("incorrect")
             } else {
                 self.userInfos.id = (user?.uid)!
-                self.handleRegister()
-                
-                
                 print("user login success")
             }
         })
     }
     
-    func alertWrongPassWordOrAccount() {
-        let alertButton = UIAlertController(title: "帳號或密碼錯誤", message: nil, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
-        alertButton.addAction(okAction)
-        self.presentViewController(alertButton, animated: true, completion: nil)
-    }
 
-    func accountRepeatly() {
-        if accountField.text?.characters.count <= 8 {
-            let alert = UIAlertController(title: "帳號太短了", message: nil, preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
-            alert.addAction(okAction)
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
-    }
-    
-    func accountAlreadyExist() {
-        let alertButton = UIAlertController(title: "此帳號已有人使用", message: nil, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "知道了", style: .Cancel, handler: nil)
-        alertButton.addAction(okAction)
-        self.presentViewController(alertButton, animated: true, completion: nil)
-    }
+
     
 //    func textFieldShouldReturn(textField: UITextField) -> Bool {
 //        textField.resignFirstResponder()
