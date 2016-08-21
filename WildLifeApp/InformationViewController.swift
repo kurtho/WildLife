@@ -12,19 +12,27 @@ import Firebase
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
+    var myImageRoundColor: String?
+
     var contents = ["Gender", "Place", "Age", "Sport", "Injured History", "Allergy", "Introduction"]
     var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "None", "None", "樂天、好相處、喜歡有趣的事情、對不熟的事物抱持試過再說, 對創業創新懷有熱情,蠻喜歡寫程式的,是條無止盡的路"]
-    var myImageRoundColor: String?
     
-
-
-    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
     
     @IBOutlet weak var myView: UIView!
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var camaraButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func nameEdit(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func idEdit(sender: AnyObject) {
+    }
+    
     
     @IBAction func invisibleButton(sender: AnyObject) {
         pickImageFromLocal()

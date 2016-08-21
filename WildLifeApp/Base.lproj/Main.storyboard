@@ -405,12 +405,18 @@
                                 <state key="normal" image="Edit-15">
                                     <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="nameEdit:" destination="WLa-K0-R5y" eventType="touchUpInside" id="p93-gp-WFc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPf-e6-zkD">
                                 <rect key="frame" x="202" y="120" width="15" height="22"/>
                                 <state key="normal" image="Edit-15">
                                     <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="idEdit:" destination="WLa-K0-R5y" eventType="touchUpInside" id="MjG-hL-jiV"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test123@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVC-uH-Fsd">
                                 <rect key="frame" x="133" y="148" width="162.5" height="21"/>
@@ -505,8 +511,10 @@
                     <navigationItem key="navigationItem" title="About Me" id="kfe-Ks-qcP"/>
                     <connections>
                         <outlet property="camaraButton" destination="yPY-Ts-DgK" id="mAv-0Q-fxt"/>
+                        <outlet property="idLabel" destination="ZVC-uH-Fsd" id="5jn-aK-yk7"/>
                         <outlet property="myImage" destination="kQP-j1-oT4" id="Xu6-qX-vdb"/>
                         <outlet property="myView" destination="dEv-9K-B0x" id="AQm-UA-WVE"/>
+                        <outlet property="nameLabel" destination="LRP-B1-1jf" id="BVm-Rx-QRU"/>
                         <outlet property="tableView" destination="pHN-iB-0Cb" id="GtK-2d-tN9"/>
                     </connections>
                 </viewController>
