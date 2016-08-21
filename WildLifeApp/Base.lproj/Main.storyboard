@@ -446,6 +446,7 @@
                                                 <constraint firstItem="SI8-uY-RUk" firstAttribute="top" secondItem="20J-HE-wJb" secondAttribute="topMargin" constant="-8" id="ERN-40-Dvb"/>
                                                 <constraint firstItem="ikC-hd-BcY" firstAttribute="top" secondItem="SI8-uY-RUk" secondAttribute="bottom" constant="3" id="SpL-8V-eG6"/>
                                                 <constraint firstItem="ikC-hd-BcY" firstAttribute="leading" secondItem="20J-HE-wJb" secondAttribute="leadingMargin" constant="8" id="Zpb-Lc-UVc"/>
+                                                <constraint firstItem="ikC-hd-BcY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SI8-uY-RUk" secondAttribute="bottom" constant="5" id="hOy-fp-Acc"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ikC-hd-BcY" secondAttribute="bottom" constant="-5" id="hSZ-OL-5IO"/>
                                                 <constraint firstItem="SI8-uY-RUk" firstAttribute="leading" secondItem="20J-HE-wJb" secondAttribute="leadingMargin" constant="18" id="qgV-M7-Swy"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ikC-hd-BcY" secondAttribute="trailing" id="v2U-sg-UsS"/>
