@@ -28,34 +28,18 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         self.presentViewController(imagePicker, animated: true, completion: nil)
     }
 
-    @IBAction func uploadButton(sender: AnyObject) {
-        let imageName = NSUUID().UUIDString
-        let storageRef = FIRStorage.storage().reference().child("profileImage").child("\(imageName).jpg")
-//        var user: FIRUser?
-        let uid =  CurrentUser.shareInstance.infos?.id
-        print("user~~~\(uid)")
-        if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
-            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-                if error != nil {
-                    print(error)
-                }
-                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                    let values = ["profileImageURL": profileImageUrl]
-                    self.uploadDataWithUID(uid!, values: values)
-                    print("upload img ~~~~")
-                }
-                
-                print(metadata)
-            })
-        }
-    }
+
+    
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.myView.clipsToBounds = true
-        self.myView.layer.cornerRadius = self.myView.frame.size.height / 2
+        self.myImage.clipsToBounds = true
+        self.myImage.layer.cornerRadius = self.myImage.frame.size.height / 2
+//        self.myView.clipsToBounds = true
+//        self.myView.layer.cornerRadius = self.myView.frame.size.height / 2
     }
     override func viewWillAppear(animated: Bool) {
         
@@ -72,14 +56,35 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         self.myImage.image = image
 //        UIImageWriteToSavedPhotosAlbum(self.myImage.image!, nil, nil, nil)
         self.dismissViewControllerAnimated(true, completion: nil)
-        saveSelectedImage(image)
+        myImage.image = image
+        uploadImage()
     }
     
 
     
-    func saveSelectedImage(image: UIImage) {
-        myImage.image = image
+//    func saveSelectedImage(image: UIImage) {
+//        myImage.image = image
+//        }
+    
+    func uploadImage() {
+        let imageName = NSUUID().UUIDString
+        let storageRef = FIRStorage.storage().reference().child("profileImage").child("\(imageName).jpg")
+        let uid =  CurrentUser.shareInstance.infos?.id
+        print("user~~~\(uid)")
+        if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                if error != nil {
+                    print(error)
+                }
+                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                    let values = ["profileImageURL": profileImageUrl]
+                    self.uploadDataWithUID(uid!, values: values)
+                    
+                }
+                print(metadata)
+            })
         }
+    }
 
     
     private func uploadDataWithUID(uid: String, values: [NSObject: AnyObject]) {
