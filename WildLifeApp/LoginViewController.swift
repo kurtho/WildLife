@@ -138,6 +138,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 self.loadIng.stopAnimating()
                 print("create incorrect")
             } else {
+                
                 guard let uid = user?.uid else {
                     return
                 }
@@ -147,6 +148,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 let userReference = ref.child("users").child(uid)
                 let value = ["email": self.accountField.text!]
                 userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
+                    
                     if err != nil {
                         print(err)
                         return
