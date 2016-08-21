@@ -332,14 +332,54 @@
                                             <constraint firstAttribute="height" constant="100" id="mmn-0N-XoI"/>
                                             <constraint firstAttribute="width" constant="100" id="zbe-32-4Cw"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="mmn-0N-XoI"/>
+                                                <exclude reference="zbe-32-4Cw"/>
+                                            </mask>
+                                        </variation>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjt-ZV-NXO">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <connections>
+                                            <action selector="invisibleButton:" destination="WLa-K0-R5y" eventType="touchUpInside" id="s4X-et-HRm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPY-Ts-DgK">
+                                        <rect key="frame" x="70" y="70" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="EdL-MO-MRQ"/>
+                                            <constraint firstAttribute="height" constant="30" id="fzJ-EW-r9e"/>
+                                            <constraint firstAttribute="width" constant="100" id="tHP-ln-2op"/>
+                                        </constraints>
+                                        <state key="normal" image="Camera-20">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="tHP-ln-2op"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <action selector="camaraButton:" destination="WLa-K0-R5y" eventType="touchUpInside" id="Cl6-ID-kXQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="kQP-j1-oT4" firstAttribute="centerX" secondItem="dEv-9K-B0x" secondAttribute="centerX" id="EpS-va-RVe"/>
+                                    <constraint firstItem="kQP-j1-oT4" firstAttribute="height" secondItem="dEv-9K-B0x" secondAttribute="height" id="IIH-XR-x2Y"/>
+                                    <constraint firstItem="Mjt-ZV-NXO" firstAttribute="centerX" secondItem="dEv-9K-B0x" secondAttribute="centerX" id="K4u-1o-eVx"/>
                                     <constraint firstAttribute="height" constant="100" id="Kbo-13-94R"/>
+                                    <constraint firstAttribute="trailing" secondItem="yPY-Ts-DgK" secondAttribute="trailing" id="Kwz-Ua-GWO"/>
                                     <constraint firstAttribute="width" constant="100" id="LID-2m-wNB"/>
                                     <constraint firstItem="kQP-j1-oT4" firstAttribute="centerY" secondItem="dEv-9K-B0x" secondAttribute="centerY" id="PTz-mD-Njd"/>
+                                    <constraint firstItem="Mjt-ZV-NXO" firstAttribute="height" secondItem="dEv-9K-B0x" secondAttribute="height" id="bd7-mT-3Ga"/>
+                                    <constraint firstAttribute="bottom" secondItem="yPY-Ts-DgK" secondAttribute="bottom" id="fJr-BT-848"/>
+                                    <constraint firstItem="Mjt-ZV-NXO" firstAttribute="width" secondItem="dEv-9K-B0x" secondAttribute="width" id="kcY-ns-or8"/>
+                                    <constraint firstItem="Mjt-ZV-NXO" firstAttribute="centerY" secondItem="dEv-9K-B0x" secondAttribute="centerY" id="pRL-YX-vxE"/>
+                                    <constraint firstItem="kQP-j1-oT4" firstAttribute="width" secondItem="dEv-9K-B0x" secondAttribute="width" id="vHw-nU-dMN"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xgm-XB-gpD">
@@ -348,29 +388,9 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPY-Ts-DgK">
-                                <rect key="frame" x="135" y="151" width="40" height="40"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="tHP-ln-2op"/>
-                                </constraints>
-                                <state key="normal" image="Camera-40">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="tHP-ln-2op"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <action selector="imageButton:" destination="WLa-K0-R5y" eventType="touchUpInside" id="3Ta-Ne-WOF"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="yPY-Ts-DgK" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="95" id="2Sl-6a-YPs"/>
-                            <constraint firstItem="yPY-Ts-DgK" firstAttribute="leading" secondItem="kQP-j1-oT4" secondAttribute="trailing" constant="17" id="MSl-Op-Drc"/>
                             <constraint firstItem="xgm-XB-gpD" firstAttribute="leading" secondItem="kQP-j1-oT4" secondAttribute="trailing" constant="-8" id="Ouk-mm-Iqb"/>
                             <constraint firstItem="xgm-XB-gpD" firstAttribute="leading" secondItem="dEv-9K-B0x" secondAttribute="trailing" constant="25" id="Rd6-zA-e17"/>
                             <constraint firstItem="dEv-9K-B0x" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="10" id="Zl4-qA-7JE"/>
@@ -384,14 +404,12 @@
                                 <exclude reference="Zzb-47-Yp6"/>
                                 <exclude reference="ekS-Tr-qxd"/>
                                 <exclude reference="Ouk-mm-Iqb"/>
-                                <exclude reference="2Sl-6a-YPs"/>
-                                <exclude reference="MSl-Op-Drc"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="About Me" id="kfe-Ks-qcP"/>
                     <connections>
-                        <outlet property="myButton" destination="yPY-Ts-DgK" id="TrF-Je-CUY"/>
+                        <outlet property="camaraButton" destination="yPY-Ts-DgK" id="mAv-0Q-fxt"/>
                         <outlet property="myImage" destination="kQP-j1-oT4" id="Xu6-qX-vdb"/>
                         <outlet property="myView" destination="dEv-9K-B0x" id="AQm-UA-WVE"/>
                     </connections>
@@ -440,7 +458,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Camera-40" width="40" height="40"/>
+        <image name="Camera-20" width="20" height="20"/>
         <image name="hualien" width="1170" height="500"/>
         <image name="moon" width="800" height="600"/>
     </resources>

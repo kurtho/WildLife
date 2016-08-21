@@ -14,20 +14,17 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var imagePicker = UIImagePickerController()
 
 
-
-
-    @IBOutlet weak var myButton: UIButton!
     @IBOutlet weak var myView: UIView!
     @IBOutlet weak var myImage: UIImageView!
+    @IBOutlet weak var camaraButton: UIButton!
     
-    
-    @IBAction func imageButton(sender: AnyObject) {
-        imagePicker.delegate = self
-//        imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
-        imagePicker.allowsEditing = true
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+    @IBAction func invisibleButton(sender: AnyObject) {
+        pickImageFromLocal()
     }
-
+    @IBAction func camaraButton(sender: AnyObject) {
+        pickImageFromLocal()
+    }
+    
 
     
 
@@ -36,10 +33,10 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.myImage.clipsToBounds = true
-        self.myImage.layer.cornerRadius = self.myImage.frame.size.height / 2
-//        self.myView.clipsToBounds = true
-//        self.myView.layer.cornerRadius = self.myView.frame.size.height / 2
+        (self.myImage.clipsToBounds, self.camaraButton.clipsToBounds) = (true, true)
+        (self.myImage.layer.cornerRadius, self.camaraButton.layer.cornerRadius) = (self.myImage.frame.size.height / 2, self.camaraButton.frame.size.height / 2)
+        self.camaraButton.clipsToBounds = true
+        
     }
     override func viewWillAppear(animated: Bool) {
         
@@ -62,9 +59,12 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
 
     
-//    func saveSelectedImage(image: UIImage) {
-//        myImage.image = image
-//        }
+    func pickImageFromLocal() {
+        imagePicker.delegate = self
+        //        imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+        imagePicker.allowsEditing = true
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+    }
     
     func uploadImage() {
         let imageName = NSUUID().UUIDString
@@ -98,7 +98,5 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             print("Saved user successfully into Firebase db")
         })
     }
-
-
 
 }
