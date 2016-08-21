@@ -18,6 +18,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var camaraButton: UIButton!
     
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBAction func invisibleButton(sender: AnyObject) {
         pickImageFromLocal()
     }
@@ -85,7 +87,30 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        之後把他做成簡易的function
     }
 
+
+}
+
+extension InformationViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 6
+    }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
+        
+        return cell
+    }
+    
+}
+
+
+
+
+
+
 //    private func uploadDataWithUID(uid: String, values: [NSObject: AnyObject]) {
 //        let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
 //        let userReference = ref.child("users").child(uid)
@@ -98,4 +123,4 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        })
 //    }
 
-}
+

@@ -174,16 +174,17 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         })
     }
     
-
-
     
+}
+
+
+
+
+
+
 //    func textFieldShouldReturn(textField: UITextField) -> Bool {
 //        textField.resignFirstResponder()
 //        print("return ~~~~")
 //        return true
 //    }
 //          it is not working
-    
-}
-
-

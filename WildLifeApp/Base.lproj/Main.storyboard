@@ -418,9 +418,28 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pHN-iB-0Cb">
+                                <rect key="frame" x="0.0" y="182" width="600" height="369"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myCell" id="AA2-vV-HQm" customClass="InformationTableViewCell" customModule="WildLifeApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AA2-vV-HQm" id="20J-HE-wJb">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="WLa-K0-R5y" id="M5n-GR-HdQ"/>
+                                    <outlet property="delegate" destination="WLa-K0-R5y" id="bdL-T6-VxW"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="pHN-iB-0Cb" firstAttribute="leading" secondItem="6vu-gh-weG" secondAttribute="leading" id="5cd-Tt-BHD"/>
                             <constraint firstItem="vdg-89-DtV" firstAttribute="top" secondItem="65K-wT-qLw" secondAttribute="bottom" constant="33" id="BtU-VW-Med"/>
                             <constraint firstItem="65K-wT-qLw" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="10" id="I7H-6M-kKV"/>
                             <constraint firstItem="A8A-Lp-7G8" firstAttribute="leading" secondItem="65K-wT-qLw" secondAttribute="trailing" constant="2.5" id="Jcg-G4-qm1"/>
@@ -432,11 +451,15 @@
                             <constraint firstItem="dEv-9K-B0x" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="10" id="Zl4-qA-7JE"/>
                             <constraint firstItem="dEv-9K-B0x" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="25" id="Zzb-47-Yp6"/>
                             <constraint firstItem="LRP-B1-1jf" firstAttribute="leading" secondItem="dEv-9K-B0x" secondAttribute="trailing" constant="23" id="aII-gv-I2f"/>
+                            <constraint firstItem="pHN-iB-0Cb" firstAttribute="top" secondItem="dEv-9K-B0x" secondAttribute="bottom" constant="8" id="bem-Ip-k5Y"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ZVC-uH-Fsd" secondAttribute="trailing" constant="-20" id="cGv-HU-c9A"/>
                             <constraint firstAttribute="leadingMargin" secondItem="dEv-9K-B0x" secondAttribute="leading" constant="-5" id="ekS-Tr-qxd"/>
+                            <constraint firstAttribute="trailing" secondItem="pHN-iB-0Cb" secondAttribute="trailing" id="hTf-T3-XiS"/>
+                            <constraint firstItem="2BO-Bk-6Rn" firstAttribute="top" secondItem="pHN-iB-0Cb" secondAttribute="bottom" id="jhl-Rk-dic"/>
                             <constraint firstItem="TPf-e6-zkD" firstAttribute="top" secondItem="0wq-iN-lEu" secondAttribute="bottom" constant="56" id="n1n-QG-ANM"/>
                             <constraint firstItem="65K-wT-qLw" firstAttribute="leading" secondItem="Mjt-ZV-NXO" secondAttribute="trailing" constant="38" id="qrN-Nf-izw"/>
                             <constraint firstItem="dEv-9K-B0x" firstAttribute="leading" secondItem="6vu-gh-weG" secondAttribute="leading" constant="10" id="uQe-tf-00r"/>
+                            <constraint firstItem="pHN-iB-0Cb" firstAttribute="top" secondItem="Mjt-ZV-NXO" secondAttribute="bottom" constant="8" id="vtg-da-Yj1"/>
                             <constraint firstItem="TPf-e6-zkD" firstAttribute="leading" secondItem="vdg-89-DtV" secondAttribute="trailing" constant="3" id="yJK-FP-G6b"/>
                         </constraints>
                         <variation key="default">
@@ -451,6 +474,7 @@
                         <outlet property="camaraButton" destination="yPY-Ts-DgK" id="mAv-0Q-fxt"/>
                         <outlet property="myImage" destination="kQP-j1-oT4" id="Xu6-qX-vdb"/>
                         <outlet property="myView" destination="dEv-9K-B0x" id="AQm-UA-WVE"/>
+                        <outlet property="tableView" destination="pHN-iB-0Cb" id="GtK-2d-tN9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hv-3u-gYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
