@@ -37,11 +37,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             } else if passwordField.text?.characters.count < 8 {
                 alert("密碼至少要八位數", contain: "知道了")
             }else {
-                
-                let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-                let vc  = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView") as! UITabBarController
-                vc.selectedIndex = 2
-                self.presentViewController(vc, animated: true, completion: nil)
                 createAccountFunc()
                 print("test instanstiate~~~")
                 }
