@@ -12,14 +12,14 @@ import Firebase
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
-    var contents = [
-        "Gender",
-        "Place",
-        "Age",
-        "Sport",
-        "Injured History"
-        ]
+    var contents = ["Gender", "Place", "Age", "Sport", "Injured History", "Allergy"]
+    var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "None", "None"]
+    var myImageRoundColor: String?
+    
 
+
+    
+    
     @IBOutlet weak var myView: UIView!
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var camaraButton: UIButton!
@@ -42,9 +42,17 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         (self.myImage.layer.cornerRadius, self.camaraButton.layer.cornerRadius) = (self.myImage.frame.size.height / 2, self.camaraButton.frame.size.height / 2)
         camaraButton.layer.borderColor = UIColor.darkGrayColor().CGColor
         camaraButton.layer.borderWidth = 1
+//無聊加的邊框判定
+        myImage.layer.borderWidth = 2
+        myImageRoundColor = test[0]
+        if myImageRoundColor == "Female" {
+            myImage.layer.borderColor = UIColor.redColor().CGColor
+        } else {
+            myImage.layer.borderColor = UIColor.blueColor().CGColor
+        }
     }
     override func viewWillAppear(animated: Bool) {
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -107,6 +115,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
+        cell.userInfo.text = test[indexPath.row]
         return cell
     }
 
