@@ -68,7 +68,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             if user != nil {
                 self.userInfos.id = (user?.uid)!
                 self.loginButton.readPermissions = ["email"]
-                
+                print("logg button ~~~~\(self.loginButton.readPermissions))")
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(self.userInfos.id)
                 let value = ["email": (FIRAuth.auth()?.currentUser?.email)!]
