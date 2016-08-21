@@ -37,7 +37,13 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             } else if passwordField.text?.characters.count < 8 {
                 alert("密碼至少要八位數", contain: "知道了")
             }else {
+                
+                let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+                let vc  = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView") as! UITabBarController
+                vc.selectedIndex = 2
+                self.presentViewController(vc, animated: true, completion: nil)
                 createAccountFunc()
+                print("test instanstiate~~~")
                 }
             }
         }
@@ -79,11 +85,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                     print("Saved user successfully into Firebase db")
                 })
                 
-                
-                
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
                 let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
                 self.presentViewController(homeView, animated: true, completion: nil)
+                print("check1234~~~~~")
+                
             }
         }
         self.loginButton.center = self.fbView.center
@@ -150,7 +156,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                         print(err)
                         return
                     }
-                    print("Saved user successfully into Firebase db")
                 })
             }
         })

@@ -314,7 +314,7 @@
         <!--About Me-->
         <scene sceneID="cnu-Nd-WDJ">
             <objects>
-                <viewController id="WLa-K0-R5y" customClass="InformationViewController" customModule="WildLifeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditView" id="WLa-K0-R5y" customClass="InformationViewController" customModule="WildLifeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0wq-iN-lEu"/>
                         <viewControllerLayoutGuide type="bottom" id="2BO-Bk-6Rn"/>

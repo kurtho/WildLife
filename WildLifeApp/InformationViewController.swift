@@ -26,10 +26,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     }
     
 
-    
 
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +65,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     func uploadImage() {
         let imageName = NSUUID().UUIDString
+//        亂數產生個string
         let storageRef = FIRStorage.storage().reference().child("profileImage").child("\(imageName).jpg")
+//        let storageRef = FIRStorage.storage().reference().child("profileImage").child("kurt.jpg")
         let uid =  CurrentUser.shareInstance.infos?.id
         print("user~~~\(uid)")
         if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
@@ -79,11 +78,11 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                     let values = ["profileImageURL": profileImageUrl]
                     self.uploadDataWithUID(uid!, values: values)
-                    
                 }
                 print(metadata)
             })
         }
+//        之後把他做成簡易的function
     }
 
     
