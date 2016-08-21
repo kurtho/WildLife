@@ -12,7 +12,13 @@ import Firebase
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
-
+    var contents = [
+        "Gender",
+        "Place",
+        "Age",
+        "Sport",
+        "Injured History"
+        ]
 
     @IBOutlet weak var myView: UIView!
     @IBOutlet weak var myImage: UIImageView!
@@ -95,16 +101,21 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return contents.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
-        
+        cell.myLabel.text = contents[indexPath.row]
         return cell
     }
+
     
+    
+    
+
 }
+
 
 
 
