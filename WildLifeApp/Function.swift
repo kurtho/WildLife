@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
@@ -24,6 +25,7 @@ extension UIViewController {
         alertButton.addAction(okAction)
         self.presentViewController(alertButton, animated: true, completion: nil)
     }
+    
     
     
 }

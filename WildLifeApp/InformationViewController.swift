@@ -35,8 +35,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         (self.myImage.clipsToBounds, self.camaraButton.clipsToBounds) = (true, true)
         (self.myImage.layer.cornerRadius, self.camaraButton.layer.cornerRadius) = (self.myImage.frame.size.height / 2, self.camaraButton.frame.size.height / 2)
-        self.camaraButton.clipsToBounds = true
-        
+        camaraButton.layer.borderColor = UIColor.darkGrayColor().CGColor
+        camaraButton.layer.borderWidth = 1
     }
     override func viewWillAppear(animated: Bool) {
         
