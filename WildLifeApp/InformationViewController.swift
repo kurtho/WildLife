@@ -12,8 +12,8 @@ import Firebase
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
-    var contents = ["Gender", "Place", "Age", "Sport", "Injured History", "Allergy"]
-    var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "None", "None"]
+    var contents = ["Gender", "Place", "Age", "Sport", "Injured History", "Allergy", "Introduction"]
+    var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "None", "None", "樂天、好相處、喜歡有趣的事情、對不熟的事物抱持試過再說, 對創業創新懷有熱情,蠻喜歡寫程式的,是條無止盡的路"]
     var myImageRoundColor: String?
     
 
@@ -38,6 +38,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.estimatedRowHeight = 55
+        tableView.rowHeight = UITableViewAutomaticDimension
         (self.myImage.clipsToBounds, self.camaraButton.clipsToBounds) = (true, true)
         (self.myImage.layer.cornerRadius, self.camaraButton.layer.cornerRadius) = (self.myImage.frame.size.height / 2, self.camaraButton.frame.size.height / 2)
         camaraButton.layer.borderColor = UIColor.darkGrayColor().CGColor
