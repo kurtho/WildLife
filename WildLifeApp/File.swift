@@ -12,12 +12,12 @@ import UIKit
 class Infos: NSObject {
     var id: String
     var name: String
-    var photo: String
+    var photo: UIImage
     var place: String
     var info: String
     var skill: [String]
     var content: String
-    init(name: String, photo: String, skill: [String], content: String, id: String, place: String, info: String){
+    init(name: String, photo: UIImage, skill: [String], content: String, id: String, place: String, info: String){
         self.id = id
         self.name = name
         self.photo = photo
@@ -34,3 +34,12 @@ class CurrentUser {
     var pic = UIImage()
 
 }
+
+class User: NSObject {
+    var name: String?
+    var email: String?
+    var profileImageUrl: String?
+}
+
+
+

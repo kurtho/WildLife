@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
-
+import SDWebImage
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
     var myImageRoundColor: String?
-
+    var user = User()
+    var users = [User]()
+    
     var contents = ["Gender", "Place", "Age", "Sport", "Injured History", "Allergy", "Introduction"]
     var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "None", "None", "樂天、好相處、喜歡有趣的事情、對不熟的事物抱持試過再說, 對創業創新懷有熱情,蠻喜歡寫程式的,是條無止盡的路"]
     
@@ -46,6 +48,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+            loadImage()
+        print("response value~~~~ \(self.user.profileImageUrl)")
+
         tableView.estimatedRowHeight = 55
         tableView.rowHeight = UITableViewAutomaticDimension
         (self.myImage.clipsToBounds, self.camaraButton.clipsToBounds) = (true, true)
@@ -74,6 +79,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let image = info["UIImagePickerControllerEditedImage"] as! UIImage
         self.myImage.image = image
+        
+//        CurrentUser.shareInstance.infos?.photo = image
+//        print("我的current user share instance in photo \(CurrentUser.shareInstance.infos?.photo)")
 //        UIImageWriteToSavedPhotosAlbum(self.myImage.image!, nil, nil, nil)
         self.dismissViewControllerAnimated(true, completion: nil)
         myImage.image = image
@@ -112,6 +120,19 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     }
 
 
+
+    
+    func loadImage() {
+        let ref = FIRDatabase.database().reference().child("users")
+        ref.observeEventType(.ChildAdded, withBlock: {
+            response in
+            self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as? String
+            print("response value2222~~~~ \(self.user.profileImageUrl)")
+            self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
+        })
+    }
+    
+
 }
 
 extension InformationViewController: UITableViewDelegate, UITableViewDataSource {
@@ -126,6 +147,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
         cell.userInfo.text = test[indexPath.row]
+        
         return cell
     }
 
