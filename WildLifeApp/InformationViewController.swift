@@ -48,7 +48,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            loadImage()
+            downloadUrl()
         print("response value~~~~ \(self.user.profileImageUrl)")
 
         tableView.estimatedRowHeight = 55
@@ -119,23 +119,24 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        之後把他做成簡易的function
     }
 
-
-
     
-    func loadImage() {
-        let ref = FIRDatabase.database().reference().child("users")
-        ref.observeEventType(.ChildAdded, withBlock: {
+    func downloadUrl() {
+        let uid = CurrentUser.shareInstance.infos?.id
+        let ref = FIRDatabase.database().reference().child("users").child(uid!)
+        ref.observeEventType(.Value, withBlock: {
             response in
             self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as? String
-            print("response value2222~~~~ \(self.user.profileImageUrl)")
             if self.user.profileImageUrl == nil {
-                print("user profileImageUrl == nil")
+                print("profile image url == nil")
                 return
-            }else{
-            self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
+            }else {
+                self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
             }
         })
     }
+
+
+    
     
 
 }
