@@ -128,7 +128,12 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             response in
             self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as? String
             print("response value2222~~~~ \(self.user.profileImageUrl)")
+            if self.user.profileImageUrl == nil {
+                print("user profileImageUrl == nil")
+                return
+            }else{
             self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
+            }
         })
     }
     
@@ -158,6 +163,22 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             userInfoAler("Gender", value: [
                 UIAlertAction(title: "Male", style: UIAlertActionStyle.Default, handler: nil),
                 UIAlertAction(title: "Female", style: UIAlertActionStyle.Default, handler: nil)] )
+            return
+        case 1:
+            
+            return
+        case 2:
+            userInfoAler("Age", value: [
+                UIAlertAction(title: "16~20", style: .Default, handler: nil),
+                UIAlertAction(title: "21~25", style: .Default, handler: nil),
+                UIAlertAction(title: "26~30", style: .Default, handler: nil),
+                UIAlertAction(title: "31~35", style: .Default, handler: nil),
+                UIAlertAction(title: "36~40", style: .Default, handler: nil),
+                UIAlertAction(title: "41~45", style: .Default, handler: nil),
+                UIAlertAction(title: "46~50", style: .Default, handler: nil),
+                UIAlertAction(title: "51~55", style: .Default, handler: nil),
+                UIAlertAction(title: "56~60", style: .Default, handler: nil)
+                ])
             return
         default:
             break

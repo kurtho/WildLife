@@ -27,16 +27,13 @@ extension UIViewController {
     }
     
     func userInfoAler(title: String, value: [UIAlertAction] ) {
-        let alertButton = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
+        let alertButton = UIAlertController(title: title, message: nil, preferredStyle: .ActionSheet)
         let okAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertButton.addAction(okAction)
-//        for action in 0...value.count  {
-//            alertButton.addAction(value [action - 1])
-//        }
+
         for action in value{
             alertButton.addAction(action)
         }
-        
         
         self.presentViewController(alertButton, animated: true, completion: nil)
     }
