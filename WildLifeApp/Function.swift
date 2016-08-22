@@ -26,6 +26,23 @@ extension UIViewController {
         self.presentViewController(alertButton, animated: true, completion: nil)
     }
     
+    func userInfoAler(title: String, value: [UIAlertAction] ) {
+        let alertButton = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertButton.addAction(okAction)
+//        for action in 0...value.count  {
+//            alertButton.addAction(value [action - 1])
+//        }
+        for action in value{
+            alertButton.addAction(action)
+        }
+        
+        
+        self.presentViewController(alertButton, animated: true, completion: nil)
+    }
+    
+    
+    
     func uploadDataWithUID(uid: String, values: [NSObject: AnyObject]) {
         let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
         let userReference = ref.child("users").child(uid)

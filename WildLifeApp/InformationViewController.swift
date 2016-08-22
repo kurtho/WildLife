@@ -16,8 +16,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var user = User()
     var users = [User]()
     
-    var contents = ["Gender", "Place", "Age", "Sport", "Injured History", "Allergy", "Introduction"]
-    var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "None", "None", "樂天、好相處、喜歡有趣的事情、對不熟的事物抱持試過再說, 對創業創新懷有熱情,蠻喜歡寫程式的,是條無止盡的路"]
+    var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
+    var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "樂天、好相處、喜歡有趣的事情、對不熟的事物抱持試過再說, 對創業創新懷有熱情,蠻喜歡寫程式的,是條無止盡的路"]
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
@@ -152,7 +152,21 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     }
 
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 0:
+            userInfoAler("Gender", value: [
+                UIAlertAction(title: "Male", style: UIAlertActionStyle.Default, handler: nil),
+                UIAlertAction(title: "Female", style: UIAlertActionStyle.Default, handler: nil)] )
+            return
+        default:
+            break
+        }
+        
+    }
     
+    
+
     
 
 }
