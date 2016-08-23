@@ -126,11 +126,15 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         ref.observeEventType(.Value, withBlock: {
             response in
             self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as? String
+            self.user.name = response.value?.objectForKey("name") as? String
+            self.user.myID = response.value?.objectForKey("userId") as? String
             if self.user.profileImageUrl == nil {
                 print("profile image url == nil")
                 return
             }else {
                 self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
+                self.nameLabel.text = self.user.name
+                self.idLabel.text = self.user.myID
             }
         })
     }

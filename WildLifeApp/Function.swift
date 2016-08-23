@@ -35,11 +35,9 @@ extension UIViewController {
         let alertButton = UIAlertController(title: title, message: nil, preferredStyle: .ActionSheet)
         let okAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertButton.addAction(okAction)
-
         for action in value{
             alertButton.addAction(action)
         }
-        
         self.presentViewController(alertButton, animated: true, completion: nil)
     }
     
