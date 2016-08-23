@@ -139,15 +139,23 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }
             if response.value?.objectForKey("place") as? String == nil {
                 self.userInfor.append("Which County do you live?")
+            }else {
+                self.userInfor.append(response.value?.objectForKey("place") as! String)
             }
             if response.value?.objectForKey("age") as? String == nil {
                 self.userInfor.append("21~25?")
+            }else {
+                self.userInfor.append(response.value?.objectForKey("age") as! String)
             }
             if response.value?.objectForKey("sport") as? String == nil {
                 self.userInfor.append("Swimming")
+            }else {
+                self.userInfor.append(response.value?.objectForKey("sport") as! String)
             }
             if response.value?.objectForKey("intro") as? String == nil {
                 self.userInfor.append("Introduce yourself")
+            }else {
+                self.userInfor.append(response.value?.objectForKey("intro") as! String)
             }
             
             print("user infor append ~~~\(self.userInfor.count)")
@@ -191,8 +199,9 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
-        cell.userInfo.text = test[indexPath.row]
+//        cell.userInfo.text = test[indexPath.row]
 //        cell.userInfo.text = userInfor[indexPath.row]
+        
         return cell
     }
 
