@@ -13,7 +13,6 @@ import SwiftyJSON
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
-    var myImageRoundColor: String?
     var user = User()
     var userInfor = [String]()
     
@@ -54,7 +53,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        self.idLabel.text = self.user.myID
         print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
 //            downloadUrl()
-        print("response value~~~~ \(self.user.profileImageUrl)")
+        print("response value~~~~ \(CurrentUser.shareInstance.infos?.gender)")
 
         tableView.estimatedRowHeight = 55
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -64,8 +63,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         camaraButton.layer.borderWidth = 1
 //無聊加的邊框判定
         myImage.layer.borderWidth = 2
-        myImageRoundColor = test[0]
-        if myImageRoundColor == "Female" {
+        
+        if CurrentUser.shareInstance.userInfo[0] == "Female" {
             myImage.layer.borderColor = UIColor.redColor().CGColor
         } else {
             myImage.layer.borderColor = UIColor.blueColor().CGColor
