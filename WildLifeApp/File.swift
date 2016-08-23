@@ -14,16 +14,16 @@ class Infos: NSObject {
     var name: String
     var photo: UIImage
     var place: String
-    var info: String
-    var skill: [String]
+    var gender: String
+    var sport: [String]
     var content: String
-    init(name: String, photo: UIImage, skill: [String], content: String, id: String, place: String, info: String){
+    init(name: String, photo: UIImage, sport: [String], content: String, id: String, place: String, gender: String){
         self.id = id
         self.name = name
         self.photo = photo
         self.place = place
-        self.info = info
-        self.skill = skill
+        self.gender = gender
+        self.sport = sport
         self.content = content
     }
 }
@@ -32,7 +32,7 @@ class CurrentUser {
     static let shareInstance = CurrentUser()
     var infos: Infos?
     var pic = UIImage()
-
+    var userInfo =  [String]()
 }
 
 class User: NSObject {

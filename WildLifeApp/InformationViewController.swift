@@ -49,7 +49,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            downloadUrl()
+        print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
+//            downloadUrl()
         print("response value~~~~ \(self.user.profileImageUrl)")
 
         tableView.estimatedRowHeight = 55
@@ -120,71 +121,64 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        之後把他做成簡易的function
     }
 
-    
-    func downloadUrl() {
-        let uid = CurrentUser.shareInstance.infos?.id
-        let ref = FIRDatabase.database().reference().child("users").child(uid!)
-        ref.observeEventType(.Value, withBlock: {
-            response in
-            self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as? String
-            self.user.name = response.value?.objectForKey("name") as? String
-            self.user.myID = response.value?.objectForKey("userId") as? String
-            
-            let tempArr = UserInfo()
-            
-            if response.value?.objectForKey("gender") as? String == nil {
-                self.userInfor.append("Male / Female")
-            }else {
-                self.userInfor.append(response.value?.objectForKey("gender") as! String)
-            }
-            if response.value?.objectForKey("place") as? String == nil {
-                self.userInfor.append("Which County do you live?")
-            }else {
-                self.userInfor.append(response.value?.objectForKey("place") as! String)
-            }
-            if response.value?.objectForKey("age") as? String == nil {
-                self.userInfor.append("21~25?")
-            }else {
-                self.userInfor.append(response.value?.objectForKey("age") as! String)
-            }
-            if response.value?.objectForKey("sport") as? String == nil {
-                self.userInfor.append("Swimming")
-            }else {
-                self.userInfor.append(response.value?.objectForKey("sport") as! String)
-            }
-            if response.value?.objectForKey("intro") as? String == nil {
-                self.userInfor.append("Introduce yourself")
-            }else {
-                self.userInfor.append(response.value?.objectForKey("intro") as! String)
-            }
-            
-            print("user infor append ~~~\(self.userInfor.count)")
-//            tempArr.gender = response.value?.objectForKey("gender") as? String
-//            tempArr.place = response.value?.objectForKey("place") as? String
-//            tempArr.age = response.value?.objectForKey("age") as? String
-//            tempArr.sport = response.value?.objectForKey("sport") as? [String]
-//            tempArr.intorduction = response.value?.objectForKey("intro") as? String
-            
-            
-            
-            
-            
-            print("self userinfo .append~~ \(tempArr.gender)")
-            
-            if self.user.profileImageUrl == nil {
-                print("profile image url == nil")
-                return
-            }else {
-                self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
-                self.nameLabel.text = self.user.name
-                self.idLabel.text = self.user.myID
-            }
-        })
-    }
-
-
-    
-    
+//    
+//    func downloadUrl() {
+//        let uid = CurrentUser.shareInstance.infos?.id
+//        let ref = FIRDatabase.database().reference().child("users").child(uid!)
+//        ref.observeEventType(.Value, withBlock: {
+//            response in
+//            self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as? String
+//            self.user.name = response.value?.objectForKey("name") as? String
+//            self.user.myID = response.value?.objectForKey("userId") as? String
+//            
+//            let tempArr = UserInfo()
+//            
+//            if response.value?.objectForKey("gender") as? String == nil {
+//                self.userInfor.append("Male / Female")
+//            }else {
+//                self.userInfor.append(response.value?.objectForKey("gender") as! String)
+//            }
+//            if response.value?.objectForKey("place") as? String == nil {
+//                self.userInfor.append("Which County do you live?")
+//            }else {
+//                self.userInfor.append(response.value?.objectForKey("place") as! String)
+//            }
+//            if response.value?.objectForKey("age") as? String == nil {
+//                self.userInfor.append("21~25?")
+//            }else {
+//                self.userInfor.append(response.value?.objectForKey("age") as! String)
+//            }
+//            if response.value?.objectForKey("sport") as? String == nil {
+//                self.userInfor.append("Swimming")
+//            }else {
+//                self.userInfor.append(response.value?.objectForKey("sport") as! String)
+//            }
+//            if response.value?.objectForKey("intro") as? String == nil {
+//                self.userInfor.append("Introduce yourself")
+//            }else {
+//                self.userInfor.append(response.value?.objectForKey("intro") as! String)
+//            }
+//            
+//            print("user infor append ~~~\(self.userInfor.count)")
+////            tempArr.gender = response.value?.objectForKey("gender") as? String
+////            tempArr.place = response.value?.objectForKey("place") as? String
+////            tempArr.age = response.value?.objectForKey("age") as? String
+////            tempArr.sport = response.value?.objectForKey("sport") as? [String]
+////            tempArr.intorduction = response.value?.objectForKey("intro") as? String
+//            
+//            
+//            print("self userinfo .append~~ \(tempArr.gender)")
+//            
+//            if self.user.profileImageUrl == nil {
+//                print("profile image url == nil")
+//                return
+//            }else {
+//                self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
+//                self.nameLabel.text = self.user.name
+//                self.idLabel.text = self.user.myID
+//            }
+//        })
+//    }
 
 }
 
@@ -201,6 +195,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         cell.myLabel.text = contents[indexPath.row]
 //        cell.userInfo.text = test[indexPath.row]
 //        cell.userInfo.text = userInfor[indexPath.row]
+        cell.userInfo.text = CurrentUser.shareInstance.userInfo[indexPath.row]
         
         return cell
     }
@@ -213,7 +208,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
                 UIAlertAction(title: "Male", style: UIAlertActionStyle.Default, handler: nil),
                 UIAlertAction(title: "Female", style: UIAlertActionStyle.Default, handler: nil)] )
 
-            downloadUrl()
+//            downloadUrl()
             return
         case 1:
             

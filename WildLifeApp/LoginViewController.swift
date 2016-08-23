@@ -13,7 +13,7 @@ import Firebase
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
     var loginButton: FBSDKLoginButton = FBSDKLoginButton()
-    let userInfos = Infos.init(name: "", photo: UIImage(), skill: [""], content: "", id: "", place: "", info: "")
+    let userInfos = Infos.init(name: "", photo: UIImage(), sport: [""], content: "", id: "", place: "", gender: "")
 
     
     
