@@ -14,7 +14,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var imagePicker = UIImagePickerController()
     var myImageRoundColor: String?
     var user = User()
-    var users = [User]()
+    var userInfo = UserInfo()
     
     var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
     var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "樂天、好相處、喜歡有趣的事情、對不熟的事物抱持試過再說, 對創業創新懷有熱情,蠻喜歡寫程式的,是條無止盡的路"]
@@ -128,6 +128,15 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as? String
             self.user.name = response.value?.objectForKey("name") as? String
             self.user.myID = response.value?.objectForKey("userId") as? String
+            
+            self.userInfo.gender = response.value?.objectForKey("gender") as? String
+            self.userInfo.place = response.value?.objectForKey("place") as? String
+            self.userInfo.age = response.value?.objectForKey("age") as? String
+            self.userInfo.sport = response.value?.objectForKey("sport") as? [String]
+            self.userInfo.intorduction = response.value?.objectForKey("intro") as? String
+            
+            
+            
             if self.user.profileImageUrl == nil {
                 print("profile image url == nil")
                 return
@@ -156,8 +165,8 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
-        cell.userInfo.text = test[indexPath.row]
-        
+//        cell.userInfo.text = test[indexPath.row]
+        cell.userInfo.text = userInfo.gender
         return cell
     }
 
@@ -168,6 +177,9 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             userInfoAler("Gender", value: [
                 UIAlertAction(title: "Male", style: UIAlertActionStyle.Default, handler: nil),
                 UIAlertAction(title: "Female", style: UIAlertActionStyle.Default, handler: nil)] )
+//            let cell = tableView.dequeueReusableCellWithIdentifier("myCell") as! InformationTableViewCell
+//            cell.userInfo.text = user.gender
+            downloadUrl()
             return
         case 1:
             

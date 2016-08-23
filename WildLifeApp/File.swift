@@ -39,12 +39,14 @@ class User: NSObject {
     var profileImageUrl: String?
     var name: String?
     var myID: String?
+
+}
+
+
+class UserInfo {
     var gender: String?
     var place: String?
     var age: String?
     var sport: [String]?
     var intorduction: String?
 }
-
-
-
