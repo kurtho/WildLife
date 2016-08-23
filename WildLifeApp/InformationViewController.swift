@@ -9,12 +9,13 @@
 import UIKit
 import Firebase
 import SDWebImage
+import SwiftyJSON
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
     var myImageRoundColor: String?
     var user = User()
-    var userInfo = UserInfo()
+    var userInfor = [String]()
     
     var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
     var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "樂天、好相處、喜歡有趣的事情、對不熟的事物抱持試過再說, 對創業創新懷有熱情,蠻喜歡寫程式的,是條無止盡的路"]
@@ -129,13 +130,38 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             self.user.name = response.value?.objectForKey("name") as? String
             self.user.myID = response.value?.objectForKey("userId") as? String
             
-            self.userInfo.gender = response.value?.objectForKey("gender") as? String
-            self.userInfo.place = response.value?.objectForKey("place") as? String
-            self.userInfo.age = response.value?.objectForKey("age") as? String
-            self.userInfo.sport = response.value?.objectForKey("sport") as? [String]
-            self.userInfo.intorduction = response.value?.objectForKey("intro") as? String
+            let tempArr = UserInfo()
+            
+            if response.value?.objectForKey("gender") as? String == nil {
+                self.userInfor.append("Male / Female")
+            }else {
+                self.userInfor.append(response.value?.objectForKey("gender") as! String)
+            }
+            if response.value?.objectForKey("place") as? String == nil {
+                self.userInfor.append("Which County do you live?")
+            }
+            if response.value?.objectForKey("age") as? String == nil {
+                self.userInfor.append("21~25?")
+            }
+            if response.value?.objectForKey("sport") as? String == nil {
+                self.userInfor.append("Swimming")
+            }
+            if response.value?.objectForKey("intro") as? String == nil {
+                self.userInfor.append("Introduce yourself")
+            }
+            
+            print("user infor append ~~~\(self.userInfor.count)")
+//            tempArr.gender = response.value?.objectForKey("gender") as? String
+//            tempArr.place = response.value?.objectForKey("place") as? String
+//            tempArr.age = response.value?.objectForKey("age") as? String
+//            tempArr.sport = response.value?.objectForKey("sport") as? [String]
+//            tempArr.intorduction = response.value?.objectForKey("intro") as? String
             
             
+            
+            
+            
+            print("self userinfo .append~~ \(tempArr.gender)")
             
             if self.user.profileImageUrl == nil {
                 print("profile image url == nil")
@@ -165,8 +191,8 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
-//        cell.userInfo.text = test[indexPath.row]
-        cell.userInfo.text = userInfo.gender
+        cell.userInfo.text = test[indexPath.row]
+//        cell.userInfo.text = userInfor[indexPath.row]
         return cell
     }
 
@@ -177,8 +203,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             userInfoAler("Gender", value: [
                 UIAlertAction(title: "Male", style: UIAlertActionStyle.Default, handler: nil),
                 UIAlertAction(title: "Female", style: UIAlertActionStyle.Default, handler: nil)] )
-//            let cell = tableView.dequeueReusableCellWithIdentifier("myCell") as! InformationTableViewCell
-//            cell.userInfo.text = user.gender
+
             downloadUrl()
             return
         case 1:
