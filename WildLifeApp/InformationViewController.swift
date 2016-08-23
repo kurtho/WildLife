@@ -49,6 +49,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadImageUrl()
+        self.nameLabel.text = self.user.name
+        self.idLabel.text = self.user.myID
         print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
 //            downloadUrl()
         print("response value~~~~ \(self.user.profileImageUrl)")
@@ -121,7 +124,25 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        之後把他做成簡易的function
     }
 
-//    
+
+    func loadImageUrl() {
+        let uid = CurrentUser.shareInstance.infos?.id
+        let ref = FIRDatabase.database().reference().child("users").child(uid!)
+        ref.observeEventType(.Value, withBlock: {
+            response in
+            self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as?String
+            if self.user.profileImageUrl == nil {
+                print("profile image url == nil")
+                return
+            }else {
+                self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
+                print("my image sd ~~\(self.user.profileImageUrl)")
+                self.tableView.reloadData()
+            }
+        })
+
+    }
+    
 //    func downloadUrl() {
 //        let uid = CurrentUser.shareInstance.infos?.id
 //        let ref = FIRDatabase.database().reference().child("users").child(uid!)

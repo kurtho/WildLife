@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
-
+import SDWebImage
 
 class HomeViewController: UIViewController {
     var user = User()
@@ -54,6 +54,8 @@ class HomeViewController: UIViewController {
         ref.observeEventType(.Value, withBlock: {
             response in
             self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as? String
+            print("self. user profile image url~~ \(self.user.profileImageUrl)")
+            
             self.user.name = response.value?.objectForKey("name") as? String
             self.user.myID = response.value?.objectForKey("userId") as? String
             
@@ -94,6 +96,9 @@ class HomeViewController: UIViewController {
                 print("profile image url == nil")
                 return
             }else {
+                
+                CurrentUser.shareInstance.infos?.photo = self.user.profileImageUrl!
+                print("$%^&*()_\(CurrentUser.shareInstance.infos?.photo)")
 //                self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
 //                self.nameLabel.text = self.user.name
 //                self.idLabel.text = self.user.myID
