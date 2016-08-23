@@ -19,6 +19,11 @@ extension UIViewController {
         view.endEditing(true)
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func alert(title: String, contain: String) {
         let alertButton = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: contain, style: .Cancel, handler: nil)

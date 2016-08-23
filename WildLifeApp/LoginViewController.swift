@@ -62,6 +62,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         CurrentUser.shareInstance.infos = userInfos
         hideKeyboardWhenTappedAround()
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
@@ -180,6 +182,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         })
     }
     
+
     
 }
 
@@ -188,9 +191,3 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
 
 
 
-//    func textFieldShouldReturn(textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        print("return ~~~~")
-//        return true
-//    }
-//          it is not working
