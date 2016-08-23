@@ -50,8 +50,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         loadImageUrl()
-        self.nameLabel.text = self.user.name
-        self.idLabel.text = self.user.myID
+//        self.nameLabel.text = self.user.name
+//        self.idLabel.text = self.user.myID
         print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
 //            downloadUrl()
         print("response value~~~~ \(self.user.profileImageUrl)")
@@ -131,11 +131,15 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         ref.observeEventType(.Value, withBlock: {
             response in
             self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as?String
+            self.user.name = response.value?.objectForKey("name") as? String
+            self.user.myID = response.value?.objectForKey("userId") as? String
             if self.user.profileImageUrl == nil {
                 print("profile image url == nil")
                 return
             }else {
                 self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
+                self.nameLabel.text = self.user.name
+                self.idLabel.text = self.user.myID
                 print("my image sd ~~\(self.user.profileImageUrl)")
                 self.tableView.reloadData()
             }
