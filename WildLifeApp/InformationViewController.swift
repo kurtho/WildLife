@@ -49,8 +49,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         loadImageUrl()
-//        self.nameLabel.text = self.user.name
-//        self.idLabel.text = self.user.myID
+
         print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
 //            downloadUrl()
         print("response value~123~~~ \(CurrentUser.shareInstance.infos?.gender)")
@@ -215,12 +214,14 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
         cell.userInfo.text = CurrentUser.shareInstance.userInfo[indexPath.row]
-        print(CurrentUser.shareInstance.userInfo[0])
-        
+        print("user info [0]~~~\(CurrentUser.shareInstance.userInfo[0])")
+
         return cell
+
     }
     
 
