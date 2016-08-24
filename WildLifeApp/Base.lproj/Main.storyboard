@@ -448,10 +448,18 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCO-y8-raH">
+                                                    <rect key="frame" x="380" y="19" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="SI8-uY-RUk" firstAttribute="top" secondItem="20J-HE-wJb" secondAttribute="topMargin" constant="-8" id="ERN-40-Dvb"/>
+                                                <constraint firstItem="TCO-y8-raH" firstAttribute="top" secondItem="20J-HE-wJb" secondAttribute="topMargin" constant="11" id="RAX-bw-cej"/>
                                                 <constraint firstItem="ikC-hd-BcY" firstAttribute="top" secondItem="SI8-uY-RUk" secondAttribute="bottom" constant="3" id="SpL-8V-eG6"/>
+                                                <constraint firstItem="TCO-y8-raH" firstAttribute="leading" secondItem="20J-HE-wJb" secondAttribute="leadingMargin" constant="372" id="WJZ-WT-8e7"/>
                                                 <constraint firstItem="ikC-hd-BcY" firstAttribute="leading" secondItem="20J-HE-wJb" secondAttribute="leadingMargin" constant="8" id="Zpb-Lc-UVc"/>
                                                 <constraint firstItem="ikC-hd-BcY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SI8-uY-RUk" secondAttribute="bottom" constant="5" id="hOy-fp-Acc"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ikC-hd-BcY" secondAttribute="bottom" constant="-5" id="hSZ-OL-5IO"/>
@@ -466,6 +474,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="myLabel" destination="SI8-uY-RUk" id="w0F-2k-fo0"/>
+                                            <outlet property="testLabel" destination="TCO-y8-raH" id="MnC-yh-pQy"/>
                                             <outlet property="userInfo" destination="ikC-hd-BcY" id="f2K-Rt-Hiz"/>
                                         </connections>
                                     </tableViewCell>

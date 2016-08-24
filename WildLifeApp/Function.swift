@@ -40,7 +40,7 @@ extension UIViewController {
         }
         self.presentViewController(alertButton, animated: true, completion: nil)
     }
-    
+
     
     
     func uploadDataWithUID(uid: String, values: [NSObject: AnyObject]) {

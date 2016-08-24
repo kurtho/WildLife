@@ -11,6 +11,7 @@ import UIKit
 class InformationTableViewCell: UITableViewCell {
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var userInfo: UILabel!
+    @IBOutlet weak var testLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

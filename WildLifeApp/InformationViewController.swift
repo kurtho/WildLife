@@ -217,8 +217,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
-//        cell.userInfo.text = test[indexPath.row]
-//        cell.userInfo.text = userInfor[indexPath.row]
+
         cell.userInfo.text = CurrentUser.shareInstance.userInfo[indexPath.row]
         
         return cell
@@ -227,10 +226,25 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
+            
         case 0:
+            _ = tableView.dequeueReusableCellWithIdentifier("myCell") as! InformationTableViewCell
+
             userInfoAler("Gender", value: [
-                UIAlertAction(title: "Male", style: UIAlertActionStyle.Default, handler: nil),
-                UIAlertAction(title: "Female", style: UIAlertActionStyle.Default, handler: nil)] )
+                UIAlertAction(title: "Male", style: .Default, handler: { (action: UIAlertAction) in
+                    CurrentUser.shareInstance.userInfo[0] = "Male"
+                    tableView.reloadData()
+                    self.myImage.layer.borderColor = UIColor.blueColor().CGColor
+
+                }),
+                UIAlertAction(title: "Female", style: .Default, handler: { (action:UIAlertAction) in
+                    CurrentUser.shareInstance.userInfo[0] = "Female"
+                    tableView.reloadData()
+                    self.myImage.layer.borderColor = UIColor.redColor().CGColor
+                })
+                ]
+            )
+
             
 //            downloadUrl()
             return
