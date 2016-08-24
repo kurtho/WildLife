@@ -53,8 +53,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        self.idLabel.text = self.user.myID
         print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
 //            downloadUrl()
-        print("response value~~~~ \(CurrentUser.shareInstance.infos?.gender)")
-
+        print("response value~123~~~ \(CurrentUser.shareInstance.infos?.gender)")
+        
         tableView.estimatedRowHeight = 55
         tableView.rowHeight = UITableViewAutomaticDimension
         (self.myImage.clipsToBounds, self.camaraButton.clipsToBounds) = (true, true)
@@ -218,6 +218,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
         cell.userInfo.text = CurrentUser.shareInstance.userInfo[indexPath.row]
+        print(CurrentUser.shareInstance.userInfo[0])
         
         return cell
     }
@@ -231,18 +232,24 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             userInfoAler("Gender", value: [
                 UIAlertAction(title: "Male", style: .Default, handler: { (action: UIAlertAction) in
                     CurrentUser.shareInstance.userInfo[0] = "Male"
+                    print(CurrentUser.shareInstance.userInfo[0])
+//                    self.tableView.reloadData()
+
                     self.uploadData(["gender": "Male"])
-                    tableView.reloadData()
                     self.myImage.layer.borderColor = UIColor.blueColor().CGColor
+                    
                 }),
                 UIAlertAction(title: "Female", style: .Default, handler: { (action:UIAlertAction) in
                     CurrentUser.shareInstance.userInfo[0] = "Female"
+                    
+//                    self.tableView.reloadData()
+                    print(CurrentUser.shareInstance.userInfo[0])
                     self.uploadData(["gender": "Female"])
-                    tableView.reloadData()
                     self.myImage.layer.borderColor = UIColor.redColor().CGColor
                 })
                 ]
             )
+            self.tableView.reloadData()
 //            downloadUrl()
             return
         case 1:
@@ -275,7 +282,6 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     
 
     
-
 }
 
 

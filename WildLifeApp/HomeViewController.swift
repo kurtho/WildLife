@@ -86,9 +86,8 @@ class HomeViewController: UIViewController {
                 self.userInfor.append(response.value?.objectForKey("intro") as! String)
             }
             
-            print("user infor append ~~~\(self.userInfor)")
             CurrentUser.shareInstance.userInfo = self.userInfor
-            print("current user .shareinstance . userinfo~ \(CurrentUser.shareInstance.userInfo)")
+
             
             
             
@@ -104,6 +103,9 @@ class HomeViewController: UIViewController {
 //                self.idLabel.text = self.user.myID
             }
         })
+        print("user infor append  123~~~\(self.userInfor)")
+
+        print("current user .shareinstance . userinfo~ \(CurrentUser.shareInstance.userInfo)")
     }
 
 
