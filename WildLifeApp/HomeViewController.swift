@@ -86,12 +86,12 @@ class HomeViewController: UIViewController {
             }else {
                 self.userInfor.append(response.value?.objectForKey("intro") as! String)
             }
-            
+            print("~~~~~\(CurrentUser.shareInstance.userInfo[0])")
             CurrentUser.shareInstance.userInfo = self.userInfor
+            
+            
+            
 
-            
-            
-            
             if self.user.profileImageUrl == nil {
                 print("profile image url == nil")
                 return

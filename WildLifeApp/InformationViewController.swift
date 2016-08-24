@@ -210,6 +210,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             
             func genderAlert(age: String) {
                 CurrentUser.shareInstance.userInfo[2] = age
+                uploadData(["age" : age])
                 tableView.reloadData()
             }
             userInfoAler("Age", value: [

@@ -22,27 +22,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WildLifeApp/HomeViewController.swift"
-            timestampString = "493745328.824462"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "downloadUrl()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WildLifeApp/HomeViewController.swift"
-            timestampString = "493746204.40247"
+            timestampString = "493747688.185277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "55"
@@ -58,7 +42,7 @@
                   moduleName = "WildLifeApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kurtho/Documents/Ways/WildLifeApp/WildLifeApp/HomeViewController.swift"
-                  timestampString = "493746204.731825"
+                  timestampString = "493747688.497125"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "55"
@@ -73,7 +57,7 @@
                   moduleName = "WildLifeApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/kurtho/Documents/Ways/WildLifeApp/WildLifeApp/HomeViewController.swift"
-                  timestampString = "493746204.731972"
+                  timestampString = "493747688.497273"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
