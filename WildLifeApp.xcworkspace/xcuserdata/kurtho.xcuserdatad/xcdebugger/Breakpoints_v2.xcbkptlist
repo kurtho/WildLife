@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WildLifeApp/InformationViewController.swift"
-            timestampString = "493643294.450398"
+            timestampString = "493719452.907236"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "uploadImage()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

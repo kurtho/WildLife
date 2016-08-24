@@ -114,8 +114,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                     print(error)
                 }
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                    let values = ["profileImageURL": profileImageUrl]
-                    self.uploadDataWithUID(uid!, values: values)
+//                    let values = ["profileImageURL": profileImageUrl]
+                    self.uploadDataWithUID(uid!, values: ["profileImageURL": profileImageUrl])
                 }
                 print(metadata)
             })
@@ -217,7 +217,6 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
-
         cell.userInfo.text = CurrentUser.shareInstance.userInfo[indexPath.row]
         
         return cell
@@ -232,11 +231,13 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             userInfoAler("Gender", value: [
                 UIAlertAction(title: "Male", style: .Default, handler: { (action: UIAlertAction) in
                     CurrentUser.shareInstance.userInfo[0] = "Male"
+                    self.uploadData(["gender": "Male"])
                     tableView.reloadData()
                     self.myImage.layer.borderColor = UIColor.blueColor().CGColor
                 }),
                 UIAlertAction(title: "Female", style: .Default, handler: { (action:UIAlertAction) in
                     CurrentUser.shareInstance.userInfo[0] = "Female"
+                    self.uploadData(["gender": "Female"])
                     tableView.reloadData()
                     self.myImage.layer.borderColor = UIColor.redColor().CGColor
                 })

@@ -55,6 +55,20 @@ extension UIViewController {
         })
     }
     
+    func uploadData(values: [NSObject : AnyObject] ) {
+        let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
+        let uid =  CurrentUser.shareInstance.infos?.id
+        let userRef = ref.child("users").child(uid!)
+        userRef.updateChildValues(values, withCompletionBlock: {(err, ref) in
+            if err != nil {
+                print("func upload = err \(err)")
+            }
+            print("Upload user data successfully into Firbase db")
+        })
+    }
+    
+    
+    
 //    func uploadImage() {
 //        let imageName = NSUUID().UUIDString
 //        //        亂數產生個string
