@@ -95,14 +95,14 @@ class HomeViewController: UIViewController {
             if self.user.profileImageUrl == nil {
                 print("profile image url == nil")
                 return
-            }else {
+            }
                 
                 CurrentUser.shareInstance.infos?.photo = self.user.profileImageUrl!
                 print("33333~~HomeVC\(CurrentUser.shareInstance.userInfo[0])")
 //                self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
 //                self.nameLabel.text = self.user.name
 //                self.idLabel.text = self.user.myID
-            }
+            
         })
         print("user infor append  123~~~\(self.userInfor)")
 
