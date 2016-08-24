@@ -231,7 +231,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             userInfoAler("Gender", value: [
                 UIAlertAction(title: "Male", style: UIAlertActionStyle.Default, handler: nil),
                 UIAlertAction(title: "Female", style: UIAlertActionStyle.Default, handler: nil)] )
-
+            
 //            downloadUrl()
             return
         case 1:
