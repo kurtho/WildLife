@@ -222,20 +222,18 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         
         return cell
     }
-
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.row {
-            
-        case 0:
-            _ = tableView.dequeueReusableCellWithIdentifier("myCell") as! InformationTableViewCell
 
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.dequeueReusableCellWithIdentifier("myCell") as! InformationTableViewCell
+        switch indexPath.row {
+        case 0:
             userInfoAler("Gender", value: [
                 UIAlertAction(title: "Male", style: .Default, handler: { (action: UIAlertAction) in
                     CurrentUser.shareInstance.userInfo[0] = "Male"
                     tableView.reloadData()
                     self.myImage.layer.borderColor = UIColor.blueColor().CGColor
-
                 }),
                 UIAlertAction(title: "Female", style: .Default, handler: { (action:UIAlertAction) in
                     CurrentUser.shareInstance.userInfo[0] = "Female"
@@ -244,24 +242,27 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
                 })
                 ]
             )
-
-            
 //            downloadUrl()
             return
         case 1:
             
             return
         case 2:
+            
+            func genderAlert(age: String) {
+                CurrentUser.shareInstance.userInfo[2] = age
+                tableView.reloadData()
+            }
             userInfoAler("Age", value: [
-                UIAlertAction(title: "16~20", style: .Default, handler: nil),
-                UIAlertAction(title: "21~25", style: .Default, handler: nil),
-                UIAlertAction(title: "26~30", style: .Default, handler: nil),
-                UIAlertAction(title: "31~35", style: .Default, handler: nil),
-                UIAlertAction(title: "36~40", style: .Default, handler: nil),
-                UIAlertAction(title: "41~45", style: .Default, handler: nil),
-                UIAlertAction(title: "46~50", style: .Default, handler: nil),
-                UIAlertAction(title: "51~55", style: .Default, handler: nil),
-                UIAlertAction(title: "56~60", style: .Default, handler: nil)
+                UIAlertAction(title: "16~20", style: .Default, handler: { (action: UIAlertAction) in genderAlert("16~20")}),
+                UIAlertAction(title: "21~25", style: .Default, handler: { (action: UIAlertAction) in genderAlert("21~25")}),
+                UIAlertAction(title: "26~30", style: .Default, handler: { (action: UIAlertAction) in genderAlert("26~30")}),
+                UIAlertAction(title: "31~35", style: .Default, handler: { (action: UIAlertAction) in genderAlert("31~35")}),
+                UIAlertAction(title: "36~40", style: .Default, handler: { (action: UIAlertAction) in genderAlert("36~40")}),
+                UIAlertAction(title: "41~45", style: .Default, handler: { (action: UIAlertAction) in genderAlert("41~45")}),
+                UIAlertAction(title: "46~50", style: .Default, handler: { (action: UIAlertAction) in genderAlert("46~50")}),
+                UIAlertAction(title: "51~55", style: .Default, handler: { (action: UIAlertAction) in genderAlert("51~55")}),
+                
                 ])
             return
         default:

@@ -11,14 +11,14 @@ import UIKit
 import Firebase
 
 extension UIViewController {
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
-    func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
+
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -54,5 +54,28 @@ extension UIViewController {
             print("Upload user photo successfully into Firebase db")
         })
     }
+    
+//    func uploadImage() {
+//        let imageName = NSUUID().UUIDString
+//        //        亂數產生個string
+//        let storageRef = FIRStorage.storage().reference().child("profileImage").child("\(imageName).jpg")
+//        //        let storageRef = FIRStorage.storage().reference().child("profileImage").child("kurt.jpg")
+//        let uid =  CurrentUser.shareInstance.infos?.id
+//        print("user~~~\(uid)")
+//        if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
+//            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+//                if error != nil {
+//                    print(error)
+//                }
+//                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+//                    let values = ["profileImageURL": profileImageUrl]
+//                    self.uploadDataWithUID(uid!, values: values)
+//                }
+//                print(metadata)
+//            })
+//        }
+//        //        之後把他做成簡易的function
+//    }
+    
     
 }
