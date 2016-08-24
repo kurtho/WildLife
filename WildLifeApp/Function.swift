@@ -63,7 +63,7 @@ extension UIViewController {
             if err != nil {
                 print("func upload = err \(err)")
             }
-            print("Upload user data successfully into Firbase db")
+            print("55555~~FuncVC\(CurrentUser.shareInstance.userInfo[0])")
         })
     }
     

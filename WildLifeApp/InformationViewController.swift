@@ -15,6 +15,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var imagePicker = UIImagePickerController()
     var user = User()
     var userInfor = [String]()
+    let queConcurrent = dispatch_queue_create("Queue", DISPATCH_QUEUE_SERIAL)
+
+    
     
     var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
     var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "樂天、好相處、喜歡有趣的事情、對不熟的事物抱持試過再說, 對創業創新懷有熱情,蠻喜歡寫程式的,是條無止盡的路"]
@@ -48,10 +51,14 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadImageUrl()
-
+        
+        self.loadImageUrl()
+            
+        
+        
+//        self.nameLabel.text = self.user.name
+//        self.idLabel.text = self.user.myID
         print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
-//            downloadUrl()
         print("response value~123~~~ \(CurrentUser.shareInstance.infos?.gender)")
         
         tableView.estimatedRowHeight = 55
@@ -68,6 +75,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         } else {
             myImage.layer.borderColor = UIColor.blueColor().CGColor
         }
+
     }
     override func viewWillAppear(animated: Bool) {
 
@@ -115,6 +123,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
 //                    let values = ["profileImageURL": profileImageUrl]
                     self.uploadDataWithUID(uid!, values: ["profileImageURL": profileImageUrl])
+                    print("3333333~~")
                 }
                 print(metadata)
             })
@@ -138,70 +147,13 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
                 self.nameLabel.text = self.user.name
                 self.idLabel.text = self.user.myID
-                print("my image sd ~~\(self.user.profileImageUrl)")
+                print("44444~~InfoVC\(CurrentUser.shareInstance.userInfo[0])")
                 self.tableView.reloadData()
             }
         })
 
     }
     
-//    func downloadUrl() {
-//        let uid = CurrentUser.shareInstance.infos?.id
-//        let ref = FIRDatabase.database().reference().child("users").child(uid!)
-//        ref.observeEventType(.Value, withBlock: {
-//            response in
-//            self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as? String
-//            self.user.name = response.value?.objectForKey("name") as? String
-//            self.user.myID = response.value?.objectForKey("userId") as? String
-//            
-//            let tempArr = UserInfo()
-//            
-//            if response.value?.objectForKey("gender") as? String == nil {
-//                self.userInfor.append("Male / Female")
-//            }else {
-//                self.userInfor.append(response.value?.objectForKey("gender") as! String)
-//            }
-//            if response.value?.objectForKey("place") as? String == nil {
-//                self.userInfor.append("Which County do you live?")
-//            }else {
-//                self.userInfor.append(response.value?.objectForKey("place") as! String)
-//            }
-//            if response.value?.objectForKey("age") as? String == nil {
-//                self.userInfor.append("21~25?")
-//            }else {
-//                self.userInfor.append(response.value?.objectForKey("age") as! String)
-//            }
-//            if response.value?.objectForKey("sport") as? String == nil {
-//                self.userInfor.append("Swimming")
-//            }else {
-//                self.userInfor.append(response.value?.objectForKey("sport") as! String)
-//            }
-//            if response.value?.objectForKey("intro") as? String == nil {
-//                self.userInfor.append("Introduce yourself")
-//            }else {
-//                self.userInfor.append(response.value?.objectForKey("intro") as! String)
-//            }
-//            
-//            print("user infor append ~~~\(self.userInfor.count)")
-////            tempArr.gender = response.value?.objectForKey("gender") as? String
-////            tempArr.place = response.value?.objectForKey("place") as? String
-////            tempArr.age = response.value?.objectForKey("age") as? String
-////            tempArr.sport = response.value?.objectForKey("sport") as? [String]
-////            tempArr.intorduction = response.value?.objectForKey("intro") as? String
-//            
-//            
-//            print("self userinfo .append~~ \(tempArr.gender)")
-//            
-//            if self.user.profileImageUrl == nil {
-//                print("profile image url == nil")
-//                return
-//            }else {
-//                self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
-//                self.nameLabel.text = self.user.name
-//                self.idLabel.text = self.user.myID
-//            }
-//        })
-//    }
 
 }
 
@@ -214,14 +166,12 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
         cell.userInfo.text = CurrentUser.shareInstance.userInfo[indexPath.row]
-        print("user info [0]~~~\(CurrentUser.shareInstance.userInfo[0])")
-
+        
         return cell
-
+        
     }
     
 
@@ -233,25 +183,25 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             userInfoAler("Gender", value: [
                 UIAlertAction(title: "Male", style: .Default, handler: { (action: UIAlertAction) in
                     CurrentUser.shareInstance.userInfo[0] = "Male"
-                    print(CurrentUser.shareInstance.userInfo[0])
-//                    self.tableView.reloadData()
 
+                    print("11111~~InfoVC\(CurrentUser.shareInstance.userInfo[0])")
+//              下面是5555
                     self.uploadData(["gender": "Male"])
                     self.myImage.layer.borderColor = UIColor.blueColor().CGColor
-                    
+
+                    self.tableView.reloadData()
                 }),
                 UIAlertAction(title: "Female", style: .Default, handler: { (action:UIAlertAction) in
                     CurrentUser.shareInstance.userInfo[0] = "Female"
-                    
-//                    self.tableView.reloadData()
-                    print(CurrentUser.shareInstance.userInfo[0])
+
+//              下面是5555
+                    print("11111~~InfoVC\(CurrentUser.shareInstance.userInfo[0])")
                     self.uploadData(["gender": "Female"])
                     self.myImage.layer.borderColor = UIColor.redColor().CGColor
+                    self.tableView.reloadData()
                 })
                 ]
             )
-            self.tableView.reloadData()
-//            downloadUrl()
             return
         case 1:
             
