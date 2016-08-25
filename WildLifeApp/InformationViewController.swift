@@ -11,7 +11,7 @@ import Firebase
 import SDWebImage
 
 
-class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     var imagePicker = UIImagePickerController()
     var user = User()
     var userInfor = ["","","","",""]
@@ -25,11 +25,17 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var idTextField: UITextField!
+    
     @IBOutlet weak var myView: UIView!
     @IBOutlet weak var myImage: UIImageView!
     @IBOutlet weak var camaraButton: UIButton!
     
     @IBOutlet weak var tableView: UITableView!
+    
+    
+    
     
     @IBAction func nameEdit(sender: AnyObject) {
         
@@ -46,14 +52,23 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         pickImageFromLocal()
     }
     
+    @IBAction func nameTextField(sender: AnyObject) {
+        nameLabel.hidden = true
+        
+    }
+    @IBAction func idTextField(sender: AnyObject) {
+        idLabel.hidden = true
+        
+    }
 
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        nameTextField.placeholder = "1234"
+        nameTextField.textColor = UIColor.blackColor()
         
         self.loadImageUrl()
-            
         
         
 //        self.nameLabel.text = self.user.name
@@ -182,6 +197,17 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }
         })
 
+    }
+    
+
+
+    var testt = ""
+    override func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        testt = textField.placeholder!
+        print("test~~\(testt)")
+        textField.resignFirstResponder()
+        return true
     }
     
 

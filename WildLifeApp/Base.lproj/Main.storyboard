@@ -394,6 +394,15 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="台中鄭小姐" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fkx-Hy-eof">
+                                <rect key="frame" x="127" y="91" width="453" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="nameTextField:" destination="WLa-K0-R5y" eventType="editingDidEnd" id="58K-ob-lDP"/>
+                                    <outlet property="delegate" destination="WLa-K0-R5y" id="YPi-fa-JcZ"/>
+                                </connections>
+                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My ID：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdg-89-DtV">
                                 <rect key="frame" x="148" y="126" width="51" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -422,6 +431,10 @@
                                 <rect key="frame" x="127" y="144" width="453" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="idTextField:" destination="WLa-K0-R5y" eventType="editingDidEnd" id="qbw-wk-DYa"/>
+                                    <outlet property="delegate" destination="WLa-K0-R5y" id="udT-YM-vbw"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test123@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVC-uH-Fsd">
                                 <rect key="frame" x="133" y="148" width="162.5" height="21"/>
@@ -489,17 +502,12 @@
                                     <outlet property="delegate" destination="WLa-K0-R5y" id="bdL-T6-VxW"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台中鄭小姐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRP-B1-1jf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRP-B1-1jf">
                                 <rect key="frame" x="133" y="95" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fkx-Hy-eof">
-                                <rect key="frame" x="127" y="91" width="453" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -543,9 +551,11 @@
                     <connections>
                         <outlet property="camaraButton" destination="yPY-Ts-DgK" id="mAv-0Q-fxt"/>
                         <outlet property="idLabel" destination="ZVC-uH-Fsd" id="5jn-aK-yk7"/>
+                        <outlet property="idTextField" destination="y2z-WH-S8Q" id="9ph-U0-m5s"/>
                         <outlet property="myImage" destination="kQP-j1-oT4" id="Xu6-qX-vdb"/>
                         <outlet property="myView" destination="dEv-9K-B0x" id="AQm-UA-WVE"/>
                         <outlet property="nameLabel" destination="LRP-B1-1jf" id="BVm-Rx-QRU"/>
+                        <outlet property="nameTextField" destination="Fkx-Hy-eof" id="M5s-Wi-XDl"/>
                         <outlet property="tableView" destination="pHN-iB-0Cb" id="GtK-2d-tN9"/>
                         <segue destination="28U-Vo-det" kind="show" identifier="myCell" id="csX-Ay-2I3"/>
                     </connections>
