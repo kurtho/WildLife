@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
-import SDWebImage
+
 
 class HomeViewController: UIViewController {
 

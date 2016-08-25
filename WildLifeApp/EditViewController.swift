@@ -10,13 +10,18 @@ import UIKit
 
 class EditViewController: UIViewController {
 
+    var myArray = []
+    
+    @IBOutlet weak var myLabel: UILabel!
+    @IBOutlet weak var myTextField: UITextField!
     @IBOutlet weak var myTextView: UITextView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print("myArray~~\(myArray)")
+        
+        myTextView.text = myArray[4] as! String
     }
 
     override func didReceiveMemoryWarning() {

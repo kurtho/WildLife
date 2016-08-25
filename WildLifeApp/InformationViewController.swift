@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import SDWebImage
-import SwiftyJSON
+
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
@@ -260,7 +260,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             return
         case 4:
             
-            
+            performSegueWithIdentifier("myCell", sender: userInfor[4])
             
             
             
@@ -275,7 +275,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "myCell" {
             let vc = segue.destinationViewController as! EditViewController
-            
+            vc.myArray = userInfor
         }
     }
 
