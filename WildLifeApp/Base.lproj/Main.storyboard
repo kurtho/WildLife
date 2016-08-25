@@ -424,6 +424,12 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台中鄭小姐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRP-B1-1jf">
+                                <rect key="frame" x="133" y="100" width="85" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pHN-iB-0Cb">
                                 <rect key="frame" x="0.0" y="182" width="600" height="369"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -484,12 +490,6 @@
                                     <outlet property="delegate" destination="WLa-K0-R5y" id="bdL-T6-VxW"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台中鄭小姐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRP-B1-1jf">
-                                <rect key="frame" x="133" y="100" width="85" height="21"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -531,11 +531,49 @@
                         <outlet property="myView" destination="dEv-9K-B0x" id="AQm-UA-WVE"/>
                         <outlet property="nameLabel" destination="LRP-B1-1jf" id="BVm-Rx-QRU"/>
                         <outlet property="tableView" destination="pHN-iB-0Cb" id="GtK-2d-tN9"/>
+                        <segue destination="28U-Vo-det" kind="show" identifier="myCell" id="csX-Ay-2I3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hv-3u-gYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4504" y="1482"/>
+            <point key="canvasLocation" x="4578" y="1482"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="WWp-tJ-XyL">
+            <objects>
+                <viewController id="28U-Vo-det" customClass="EditViewController" customModule="WildLifeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6n7-29-IHd"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZJt-hb-wcH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RWK-J2-fj7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="suJ-AA-sZL">
+                                <rect key="frame" x="89" y="200" width="423" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="suJ-AA-sZL" firstAttribute="centerX" secondItem="RWK-J2-fj7" secondAttribute="centerX" id="DGj-cQ-oos"/>
+                            <constraint firstItem="suJ-AA-sZL" firstAttribute="top" secondItem="6n7-29-IHd" secondAttribute="bottom" constant="136" id="FSJ-He-EVe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="suJ-AA-sZL" secondAttribute="trailing" constant="68" id="JQg-Sh-vN7"/>
+                            <constraint firstItem="suJ-AA-sZL" firstAttribute="centerY" secondItem="RWK-J2-fj7" secondAttribute="centerY" id="KCR-bf-KRs"/>
+                            <constraint firstItem="suJ-AA-sZL" firstAttribute="leading" secondItem="RWK-J2-fj7" secondAttribute="leadingMargin" constant="69" id="MEW-I7-Mbs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myTextView" destination="suJ-AA-sZL" id="RQv-60-Dft"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5P-3H-hqc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5227" y="1482"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="L9e-g0-9Mq">

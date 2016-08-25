@@ -143,17 +143,17 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             
             print("123~\(self.userInfor.count)")
             if response.value?.objectForKey("gender") as? String == nil {
-                self.userInfor[0] = ("Male / Female")
+                self.userInfor[0] = ("Male / Female ??")
             }else {
                 self.userInfor[0] = (response.value?.objectForKey("gender") as! String)
             }
             if response.value?.objectForKey("place") as? String == nil {
-                self.userInfor[1] = ("Which County do you live?")
+                self.userInfor[1] = ("Which County do you live ??")
             }else {
                 self.userInfor[1] = (response.value?.objectForKey("place") as! String)
             }
             if response.value?.objectForKey("age") as? String == nil {
-                self.userInfor[2] = ("21~25?")
+                self.userInfor[2] = ("21~25 ??")
             }else {
                 self.userInfor[2] = (response.value?.objectForKey("age") as! String)
             }
@@ -255,13 +255,29 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
                 
                 ])
             return
+        case 3:
+            
+            return
+        case 4:
+            
+            
+            
+            
+            
+            
+            return
         default:
             break
         }
         
     }
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "myCell" {
+            let vc = segue.destinationViewController as! EditViewController
+            
+        }
+    }
 
     
 }

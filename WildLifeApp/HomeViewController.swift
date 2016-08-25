@@ -46,29 +46,6 @@ class HomeViewController: UIViewController {
     
     
     
-//    func downloadUrl() {
-//        let uid = CurrentUser.shareInstance.infos?.id
-//        print("uid~~\(uid)")
-//        
-//        let ref = FIRDatabase.database().reference().child("users").child(uid!)
-//        ref.observeEventType(.Value, withBlock: {
-//            response in
-//            self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as? String
-//            print("22222~~HomeVC \(CurrentUser.shareInstance.userInfo[0])")
-//            
-//            self.user.name = response.value?.objectForKey("name") as? String
-//            self.user.myID = response.value?.objectForKey("userId") as? String
-//            
-//            
-//
-//                print("33333~~HomeVC\(CurrentUser.shareInstance.userInfo[0])")
-//
-//        })
-    
-//        print("user infor append  123~~~\(self.userInfor)")
-
-//        print("current user .shareinstance . userinfo~ \(CurrentUser.shareInstance.userInfo)")
-//    }
 
 
 }
