@@ -14,7 +14,7 @@ import SwiftyJSON
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var imagePicker = UIImagePickerController()
     var user = User()
-    var userInfor = [String]()
+    var userInfor = ["","","","",""]
     let queConcurrent = dispatch_queue_create("Queue", DISPATCH_QUEUE_SERIAL)
 
     
@@ -140,8 +140,38 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as?String
             self.user.name = response.value?.objectForKey("name") as? String
             self.user.myID = response.value?.objectForKey("userId") as? String
+            
+            print("123~\(self.userInfor.count)")
+            if response.value?.objectForKey("gender") as? String == nil {
+                self.userInfor[0] = ("Male / Female")
+            }else {
+                self.userInfor[0] = (response.value?.objectForKey("gender") as! String)
+            }
+            if response.value?.objectForKey("place") as? String == nil {
+                self.userInfor[1] = ("Which County do you live?")
+            }else {
+                self.userInfor[1] = (response.value?.objectForKey("place") as! String)
+            }
+            if response.value?.objectForKey("age") as? String == nil {
+                self.userInfor[2] = ("21~25?")
+            }else {
+                self.userInfor[2] = (response.value?.objectForKey("age") as! String)
+            }
+            if response.value?.objectForKey("sport") as? String == nil {
+                self.userInfor[3] = ("Swimming")
+            }else {
+                self.userInfor[3] = (response.value?.objectForKey("sport") as! String)
+            }
+            if response.value?.objectForKey("intro") as? String == nil {
+                self.userInfor[4] = ("Introduce yourself")
+            }else {
+                self.userInfor[4] = (response.value?.objectForKey("intro") as! String)
+            }
+            
+            
             if self.user.profileImageUrl == nil {
                 print("profile image url == nil")
+                self.tableView.reloadData()
                 return
             }else {
                 self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
@@ -168,7 +198,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
-        cell.userInfo.text = CurrentUser.shareInstance.userInfo[indexPath.row]
+        cell.userInfo.text = userInfor[indexPath.row]
         
         return cell
         

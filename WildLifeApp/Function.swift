@@ -68,28 +68,7 @@ extension UIViewController {
     }
     
     
-    
-//    func uploadImage() {
-//        let imageName = NSUUID().UUIDString
-//        //        亂數產生個string
-//        let storageRef = FIRStorage.storage().reference().child("profileImage").child("\(imageName).jpg")
-//        //        let storageRef = FIRStorage.storage().reference().child("profileImage").child("kurt.jpg")
-//        let uid =  CurrentUser.shareInstance.infos?.id
-//        print("user~~~\(uid)")
-//        if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
-//            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-//                if error != nil {
-//                    print(error)
-//                }
-//                if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-//                    let values = ["profileImageURL": profileImageUrl]
-//                    self.uploadDataWithUID(uid!, values: values)
-//                }
-//                print(metadata)
-//            })
-//        }
-//        //        之後把他做成簡易的function
-//    }
+
     
     
 }

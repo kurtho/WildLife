@@ -19,53 +19,5 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WildLifeApp/HomeViewController.swift"
-            timestampString = "493747688.185277"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "downloadUrl()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WildLifeApp.HomeViewController.downloadUrl () -&gt; ()"
-                  moduleName = "WildLifeApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kurtho/Documents/Ways/WildLifeApp/WildLifeApp/HomeViewController.swift"
-                  timestampString = "493747688.497125"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "55"
-                  endingLineNumber = "55"
-                  offsetFromSymbolStart = "1388">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WildLifeApp.HomeViewController.(downloadUrl () -&gt; ()).(closure #1)"
-                  moduleName = "WildLifeApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kurtho/Documents/Ways/WildLifeApp/WildLifeApp/HomeViewController.swift"
-                  timestampString = "493747688.497273"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "57"
-                  endingLineNumber = "57"
-                  offsetFromSymbolStart = "27">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

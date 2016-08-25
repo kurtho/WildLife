@@ -32,7 +32,7 @@ class CurrentUser {
     static let shareInstance = CurrentUser()
     var infos: Infos?
     var pic = UIImage()
-    var userInfo =  ["","","","",""]
+    var userInfo =  ["Male / Female?","Where do you live?","Your age?","What Sports do you like","Introduce yourself"]
 }
 
 class User: NSObject {
