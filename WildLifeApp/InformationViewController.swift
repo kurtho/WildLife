@@ -305,21 +305,19 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 
+extension InformationViewController {
+private func uploadDataWithUID(uid: String, values: [NSObject: AnyObject]) {
+    let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
+    let userReference = ref.child("users").child(uid)
+    userReference.updateChildValues(values, withCompletionBlock: {(err, ref) in
+        if err != nil {
+            print(err)
+        }
+        print("Upload user photo successfully into Firebase db")
+    })
+}
+}
 
 
-
-
-
-//    private func uploadDataWithUID(uid: String, values: [NSObject: AnyObject]) {
-//        let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
-//        let userReference = ref.child("users").child(uid)
-//        userReference.updateChildValues(values, withCompletionBlock: {(err, ref) in
-//            if err != nil {
-//                print(err)
-////  用這方法取得裡面的uid
-//            }
-//            print("Saved user successfully into Firebase db")
-//        })
-//    }
 
 
