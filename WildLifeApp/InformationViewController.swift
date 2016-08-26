@@ -54,14 +54,30 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func nameTextField(sender: AnyObject) {
         nameLabel.hidden = true
-        
+        testt2 = nameTextField.text!
+        print("testt2~ \(testt2)")
+        textFieldDidEndEditing(nameTextField)
+
     }
     @IBAction func idTextField(sender: AnyObject) {
         idLabel.hidden = true
-        
+        testt = idTextField.text!
+        print("testt~ \(testt)")
+        textFieldDidEndEditing(idTextField)
+
     }
 
+    func textFieldDidEndEditing(textField: UITextField) {
+//        testt = textField.text!
+//        print("testt \(testt)")
+    }
+    
+    var testt = ""
+    var testt2 = ""
 
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,8 +87,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         self.loadImageUrl()
         
         
-//        self.nameLabel.text = self.user.name
-//        self.idLabel.text = self.user.myID
         print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
         print("response value~123~~~ \(CurrentUser.shareInstance.infos?.gender)")
         
@@ -190,7 +204,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 return
             }else {
                 self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
-                self.nameLabel.text = self.user.name
+                self.nameTextField.text = self.user.name
                 self.idLabel.text = self.user.myID
                 print("44444~~InfoVC\(CurrentUser.shareInstance.userInfo[0])")
                 self.tableView.reloadData()
@@ -201,18 +215,12 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
 
 
-    var testt = ""
-    override func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
-        testt = textField.placeholder!
-        print("test~~\(testt)")
-        textField.resignFirstResponder()
-        return true
-    }
     
 
 }
 
+
+// MARK: - extension
 extension InformationViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
