@@ -22,8 +22,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
     var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "樂天、好相處、喜歡有趣的事情、對不熟的事物抱持試過再說, 對創業創新懷有熱情,蠻喜歡寫程式的,是條無止盡的路"]
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var idLabel: UILabel!
+
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var idTextField: UITextField!
@@ -38,10 +37,11 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     
     @IBAction func nameEdit(sender: AnyObject) {
-        
+        nameTextField.becomeFirstResponder()
     }
     
     @IBAction func idEdit(sender: AnyObject) {
+        idTextField.becomeFirstResponder()
     }
     
     
@@ -53,27 +53,15 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func nameTextField(sender: AnyObject) {
-        nameLabel.hidden = true
-        testt2 = nameTextField.text!
-        print("testt2~ \(testt2)")
         textFieldDidEndEditing(nameTextField)
-
     }
     @IBAction func idTextField(sender: AnyObject) {
-        idLabel.hidden = true
-        testt = idTextField.text!
-        print("testt~ \(testt)")
         textFieldDidEndEditing(idTextField)
 
     }
 
-    func textFieldDidEndEditing(textField: UITextField) {
-//        testt = textField.text!
-//        print("testt \(testt)")
-    }
-    
-    var testt = ""
-    var testt2 = ""
+
+
 
     
     
@@ -81,8 +69,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.placeholder = "1234"
-        nameTextField.textColor = UIColor.blackColor()
         
         self.loadImageUrl()
         
@@ -205,7 +191,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }else {
                 self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
                 self.nameTextField.text = self.user.name
-                self.idLabel.text = self.user.myID
+                self.idTextField.text = self.user.myID
                 print("44444~~InfoVC\(CurrentUser.shareInstance.userInfo[0])")
                 self.tableView.reloadData()
             }

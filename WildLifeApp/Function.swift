@@ -23,6 +23,11 @@ extension UIViewController {
         textField.resignFirstResponder()
         return true
     }
+    func textFieldDidEndEditing(textField: UITextField) {
+    }
+    
+    
+    
     
     func alert(title: String, contain: String) {
         let alertButton = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
