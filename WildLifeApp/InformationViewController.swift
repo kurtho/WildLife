@@ -53,13 +53,15 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func nameTextField(sender: AnyObject) {
+        self.uploadData(["name" : nameTextField.text!])
         textFieldDidEndEditing(nameTextField)
+        
     }
     @IBAction func idTextField(sender: AnyObject) {
+        self.uploadData(["userId" : idTextField.text!])
         textFieldDidEndEditing(idTextField)
-
     }
-
+    var test123 = ""
 
 
 
@@ -182,7 +184,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }else {
                 self.userInfor[4] = (response.value?.objectForKey("intro") as! String)
             }
-            
+            self.nameTextField.text = self.user.name
+            self.idTextField.text = self.user.myID
             
             if self.user.profileImageUrl == nil {
                 print("profile image url == nil")
@@ -190,8 +193,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 return
             }else {
                 self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
-                self.nameTextField.text = self.user.name
-                self.idTextField.text = self.user.myID
+
                 print("44444~~InfoVC\(CurrentUser.shareInstance.userInfo[0])")
                 self.tableView.reloadData()
             }
