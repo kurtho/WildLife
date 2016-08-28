@@ -50,7 +50,7 @@ class PopUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let secondComponent = pickComponents.county.rawValue
         let one  = pickData[firstComponent][myPickView.selectedRowInComponent(firstComponent)]
         let two = pickData[secondComponent][myPickView.selectedRowInComponent(secondComponent)]
-        myLabel.text = "居住: \(one) \(two)"
+        myLabel.text = "居住: \(one)\(two)"
         myLocation = one + two
         
     }
