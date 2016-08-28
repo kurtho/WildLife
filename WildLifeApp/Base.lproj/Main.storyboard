@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="f53-FI-q5o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TYb-Nn-E5o">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -316,6 +316,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBB-OV-snJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3692" y="25"/>
+        </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="MlE-KA-oXY">
+            <objects>
+                <viewController id="TYb-Nn-E5o" customClass="PopUpViewController" customModule="WildLifeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E5K-4F-TSJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZDE-La-Khd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o0A-r3-d5C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0z4-XS-z0U">
+                                <rect key="frame" x="0.0" y="420" width="600" height="180"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4d-q4-Bz3">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="TYb-Nn-E5o" id="ih7-Kk-aJJ"/>
+                                            <outlet property="delegate" destination="TYb-Nn-E5o" id="4Im-CG-R7E"/>
+                                        </connections>
+                                    </pickerView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYR-Jq-GCl">
+                                        <rect key="frame" x="279" y="8" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="P4d-q4-Bz3" firstAttribute="centerY" secondItem="0z4-XS-z0U" secondAttribute="centerY" id="4LM-9i-yIj"/>
+                                    <constraint firstItem="P4d-q4-Bz3" firstAttribute="top" secondItem="PYR-Jq-GCl" secondAttribute="bottom" constant="-29" id="DxW-se-v1x"/>
+                                    <constraint firstItem="P4d-q4-Bz3" firstAttribute="width" secondItem="0z4-XS-z0U" secondAttribute="width" id="MMx-Vy-L5X"/>
+                                    <constraint firstItem="P4d-q4-Bz3" firstAttribute="centerX" secondItem="0z4-XS-z0U" secondAttribute="centerX" id="MSY-ja-qev"/>
+                                    <constraint firstAttribute="height" constant="180" id="hCQ-Zb-BsS"/>
+                                    <constraint firstItem="PYR-Jq-GCl" firstAttribute="centerX" secondItem="P4d-q4-Bz3" secondAttribute="centerX" id="oQ2-Fw-sUZ"/>
+                                    <constraint firstItem="P4d-q4-Bz3" firstAttribute="height" secondItem="0z4-XS-z0U" secondAttribute="height" id="sTd-vc-yRS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0z4-XS-z0U" secondAttribute="trailing" id="ZVV-KM-XIp"/>
+                            <constraint firstItem="0z4-XS-z0U" firstAttribute="leading" secondItem="o0A-r3-d5C" secondAttribute="leading" id="bj4-ew-N35"/>
+                            <constraint firstItem="ZDE-La-Khd" firstAttribute="top" secondItem="0z4-XS-z0U" secondAttribute="bottom" id="edn-9a-Rih"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myLabel" destination="PYR-Jq-GCl" id="3De-nJ-DUE"/>
+                        <outlet property="myPickView" destination="P4d-q4-Bz3" id="NaE-vv-6jC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bnV-PX-fix" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4546" y="753"/>
         </scene>
         <!--About Me-->
         <scene sceneID="cnu-Nd-WDJ">

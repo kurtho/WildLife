@@ -24,6 +24,7 @@
 		2984DDC61D6EF6B9005EF574 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2984DDC51D6EF6B9005EF574 /* EditViewController.swift */; };
 		29ECAC8B1D67BC9800B87333 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ECAC8A1D67BC9800B87333 /* Function.swift */; };
 		29ECAC8F1D6981AA00B87333 /* InformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29ECAC8E1D6981AA00B87333 /* InformationTableViewCell.swift */; };
+		29FE12EF1D73238E0022CDCB /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FE12EE1D73238D0022CDCB /* PopUpViewController.swift */; };
 		C1CD67DD7C53BF38BC3F08EA /* Pods_WildLifeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E94AD3FD8753B21D43B7E4 /* Pods_WildLifeApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		2984DDC51D6EF6B9005EF574 /* EditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		29ECAC8A1D67BC9800B87333 /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
 		29ECAC8E1D6981AA00B87333 /* InformationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationTableViewCell.swift; sourceTree = "<group>"; };
+		29FE12EE1D73238D0022CDCB /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		66E94AD3FD8753B21D43B7E4 /* Pods_WildLifeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WildLifeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -90,7 +92,8 @@
 		291D20E11D5DC18000FD8BB1 /* WildLifeApp */ = {
 			isa = PBXGroup;
 			children = (
-				291D20F91D5DC62900FD8BB1 /* Loggin */,
+				29FE12ED1D7322E50022CDCB /* ViewController */,
+				291D20F91D5DC62900FD8BB1 /* ViewControllerCell */,
 				29641F531D615A7800B941F4 /* HomeView */,
 				291D20F81D5DC1C400FD8BB1 /* Other */,
 			);
@@ -110,25 +113,33 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
-		291D20F91D5DC62900FD8BB1 /* Loggin */ = {
+		291D20F91D5DC62900FD8BB1 /* ViewControllerCell */ = {
 			isa = PBXGroup;
 			children = (
 				291D20F41D5DC19E00FD8BB1 /* IntroCollectionViewCell.swift */,
 				29ECAC8E1D6981AA00B87333 /* InformationTableViewCell.swift */,
-				291D20F61D5DC1AC00FD8BB1 /* IntroViewController.swift */,
-				291D20FA1D5DCA9D00FD8BB1 /* LoginViewController.swift */,
-				29641F981D63EC1E00B941F4 /* InformationViewController.swift */,
-				2984DDC51D6EF6B9005EF574 /* EditViewController.swift */,
 			);
-			name = Loggin;
+			name = ViewControllerCell;
 			sourceTree = "<group>";
 		};
 		29641F531D615A7800B941F4 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				29641F541D615AAE00B941F4 /* HomeViewController.swift */,
 			);
 			name = HomeView;
+			sourceTree = "<group>";
+		};
+		29FE12ED1D7322E50022CDCB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				291D20F61D5DC1AC00FD8BB1 /* IntroViewController.swift */,
+				291D20FA1D5DCA9D00FD8BB1 /* LoginViewController.swift */,
+				29641F981D63EC1E00B941F4 /* InformationViewController.swift */,
+				2984DDC51D6EF6B9005EF574 /* EditViewController.swift */,
+				29641F541D615AAE00B941F4 /* HomeViewController.swift */,
+				29FE12EE1D73238D0022CDCB /* PopUpViewController.swift */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		5A4E45D1FB6E1BFA7CB8067B /* Frameworks */ = {
@@ -278,6 +289,7 @@
 				2984DDC61D6EF6B9005EF574 /* EditViewController.swift in Sources */,
 				29ECAC8F1D6981AA00B87333 /* InformationTableViewCell.swift in Sources */,
 				29641F551D615AAE00B941F4 /* HomeViewController.swift in Sources */,
+				29FE12EF1D73238E0022CDCB /* PopUpViewController.swift in Sources */,
 				291D20FB1D5DCA9D00FD8BB1 /* LoginViewController.swift in Sources */,
 				29641F9B1D644D0900B941F4 /* File.swift in Sources */,
 				291D20F71D5DC1AC00FD8BB1 /* IntroViewController.swift in Sources */,

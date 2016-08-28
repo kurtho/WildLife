@@ -55,7 +55,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func nameTextField(sender: AnyObject) {
         self.uploadData(["name" : nameTextField.text!])
         textFieldDidEndEditing(nameTextField)
-        
+
     }
     @IBAction func idTextField(sender: AnyObject) {
         self.uploadData(["userId" : idTextField.text!])
@@ -202,7 +202,14 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     }
     
 
-
+//  鎖定旋轉
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.Portrait
+    }
     
 
 }
