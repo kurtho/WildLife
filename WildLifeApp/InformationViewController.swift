@@ -151,6 +151,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 
     func loadImageUrl() {
         let uid = CurrentUser.shareInstance.infos?.id
+        print("~~~ref\(FIRDatabase.database().reference().child("users").child(uid!))")
+
         let ref = FIRDatabase.database().reference().child("users").child(uid!)
         ref.observeEventType(.Value, withBlock: {
             response in
