@@ -201,6 +201,16 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 
     }
     
+    func showPopUp() {
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("sbPopUpID") as!
+        PopUpViewController
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMoveToParentViewController(self)
+    }
+    
+    
 
 //  鎖定旋轉
     override func shouldAutorotate() -> Bool {
@@ -215,7 +225,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 }
 
 
-// MARK: - extension
+// MARK: - extension table view
 extension InformationViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -263,7 +273,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             )
             return
         case 1:
-            
+            showPopUp()
             return
         case 2:
             

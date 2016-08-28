@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TYb-Nn-E5o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -320,7 +320,7 @@
         <!--Pop Up View Controller-->
         <scene sceneID="MlE-KA-oXY">
             <objects>
-                <viewController id="TYb-Nn-E5o" customClass="PopUpViewController" customModule="WildLifeApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sbPopUpID" id="TYb-Nn-E5o" customClass="PopUpViewController" customModule="WildLifeApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E5K-4F-TSJ"/>
                         <viewControllerLayoutGuide type="bottom" id="ZDE-La-Khd"/>
@@ -357,12 +357,23 @@
                                     <constraint firstItem="P4d-q4-Bz3" firstAttribute="height" secondItem="0z4-XS-z0U" secondAttribute="height" id="sTd-vc-yRS"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vY0-gv-20y">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="420"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="inviButton:" destination="TYb-Nn-E5o" eventType="touchUpInside" id="0xr-J3-sQZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="P4d-q4-Bz3" firstAttribute="top" secondItem="vY0-gv-20y" secondAttribute="bottom" id="ITd-cy-zzr"/>
+                            <constraint firstItem="vY0-gv-20y" firstAttribute="top" secondItem="o0A-r3-d5C" secondAttribute="topMargin" id="Kpo-Qg-ji3"/>
                             <constraint firstAttribute="trailing" secondItem="0z4-XS-z0U" secondAttribute="trailing" id="ZVV-KM-XIp"/>
                             <constraint firstItem="0z4-XS-z0U" firstAttribute="leading" secondItem="o0A-r3-d5C" secondAttribute="leading" id="bj4-ew-N35"/>
+                            <constraint firstItem="vY0-gv-20y" firstAttribute="leading" secondItem="o0A-r3-d5C" secondAttribute="leadingMargin" constant="-20" id="dU2-1g-FKS"/>
                             <constraint firstItem="ZDE-La-Khd" firstAttribute="top" secondItem="0z4-XS-z0U" secondAttribute="bottom" id="edn-9a-Rih"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vY0-gv-20y" secondAttribute="trailing" constant="-20" id="qut-Cm-NHc"/>
                         </constraints>
                     </view>
                     <connections>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PopUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PopUpViewController: UIViewController {
     let pickData = [
         ["臺北","新北","桃園","新竹","苗栗","臺中","彰化","南投","雲林","嘉義","臺南","高雄","屏東","台東","花蓮","宜蘭","基隆","澎湖","金門","馬祖"],
         ["市","縣"]
@@ -17,9 +17,31 @@ class PopUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var myLocation: String?
     
     
-    
     @IBOutlet weak var myPickView: UIPickerView!
     @IBOutlet weak var myLabel: UILabel!
+    
+    @IBAction func inviButton(sender: AnyObject) {
+        removeAnimate()
+    }
+    
+    
+
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+        showAnimation()
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+
+    }
+    
+    
+    
     
     enum pickComponents: Int {
         case location = 0
@@ -32,19 +54,6 @@ class PopUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         case date = 3
     }
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
-    
-
     func updateLabel() {
         let firstComponent = pickComponents.location.rawValue
         let secondComponent = pickComponents.county.rawValue
@@ -55,8 +64,35 @@ class PopUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
     }
     
+    func showAnimation() {
+        self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
+        self.view.alpha = 0.0
+        UIView.animateWithDuration(0.25, animations: {
+            self.view.alpha = 1.0
+            self.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
+        })
+    }
     
     
+    func removeAnimate()
+    {
+        UIView.animateWithDuration(0.25, animations: {
+            self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
+            self.view.alpha = 0.0;
+            }, completion:{(finished : Bool)  in
+                if (finished)
+                {
+                    self.view.removeFromSuperview()
+                }
+        });
+    }
+    
+
+
+}
+
+
+extension PopUpViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return pickData.count
     }
@@ -73,5 +109,4 @@ class PopUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         return updateLabel()
     }
     
-
 }
