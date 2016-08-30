@@ -61,7 +61,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         self.uploadData(["userId" : idTextField.text!])
         textFieldDidEndEditing(idTextField)
     }
-    var test123 = ""
+    
 
 
 
@@ -130,7 +130,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        亂數產生個string
         let storageRef = FIRStorage.storage().reference().child("profileImage").child("\(imageName).jpg")
 //        let storageRef = FIRStorage.storage().reference().child("profileImage").child("kurt.jpg")
-        let uid =  CurrentUser.shareInstance.infos?.id
+        let uid =  CurrentUser.shareInstance.uid
         print("user~~~\(uid)")
         if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
@@ -150,7 +150,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 
 
     func loadImageUrl() {
-        let uid = CurrentUser.shareInstance.infos?.id
+        let uid = CurrentUser.shareInstance.uid
         print("~~~ref\(FIRDatabase.database().reference().child("users").child(uid!))")
 
         let ref = FIRDatabase.database().reference().child("users").child(uid!)

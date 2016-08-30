@@ -302,16 +302,27 @@
                                     <action selector="alertButton:" destination="oa7-Al-IJR" eventType="touchUpInside" id="Re1-UC-mwP"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="II8-Br-MLb">
+                                <rect key="frame" x="42" y="151" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.25490196079999999" green="0.36470588240000001" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="M3T-Vg-zYp" firstAttribute="leading" secondItem="86M-54-7MV" secondAttribute="leadingMargin" constant="22" id="7gm-5t-c6p"/>
+                            <constraint firstItem="II8-Br-MLb" firstAttribute="leading" secondItem="86M-54-7MV" secondAttribute="leadingMargin" constant="22" id="Ccr-ZY-roW"/>
                             <constraint firstItem="3Au-VN-sdi" firstAttribute="top" secondItem="M3T-Vg-zYp" secondAttribute="bottom" constant="25" id="ZMN-45-KhS"/>
+                            <constraint firstItem="II8-Br-MLb" firstAttribute="top" secondItem="3Au-VN-sdi" secondAttribute="bottom" constant="26" id="bOj-Y6-DJp"/>
                             <constraint firstItem="M3T-Vg-zYp" firstAttribute="top" secondItem="PiY-Db-1WN" secondAttribute="bottom" constant="20" id="o9I-Kv-IOP"/>
                             <constraint firstItem="3Au-VN-sdi" firstAttribute="leading" secondItem="86M-54-7MV" secondAttribute="leadingMargin" constant="22" id="rYe-yo-egK"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="PHO-rV-C6Y"/>
+                    <connections>
+                        <outlet property="testLabel" destination="II8-Br-MLb" id="UpT-tk-TpI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBB-OV-snJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

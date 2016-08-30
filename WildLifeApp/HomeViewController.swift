@@ -13,6 +13,7 @@ import FBSDKLoginKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var testLabel: UILabel!
     
     
     @IBAction func logOut(sender: AnyObject) {
@@ -32,7 +33,12 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        downloadUrl()
+        saveUserID()
+        readUserID()
+        testLabel.text = CurrentUser.shareInstance.uid
+        
+        
+        print("current user ~~~\(CurrentUser.shareInstance.uid)")
         print("00000~~HomeVC")
         // Do any additional setup after loading the view.
     }
@@ -42,10 +48,23 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func readUserID() {
+        let id = NSUserDefaults.standardUserDefaults()
+        let val = id.stringForKey("kurt")
 
-    
-    
-    
+        CurrentUser.shareInstance.uid = val
+        print("user id = \(val) ~~~~\(CurrentUser.shareInstance.uid)")
+        
+    }
 
+    func saveUserID() {
+        let id = NSUserDefaults.standardUserDefaults()
+        if LoginViewController.userid != nil {
+        id.setObject(LoginViewController.userid, forKey: "kurt")
+        id.synchronize()
+        }
+        print("logview controller. user id \(LoginViewController.userid)")
+        
+    }
 
 }

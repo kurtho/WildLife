@@ -14,7 +14,7 @@ import Firebase
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
     var loginButton: FBSDKLoginButton = FBSDKLoginButton()
     let userInfos = Infos.init(name: "", photo: "", sport: [""], content: "", id: "", place: "", gender: "")
-
+    static var userid: String?
     
     
     @IBOutlet weak var signLabel: UILabel!
@@ -69,11 +69,17 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             if user != nil {
                 self.userInfos.id = (user?.uid)!
+                CurrentUser.shareInstance.uid = (user?.uid)!
+//               從這邊可以儲存uid到user default
+                
+                
+                
                 self.loginButton.readPermissions = ["email"]
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(self.userInfos.id)
                 let value = ["email": (FIRAuth.auth()?.currentUser?.email)!]
                 print("value~~~~\(value)")
+                print("login view current user id~~~ \(CurrentUser.shareInstance.uid)")
                 userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
                     if err != nil {
                         print(err)
@@ -121,9 +127,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         }
         print("User log in*****")
     }
-    
-    
-
     
     
     
@@ -181,6 +184,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
             }
         })
     }
+    
+    
+    // user default
+
     
 
     
