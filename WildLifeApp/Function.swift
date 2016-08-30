@@ -52,7 +52,7 @@ extension UIViewController {
     
     func uploadData(values: [NSObject : AnyObject] ) {
         let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
-        let uid =  CurrentUser.shareInstance.infos?.id
+        let uid =  CurrentUser.shareInstance.uid
         let userRef = ref.child("users").child(uid!)
         userRef.updateChildValues(values, withCompletionBlock: {(err, ref) in
             if err != nil {
