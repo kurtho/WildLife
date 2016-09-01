@@ -33,7 +33,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        saveUserID()
+        
         readUserID()
         testLabel.text = CurrentUser.shareInstance.uid
         
@@ -50,21 +50,12 @@ class HomeViewController: UIViewController {
     
     func readUserID() {
         let id = NSUserDefaults.standardUserDefaults()
-        let val = id.stringForKey("kurt")
+        let val = id.stringForKey("uid")
 
         CurrentUser.shareInstance.uid = val
         print("user id = \(val) ~~~~\(CurrentUser.shareInstance.uid)")
         
     }
 
-    func saveUserID() {
-        let id = NSUserDefaults.standardUserDefaults()
-        if LoginViewController.userid != nil {
-        id.setObject(LoginViewController.userid, forKey: "kurt")
-        id.synchronize()
-        }
-        print("logview controller. user id \(LoginViewController.userid)")
-        
-    }
 
 }

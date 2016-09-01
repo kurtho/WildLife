@@ -87,7 +87,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                     }
                     print("Saved user successfully into Firebase db")
                 })
-                
+                self.saveUserID(self.userInfos.id)
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
                 let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
                 self.presentViewController(homeView, animated: true, completion: nil)
@@ -187,7 +187,15 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
     
     // user default
-
+    
+    func saveUserID(uid: String?) {
+        let id = NSUserDefaults.standardUserDefaults()
+        if uid != nil {
+            id.setObject(uid, forKey: "uid")
+            id.synchronize()
+        }
+        print("logview controller. user id \(uid)")
+    }
     
 
     
