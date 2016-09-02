@@ -14,13 +14,16 @@ class PopUpViewController: UIViewController {
         ["市","縣"]
     ]
     
-    var myLocation: String?
+    var myLocation: String = "臺北市"
     
     
     @IBOutlet weak var myPickView: UIPickerView!
     @IBOutlet weak var myLabel: UILabel!
     
     @IBAction func inviButton(sender: AnyObject) {
+        CurrentUser.shareInstance.userInfo[1] = myLocation
+        uploadData(["place" : myLocation])
+        print("share instance .user info [1]~~~~\(CurrentUser.shareInstance.userInfo[1])")
         removeAnimate()
     }
     
