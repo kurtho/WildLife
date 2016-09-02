@@ -46,10 +46,7 @@ extension UIViewController {
         self.presentViewController(alertButton, animated: true, completion: nil)
     }
 
-    
-    
 
-    
     func uploadData(values: [NSObject : AnyObject] ) {
         let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
         let uid =  CurrentUser.shareInstance.uid
@@ -63,7 +60,15 @@ extension UIViewController {
     }
     
     
+    func hideNavigationBar() {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
 
+    }
+    
+    func unhideNavigationBar() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+
+    }
     
     
 }

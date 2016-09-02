@@ -8,19 +8,18 @@
 
 import UIKit
 
-class EditViewController: UIViewController {
+class EditViewController: UIViewController, UITextViewDelegate {
 
     var myArray = []
     
     @IBOutlet weak var myLabel: UILabel!
-    @IBOutlet weak var myTextField: UITextField!
     @IBOutlet weak var myTextView: UITextView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("myArray~~\(myArray)")
-        
+        hideKeyboardWhenTappedAround()
         myTextView.text = myArray[4] as! String
     }
 
@@ -29,7 +28,12 @@ class EditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textViewDidBeginEditing(textView: UITextView) {
+        hideNavigationBar()
+    }
 
-
+    func textViewDidEndEditing(textView: UITextView) {
+        unhideNavigationBar()
+    }
 
 }
