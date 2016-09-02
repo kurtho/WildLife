@@ -34,6 +34,8 @@ class EditViewController: UIViewController, UITextViewDelegate {
 
     func textViewDidEndEditing(textView: UITextView) {
         unhideNavigationBar()
+        
+//        uploadData(["introduction" : AnyObject])
     }
 
 }

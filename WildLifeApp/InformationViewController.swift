@@ -20,7 +20,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     
     var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
-    var test = ["Female", "Taipei", "30", "Canyoning, Climbing", "樂天、好相處、喜歡有趣的事情、對不熟的事物抱持試過再說, 對創業創新懷有熱情,蠻喜歡寫程式的,是條無止盡的路"]
     
 
     
@@ -76,7 +75,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         
         
         print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
-        print("response value~123~~~ \(CurrentUser.shareInstance.infos?.gender)")
+//        print("response value~123~~~ \(CurrentUser.shareInstance.infos?.gender)")
         
         tableView.estimatedRowHeight = 55
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -145,7 +144,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 print(metadata)
             })
         }
-//        之後把他做成簡易的function
     }
 
 
@@ -233,7 +231,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         return 1
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return contents.count
+        return 5
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -293,7 +291,6 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
                 UIAlertAction(title: "41~45", style: .Default, handler: { (action: UIAlertAction) in genderAlert("41~45")}),
                 UIAlertAction(title: "46~50", style: .Default, handler: { (action: UIAlertAction) in genderAlert("46~50")}),
                 UIAlertAction(title: "51~55", style: .Default, handler: { (action: UIAlertAction) in genderAlert("51~55")}),
-                UIAlertAction(title: "test", style: .Default, handler: nil)
                 
                 ])
             return

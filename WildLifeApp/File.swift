@@ -11,20 +11,8 @@ import UIKit
 
 class Infos: NSObject {
     var id: String
-    var name: String
-    var photo: String
-    var place: String
-    var gender: String
-    var sport: [String]
-    var content: String
-    init(name: String, photo: String, sport: [String], content: String, id: String, place: String, gender: String){
+    init( id: String){
         self.id = id
-        self.name = name
-        self.photo = photo
-        self.place = place
-        self.gender = gender
-        self.sport = sport
-        self.content = content
     }
 }
 
@@ -33,7 +21,13 @@ class CurrentUser {
     var infos: Infos?
     var uid: String?
     var pic = UIImage()
-    var userInfo =  ["Male / Female?","Where do you live?","Your age?","What Sports do you like","Introduce yourself"]
+    var userInfo =  [
+        "Male / Female?",
+        "Where do you live?",
+        "Your age?",
+        ["What Sports do you like"],
+        "Introduce yourself"
+    ]
 }
 
 class User: NSObject {
