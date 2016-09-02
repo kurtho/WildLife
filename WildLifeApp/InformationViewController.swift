@@ -293,18 +293,18 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
                 UIAlertAction(title: "41~45", style: .Default, handler: { (action: UIAlertAction) in genderAlert("41~45")}),
                 UIAlertAction(title: "46~50", style: .Default, handler: { (action: UIAlertAction) in genderAlert("46~50")}),
                 UIAlertAction(title: "51~55", style: .Default, handler: { (action: UIAlertAction) in genderAlert("51~55")}),
+                UIAlertAction(title: "test", style: .Default, handler: nil)
                 
                 ])
             return
         case 3:
+            performSegueWithIdentifier("sportCell", sender: nil)
+            
+            
             
             return
         case 4:
-            
             performSegueWithIdentifier("myCell", sender: userInfor[4])
-            
-            
-            
             
             return
         default:
