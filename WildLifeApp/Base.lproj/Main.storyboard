@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -634,7 +634,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AdP-wW-nbw">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" id="AdP-wW-nbw">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AdP-wW-nbw" id="7h8-7k-JSR">
@@ -666,7 +666,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="suJ-AA-sZL">
-                                <rect key="frame" x="42" y="127" width="523" height="180"/>
+                                <rect key="frame" x="35" y="127" width="530" height="180"/>
                                 <color key="backgroundColor" red="0.81123798079999998" green="0.81123798079999998" blue="0.81123798079999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="3FE-lJ-BCv"/>
@@ -690,10 +690,16 @@
                             <constraint firstItem="suJ-AA-sZL" firstAttribute="centerX" secondItem="RWK-J2-fj7" secondAttribute="centerX" id="8nm-3M-ruT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="suJ-AA-sZL" secondAttribute="trailing" constant="15" id="Byp-RU-tEU"/>
                             <constraint firstItem="suJ-AA-sZL" firstAttribute="top" secondItem="rvt-aq-Kev" secondAttribute="bottom" constant="20" id="MaH-VB-6Fk"/>
+                            <constraint firstItem="suJ-AA-sZL" firstAttribute="leading" secondItem="RWK-J2-fj7" secondAttribute="leadingMargin" constant="15" id="kSd-Ql-TJr"/>
                             <constraint firstItem="rvt-aq-Kev" firstAttribute="centerX" secondItem="RWK-J2-fj7" secondAttribute="centerX" id="p6w-Kt-hgL"/>
                             <constraint firstItem="rvt-aq-Kev" firstAttribute="top" secondItem="6n7-29-IHd" secondAttribute="bottom" constant="19" id="vMk-wM-Y0h"/>
                             <constraint firstItem="suJ-AA-sZL" firstAttribute="leading" secondItem="RWK-J2-fj7" secondAttribute="leadingMargin" constant="22" id="wsy-S6-vhY"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="wsy-S6-vhY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="myLabel" destination="rvt-aq-Kev" id="GHi-Mt-7Jn"/>

@@ -313,7 +313,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "myCell" {
             let vc = segue.destinationViewController as! EditViewController
-            vc.myArray = userInfor
+            vc.myArray = userInfor[4]
         }
     }
 

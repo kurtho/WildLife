@@ -10,7 +10,7 @@ import UIKit
 
 class EditViewController: UIViewController, UITextViewDelegate {
 
-    var myArray = []
+    var myArray = ""
     
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var myTextView: UITextView!
@@ -20,7 +20,7 @@ class EditViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         print("myArray~~\(myArray)")
         hideKeyboardWhenTappedAround()
-        myTextView.text = myArray[4] as! String
+        myTextView.text = myArray
     }
 
     override func didReceiveMemoryWarning() {
