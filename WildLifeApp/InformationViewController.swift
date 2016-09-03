@@ -71,7 +71,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.loadImageUrl()
+        self.loadBasic()
         
         
         print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
@@ -144,7 +144,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     }
 
 
-    func loadImageUrl() {
+    func loadBasic() {
         let uid = CurrentUser.shareInstance.uid
         print("~~~ref\(FIRDatabase.database().reference().child("users").child(uid!))")
 
