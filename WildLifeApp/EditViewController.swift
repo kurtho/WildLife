@@ -10,17 +10,24 @@ import UIKit
 
 class EditViewController: UIViewController, UITextViewDelegate {
 
-    var myArray = ""
+    var myValue = ""
     
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var myTextView: UITextView!
     
+    @IBAction func sendValue(sender: AnyObject) {
+//        self.navigationController?.popToViewController(InformationViewController, animated: true)
+        
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("myArray~~\(myArray)")
+        print("myArray~~\(myValue)")
         hideKeyboardWhenTappedAround()
-        myTextView.text = myArray
+        myTextView.text = myValue
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,8 +41,11 @@ class EditViewController: UIViewController, UITextViewDelegate {
 
     func textViewDidEndEditing(textView: UITextView) {
         unhideNavigationBar()
-        
-//        uploadData(["introduction" : AnyObject])
+        myValue = myTextView.text
+        CurrentUser.shareInstance.userInfo[4] = myValue
+        print("share instance userinfo [4]~~\(CurrentUser.shareInstance.userInfo[4])")
+
+        uploadData(["introduction" : myValue])
     }
 
 }

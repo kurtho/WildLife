@@ -684,12 +684,21 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fM2-4g-Sle">
+                                <rect key="frame" x="528" y="326" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="sendValue:" destination="28U-Vo-det" eventType="touchUpInside" id="N2d-h6-sM9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fM2-4g-Sle" firstAttribute="top" secondItem="suJ-AA-sZL" secondAttribute="bottom" constant="19" id="5sf-EK-XSF"/>
                             <constraint firstItem="suJ-AA-sZL" firstAttribute="centerX" secondItem="RWK-J2-fj7" secondAttribute="centerX" id="8nm-3M-ruT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="suJ-AA-sZL" secondAttribute="trailing" constant="15" id="Byp-RU-tEU"/>
                             <constraint firstItem="suJ-AA-sZL" firstAttribute="top" secondItem="rvt-aq-Kev" secondAttribute="bottom" constant="20" id="MaH-VB-6Fk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fM2-4g-Sle" secondAttribute="trailing" constant="15" id="bHY-Xj-yUc"/>
                             <constraint firstItem="suJ-AA-sZL" firstAttribute="leading" secondItem="RWK-J2-fj7" secondAttribute="leadingMargin" constant="15" id="kSd-Ql-TJr"/>
                             <constraint firstItem="rvt-aq-Kev" firstAttribute="centerX" secondItem="RWK-J2-fj7" secondAttribute="centerX" id="p6w-Kt-hgL"/>
                             <constraint firstItem="rvt-aq-Kev" firstAttribute="top" secondItem="6n7-29-IHd" secondAttribute="bottom" constant="19" id="vMk-wM-Y0h"/>
