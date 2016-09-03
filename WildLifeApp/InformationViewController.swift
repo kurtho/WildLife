@@ -93,9 +93,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         }
 
     }
-    override func viewWillAppear(animated: Bool) {
-
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
