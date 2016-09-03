@@ -45,7 +45,7 @@ class EditViewController: UIViewController, UITextViewDelegate {
         CurrentUser.shareInstance.userInfo[4] = myValue
         print("share instance userinfo [4]~~\(CurrentUser.shareInstance.userInfo[4])")
 
-        uploadData(["introduction" : myValue])
+        uploadData(["intro" : myValue])
     }
 
 }
