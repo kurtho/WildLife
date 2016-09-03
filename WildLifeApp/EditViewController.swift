@@ -16,9 +16,8 @@ class EditViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var myTextView: UITextView!
     
     @IBAction func sendValue(sender: AnyObject) {
-//        self.navigationController?.popToViewController(InformationViewController, animated: true)
-        
         self.navigationController?.popViewControllerAnimated(true)
+        unhideNavigationBar()
     }
     
     
@@ -28,7 +27,17 @@ class EditViewController: UIViewController, UITextViewDelegate {
         print("myArray~~\(myValue)")
         hideKeyboardWhenTappedAround()
         myTextView.text = myValue
+        
+        
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.hidesBarsWhenKeyboardAppears = true
+
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -36,8 +45,9 @@ class EditViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
-        hideNavigationBar()
+//        hideNavigationBar()
     }
+    
 
     func textViewDidEndEditing(textView: UITextView) {
         unhideNavigationBar()
