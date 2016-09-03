@@ -28,6 +28,12 @@ class CurrentUser {
         ["What Sports do you like"],
         "Introduce yourself"
     ]
+    var defaultSports = [
+        "Diving", "Surfing", "Swimming", "Snorkelling", "Climbing", "Biking", "Camping",
+        "Wind surfin", "Skateboard", "Fishing", "River Tracing", "Mountain climbing",
+        "Kayaking", "Paragliding",
+        "Other"
+    ]
 }
 
 class User: NSObject {
