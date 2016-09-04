@@ -14,7 +14,7 @@ import SDWebImage
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     var imagePicker = UIImagePickerController()
     var user = User()
-    var userInfor = ["","","","",""]
+//    var userInfor = ["","","","",""]
     let queConcurrent = dispatch_queue_create("Queue", DISPATCH_QUEUE_SERIAL)
 
     
@@ -87,11 +87,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //無聊加的邊框判定
         myImage.layer.borderWidth = 2
         
-        if CurrentUser.shareInstance.infos.gender == "Female" {
-            myImage.layer.borderColor = UIColor.redColor().CGColor
-        } else {
-            myImage.layer.borderColor = UIColor.blueColor().CGColor
-        }
+
 
     }
 
@@ -156,31 +152,37 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             self.user.name = response.value?.objectForKey("name") as? String
             self.user.myID = response.value?.objectForKey("userId") as? String
             
-            print("123~\(self.userInfor.count)")
+            print("123~\(CurrentUser.shareInstance.infos)")
+            
             if response.value?.objectForKey("gender") as? String == nil {
-                self.userInfor[0] = ("Male / Female ??")
+                CurrentUser.shareInstance.infos.gender = "Male / Female ??"
             }else {
-                self.userInfor[0] = (response.value?.objectForKey("gender") as! String)
+                CurrentUser.shareInstance.infos.gender = (response.value?.objectForKey("gender") as! String)
             }
             if response.value?.objectForKey("place") as? String == nil {
-                self.userInfor[1] = ("Which County do you live ??")
+                CurrentUser.shareInstance.infos.place = "Where do you live ??"
             }else {
-                self.userInfor[1] = (response.value?.objectForKey("place") as! String)
+                CurrentUser.shareInstance.infos.place = (response.value?.objectForKey("place") as! String)
             }
             if response.value?.objectForKey("age") as? String == nil {
-                self.userInfor[2] = ("21~25 ??")
+                CurrentUser.shareInstance.infos.age = "Your age ??"
             }else {
-                self.userInfor[2] = (response.value?.objectForKey("age") as! String)
+                CurrentUser.shareInstance.infos.age = (response.value?.objectForKey("age") as! String)
             }
             if response.value?.objectForKey("sport") as? String == nil {
-                self.userInfor[3] = ("Swimming")
+                CurrentUser.shareInstance.infos.sport[0] = "What port do you like ?? "
             }else {
-                self.userInfor[3] = (response.value?.objectForKey("sport") as! String)
+                CurrentUser.shareInstance.infos.sport[0] = (response.value?.objectForKey("sport") as! String)
             }
             if response.value?.objectForKey("intro") as? String == nil {
-                self.userInfor[4] = ("Introduce yourself")
+                CurrentUser.shareInstance.infos.intro = "Introduce yoursefl ~"
             }else {
-                self.userInfor[4] = (response.value?.objectForKey("intro") as! String)
+                CurrentUser.shareInstance.infos.intro = (response.value?.objectForKey("intro") as! String)
+            }
+            if CurrentUser.shareInstance.infos.gender == "Female" {
+                self.myImage.layer.borderColor = UIColor.redColor().CGColor
+            } else {
+                self.myImage.layer.borderColor = UIColor.blueColor().CGColor
             }
             self.nameTextField.text = self.user.name
             self.idTextField.text = self.user.myID
@@ -192,6 +194,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }else {
                 self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
 
+                
                 print("44444~~InfoVC\(CurrentUser.shareInstance.infos.gender)")
                 self.tableView.reloadData()
             }
@@ -235,10 +238,24 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
         cell.myLabel.text = contents[indexPath.row]
-        cell.userInfo.text = userInfor[indexPath.row]
+//        cell.userInfo.text = userInfor[indexPath.row]
+        switch indexPath.row {
+        case 0:
+            cell.userInfo.text = CurrentUser.shareInstance.infos.gender
+        case 1:
+            cell.userInfo.text = CurrentUser.shareInstance.infos.place
+        case 2:
+            cell.userInfo.text = CurrentUser.shareInstance.infos.age
+        case 3:
+            cell.userInfo.text = CurrentUser.shareInstance.infos.sport[0]
+        case 4:
+            cell.userInfo.text = CurrentUser.shareInstance.infos.intro
+        default:
+            break
+        }
+        
         
         return cell
-        
     }
     
 
@@ -299,7 +316,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             
             return
         case 4:
-            performSegueWithIdentifier("myCell", sender: userInfor[4])
+            performSegueWithIdentifier("myCell", sender: CurrentUser.shareInstance.infos.intro)
             
             return
         default:
@@ -311,7 +328,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "myCell" {
             let vc = segue.destinationViewController as! EditViewController
-            vc.myValue = userInfor[4]
+            vc.myValue = CurrentUser.shareInstance.infos.intro
         }
     }
 

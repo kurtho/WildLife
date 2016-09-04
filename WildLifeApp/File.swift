@@ -33,11 +33,9 @@ class User: NSObject {
     
 }
 
-
-
 class CurrentUser {
     static let shareInstance = CurrentUser()
-    var infos = Infos(id: "", gender: "Male / Female ??", place: "Wheredo you live ??", age: "Your age ??", sport: ["What sports do you like ??"], intro: "Introduce your self !")
+    var infos = Infos(id: "", gender: "", place: "", age: "", sport: [""], intro: "")
 
 
     var defaultSports = [

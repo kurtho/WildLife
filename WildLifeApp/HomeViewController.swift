@@ -22,6 +22,11 @@ class HomeViewController: UIViewController {
         let mainStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController : UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("LogginView")
         self.presentViewController(viewController, animated: true, completion: nil)
+//        CurrentUser.shareInstance.infos.sport[0] = ""
+        CurrentUser.shareInstance.infos.intro = ""
+        CurrentUser.shareInstance.infos.place = ""
+        CurrentUser.shareInstance.infos.gender = ""
+        CurrentUser.shareInstance.infos.age = ""
     }
     
     
