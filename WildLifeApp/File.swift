@@ -10,14 +10,13 @@ import Foundation
 import UIKit
 
 class Infos: NSObject {
-    var id: String
+
     var gender: String
     var place: String
     var age: String
     var sport: [String]
     var intro: String
-    init( id: String, gender: String, place: String, age: String, sport: [String], intro: String){
-        self.id = id
+    init(gender: String, place: String, age: String, sport: [String], intro: String){
         self.gender = gender
         self.place = place
         self.age = age
