@@ -14,7 +14,7 @@ import Firebase
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
     var loginButton: FBSDKLoginButton = FBSDKLoginButton()
     let userInfos = Infos.init(id: "", gender: "Male / Female?", place: "Where do you live?", age: "Your age?", sport: ["What Sports do you like??"], intro: "Introduce yourself")
-    static var userid: String?
+    
     
     
     @IBOutlet weak var signLabel: UILabel!

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		290B4C951D7AAFF0006C5766 /* EditSportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B4C941D7AAFF0006C5766 /* EditSportTableViewController.swift */; };
 		290B4C971D7B0710006C5766 /* EditSportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B4C961D7B0710006C5766 /* EditSportTableViewCell.swift */; };
+		290B4C991D7B2971006C5766 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 290B4C981D7B2971006C5766 /* GoogleService-Info.plist */; };
 		291D20E31D5DC18000FD8BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291D20E21D5DC18000FD8BB1 /* AppDelegate.swift */; };
 		291D20E81D5DC18000FD8BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 291D20E61D5DC18000FD8BB1 /* Main.storyboard */; };
 		291D20EA1D5DC18000FD8BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 291D20E91D5DC18000FD8BB1 /* Assets.xcassets */; };
@@ -16,7 +17,6 @@
 		291D20F51D5DC19E00FD8BB1 /* IntroCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291D20F41D5DC19E00FD8BB1 /* IntroCollectionViewCell.swift */; };
 		291D20F71D5DC1AC00FD8BB1 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291D20F61D5DC1AC00FD8BB1 /* IntroViewController.swift */; };
 		291D20FB1D5DCA9D00FD8BB1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291D20FA1D5DCA9D00FD8BB1 /* LoginViewController.swift */; };
-		291D20FD1D5DD14F00FD8BB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 291D20FC1D5DD14F00FD8BB1 /* GoogleService-Info.plist */; };
 		291D21071D5DD79300FD8BB1 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291D21041D5DD79300FD8BB1 /* FBSDKCoreKit.framework */; };
 		291D21081D5DD79300FD8BB1 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291D21051D5DD79300FD8BB1 /* FBSDKLoginKit.framework */; };
 		291D21091D5DD79300FD8BB1 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291D21061D5DD79300FD8BB1 /* FBSDKShareKit.framework */; };
@@ -35,6 +35,7 @@
 		287FF0F323C97CCE28DB253B /* Pods-WildLifeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WildLifeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WildLifeApp/Pods-WildLifeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		290B4C941D7AAFF0006C5766 /* EditSportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSportTableViewController.swift; sourceTree = "<group>"; };
 		290B4C961D7B0710006C5766 /* EditSportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSportTableViewCell.swift; sourceTree = "<group>"; };
+		290B4C981D7B2971006C5766 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		291D20DF1D5DC18000FD8BB1 /* WildLifeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildLifeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		291D20E21D5DC18000FD8BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = WildLifeApp/AppDelegate.swift; sourceTree = "<group>"; };
 		291D20E71D5DC18000FD8BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -44,7 +45,6 @@
 		291D20F41D5DC19E00FD8BB1 /* IntroCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroCollectionViewCell.swift; path = ../IntroCollectionViewCell.swift; sourceTree = "<group>"; };
 		291D20F61D5DC1AC00FD8BB1 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntroViewController.swift; path = ../IntroViewController.swift; sourceTree = "<group>"; };
 		291D20FA1D5DCA9D00FD8BB1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		291D20FC1D5DD14F00FD8BB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/Google Plist/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		291D21041D5DD79300FD8BB1 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		291D21051D5DD79300FD8BB1 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		291D21061D5DD79300FD8BB1 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 			children = (
 				291D20E91D5DC18000FD8BB1 /* Assets.xcassets */,
 				291D20EE1D5DC18000FD8BB1 /* Info.plist */,
-				291D20FC1D5DD14F00FD8BB1 /* GoogleService-Info.plist */,
+				290B4C981D7B2971006C5766 /* GoogleService-Info.plist */,
 				291D20EB1D5DC18000FD8BB1 /* LaunchScreen.storyboard */,
 				29ECAC8A1D67BC9800B87333 /* Function.swift */,
 				29641F9A1D644D0900B941F4 /* File.swift */,
@@ -230,8 +230,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				291D20FD1D5DD14F00FD8BB1 /* GoogleService-Info.plist in Resources */,
 				291D20ED1D5DC18000FD8BB1 /* LaunchScreen.storyboard in Resources */,
+				290B4C991D7B2971006C5766 /* GoogleService-Info.plist in Resources */,
 				291D20EA1D5DC18000FD8BB1 /* Assets.xcassets in Resources */,
 				291D20E81D5DC18000FD8BB1 /* Main.storyboard in Resources */,
 			);

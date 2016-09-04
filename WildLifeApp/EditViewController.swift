@@ -19,6 +19,7 @@ class EditViewController: UIViewController, UITextViewDelegate {
         self.navigationController?.popViewControllerAnimated(true)
         unhideNavigationBar()
         uploadData(["intro" : myValue])
+    
 
     }
     
@@ -55,6 +56,7 @@ class EditViewController: UIViewController, UITextViewDelegate {
         unhideNavigationBar()
         myValue = myTextView.text
         CurrentUser.shareInstance.userInfo[4] = myValue
+        uploadData(["intro" : myValue])
         print("share instance userinfo [4]~~\(CurrentUser.shareInstance.userInfo[4])")
 
     }

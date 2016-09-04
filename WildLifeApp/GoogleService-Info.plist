@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>746063320351-f4elcbt2ua8uh6ddtp8bu1a04a6edvkl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.746063320351-f4elcbt2ua8uh6ddtp8bu1a04a6edvkl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBtTEDUO1I1RGBQSRx9I1jocXL2ScUT9io</string>
+	<key>GCM_SENDER_ID</key>
+	<string>746063320351</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>edu.self.WildLifeApp</string>
+	<key>PROJECT_ID</key>
+	<string>willlifeapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>willlifeapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:746063320351:ios:98330c84d0275c31</string>
+	<key>DATABASE_URL</key>
+	<string>https://willlifeapp.firebaseio.com</string>
+</dict>
+</plist>
