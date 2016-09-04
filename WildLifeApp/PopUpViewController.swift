@@ -21,9 +21,9 @@ class PopUpViewController: UIViewController {
     @IBOutlet weak var myLabel: UILabel!
     
     @IBAction func inviButton(sender: AnyObject) {
-        CurrentUser.shareInstance.userInfo[1] = myLocation
+        CurrentUser.shareInstance.infos.place = myLocation
         uploadData(["place" : myLocation])
-        print("share instance .user info [1]~~~~\(CurrentUser.shareInstance.userInfo[1])")
+        print("share instance .user info [1]~~~~\(CurrentUser.shareInstance.infos.place)")
         removeAnimate()
     }
     

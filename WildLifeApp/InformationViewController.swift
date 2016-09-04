@@ -75,7 +75,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         self.loadBasic()
         
         
-        print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.userInfo)")
+        print("current user .shareinstance . userinfo!!!!!!!\(CurrentUser.shareInstance.infos)")
 //        print("response value~123~~~ \(CurrentUser.shareInstance.infos?.gender)")
         
         tableView.estimatedRowHeight = 55
@@ -87,7 +87,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //無聊加的邊框判定
         myImage.layer.borderWidth = 2
         
-        if CurrentUser.shareInstance.userInfo[0] == "Female" {
+        if CurrentUser.shareInstance.infos.gender == "Female" {
             myImage.layer.borderColor = UIColor.redColor().CGColor
         } else {
             myImage.layer.borderColor = UIColor.blueColor().CGColor
@@ -127,7 +127,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        亂數產生個string
         let storageRef = FIRStorage.storage().reference().child("profileImage").child("\(imageName).jpg")
 //        let storageRef = FIRStorage.storage().reference().child("profileImage").child("kurt.jpg")
-        let uid =  CurrentUser.shareInstance.uid
+        let uid =  CurrentUser.shareInstance.infos.id
         print("user~~~\(uid)")
         if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
@@ -136,7 +136,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 }
                 if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
 //                    let values = ["profileImageURL": profileImageUrl]
-                    self.uploadDataWithUID(uid!, values: ["profileImageURL": profileImageUrl])
+                    self.uploadDataWithUID(uid, values: ["profileImageURL": profileImageUrl])
                     print("3333333~~")
                 }
                 print(metadata)
@@ -146,10 +146,10 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 
 
     func loadBasic() {
-        let uid = CurrentUser.shareInstance.uid
-        print("~~~ref\(FIRDatabase.database().reference().child("users").child(uid!))")
+        let uid = CurrentUser.shareInstance.infos.id
+        print("~~~ref\(FIRDatabase.database().reference().child("users").child(uid))")
 
-        let ref = FIRDatabase.database().reference().child("users").child(uid!)
+        let ref = FIRDatabase.database().reference().child("users").child(uid)
         ref.observeEventType(.Value, withBlock: {
             response in
             self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as?String
@@ -192,7 +192,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }else {
                 self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
 
-                print("44444~~InfoVC\(CurrentUser.shareInstance.userInfo[0])")
+                print("44444~~InfoVC\(CurrentUser.shareInstance.infos.gender)")
                 self.tableView.reloadData()
             }
         })
@@ -249,9 +249,9 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         case 0:
             userInfoAler("Gender", value: [
                 UIAlertAction(title: "Male", style: .Default, handler: { (action: UIAlertAction) in
-                    CurrentUser.shareInstance.userInfo[0] = "Male"
+                    CurrentUser.shareInstance.infos.gender = "Male"
 
-                    print("11111~~InfoVC\(CurrentUser.shareInstance.userInfo[0])")
+                    print("11111~~InfoVC\(CurrentUser.shareInstance.infos.gender)")
 //              下面是5555
                     self.uploadData(["gender": "Male"])
                     self.myImage.layer.borderColor = UIColor.blueColor().CGColor
@@ -259,10 +259,10 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
                     self.tableView.reloadData()
                 }),
                 UIAlertAction(title: "Female", style: .Default, handler: { (action:UIAlertAction) in
-                    CurrentUser.shareInstance.userInfo[0] = "Female"
+                    CurrentUser.shareInstance.infos.gender = "Female"
 
 //              下面是5555
-                    print("11111~~InfoVC\(CurrentUser.shareInstance.userInfo[0])")
+                    print("11111~~InfoVC\(CurrentUser.shareInstance.infos.gender)")
                     self.uploadData(["gender": "Female"])
                     self.myImage.layer.borderColor = UIColor.redColor().CGColor
                     self.tableView.reloadData()
@@ -276,7 +276,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         case 2:
             
             func genderAlert(age: String) {
-                CurrentUser.shareInstance.userInfo[2] = age
+                CurrentUser.shareInstance.infos.age = age
                 uploadData(["age" : age])
                 tableView.reloadData()
             }

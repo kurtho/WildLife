@@ -35,10 +35,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         readUserID()
-        testLabel.text = CurrentUser.shareInstance.uid
+        testLabel.text = CurrentUser.shareInstance.infos.id
         
         
-        print("current user ~~~\(CurrentUser.shareInstance.uid)")
+        print("current user ~~~\(CurrentUser.shareInstance.infos.id)")
         print("00000~~HomeVC")
         // Do any additional setup after loading the view.
     }
@@ -52,8 +52,8 @@ class HomeViewController: UIViewController {
         let id = NSUserDefaults.standardUserDefaults()
         let val = id.stringForKey("uid")
 
-        CurrentUser.shareInstance.uid = val
-        print("user id = \(val) ~~~~\(CurrentUser.shareInstance.uid)")
+        CurrentUser.shareInstance.infos.id = val!
+        print("user id = \(val) ~~~~\(CurrentUser.shareInstance.infos.id)")
         
     }
 

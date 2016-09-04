@@ -141,9 +141,9 @@
 				291D20FA1D5DCA9D00FD8BB1 /* LoginViewController.swift */,
 				29641F981D63EC1E00B941F4 /* InformationViewController.swift */,
 				29641F541D615AAE00B941F4 /* HomeViewController.swift */,
-				29FE12EE1D73238D0022CDCB /* PopUpViewController.swift */,
 				290B4C941D7AAFF0006C5766 /* EditSportTableViewController.swift */,
 				2984DDC51D6EF6B9005EF574 /* EditViewController.swift */,
+				29FE12EE1D73238D0022CDCB /* PopUpViewController.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";

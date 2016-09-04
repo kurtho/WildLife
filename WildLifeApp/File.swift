@@ -26,18 +26,20 @@ class Infos: NSObject {
     }
 }
 
+class User: NSObject {
+    var profileImageUrl: String?
+    var name: String?
+    var myID: String?
+    
+}
+
+
+
 class CurrentUser {
     static let shareInstance = CurrentUser()
     var infos = Infos(id: "", gender: "Male / Female ??", place: "Wheredo you live ??", age: "Your age ??", sport: ["What sports do you like ??"], intro: "Introduce your self !")
-    var uid: String?
-    var pic = UIImage()
-    var userInfo =  [
-        "Male / Female?",
-        "Where do you live?",
-        "Your age?",
-        ["What Sports do you like"],
-        "Introduce yourself"
-    ]
+
+
     var defaultSports = [
         "Diving", "Surfing", "Swimming", "Snorkelling", "Climbing", "Biking", "Camping",
         "Wind surfin", "Skateboard", "Fishing", "River Tracing", "Mountain climbing",
@@ -46,18 +48,5 @@ class CurrentUser {
     ]
 }
 
-class User: NSObject {
-    var profileImageUrl: String?
-    var name: String?
-    var myID: String?
-
-}
 
 
-class UserInfo {
-    var gender: String?
-    var place: String?
-    var age: String?
-    var sport: [String]?
-    var intorduction: String?
-}
