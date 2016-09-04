@@ -11,11 +11,11 @@ import UIKit
 
 class Infos: NSObject {
     var id: String
-    var gender = "Male / Female?"
-    var place = "Where do you live?"
-    var age = "Your age?"
-    var sport = ["What Sports do you like??"]
-    var intro = "Introduce yourself"
+    var gender: String
+    var place: String
+    var age: String
+    var sport: [String]
+    var intro: String
     init( id: String, gender: String, place: String, age: String, sport: [String], intro: String){
         self.id = id
         self.gender = gender
