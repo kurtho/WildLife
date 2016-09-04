@@ -70,8 +70,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        CurrentUser.shareInstance.infos?.gender = "boy"
-        print("@#$%^&*()_\(CurrentUser.shareInstance.infos)")
+        
+        print("@#$%^&*()_\(CurrentUser.shareInstance.infos.gender)")
         self.loadBasic()
         
         

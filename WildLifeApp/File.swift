@@ -10,13 +10,14 @@ import Foundation
 import UIKit
 
 class Infos: NSObject {
-
+    var id : String
     var gender: String
     var place: String
     var age: String
     var sport: [String]
     var intro: String
-    init(gender: String, place: String, age: String, sport: [String], intro: String){
+    init(id : String, gender: String, place: String, age: String, sport: [String], intro: String){
+        self.id = id
         self.gender = gender
         self.place = place
         self.age = age
@@ -27,7 +28,7 @@ class Infos: NSObject {
 
 class CurrentUser {
     static let shareInstance = CurrentUser()
-    var infos: Infos?
+    var infos = Infos(id: "", gender: "Male / Female ??", place: "Wheredo you live ??", age: "Your age ??", sport: ["What sports do you like ??"], intro: "Introduce your self !")
     var uid: String?
     var pic = UIImage()
     var userInfo =  [

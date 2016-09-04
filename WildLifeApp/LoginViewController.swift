@@ -13,7 +13,6 @@ import Firebase
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
     var loginButton: FBSDKLoginButton = FBSDKLoginButton()
-    let userInfos = Infos.init( gender: "Male / Female?", place: "Where do you live?", age: "Your age?", sport: ["What Sports do you like??"], intro: "Introduce yourself")
     
     
     
@@ -64,23 +63,22 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         super.viewDidLoad()
         
         
-        CurrentUser.shareInstance.infos = userInfos
         hideKeyboardWhenTappedAround()
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             if user != nil {
 //                self.userInfos.id = (user?.uid)!
-                CurrentUser.shareInstance.uid = (user?.uid)!
+                CurrentUser.shareInstance.infos.id = (user?.uid)!
 //               從這邊可以儲存uid到user default
                 
                 
                 
                 self.loginButton.readPermissions = ["email"]
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
-                let userReference = ref.child("users").child(CurrentUser.shareInstance.uid!
+                let userReference = ref.child("users").child(CurrentUser.shareInstance.infos.id
                 )
                 let value = ["email": (FIRAuth.auth()?.currentUser?.email)!]
                 print("value~~~~\(value)")
-                print("login view current user id~~~ \(CurrentUser.shareInstance.uid)")
+                print("login view current  id~~~ \(CurrentUser.shareInstance.infos.id)")
                 userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
                     if err != nil {
                         print(err)
@@ -88,7 +86,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                     }
                     print("Saved user successfully into Firebase db")
                 })
-                self.saveUserID(CurrentUser.shareInstance.uid)
+                self.saveUserID(CurrentUser.shareInstance.infos.id)
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
                 let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
                 self.presentViewController(homeView, animated: true, completion: nil)
@@ -154,7 +152,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 guard let uid = user?.uid else {
                     return
                 }
-                CurrentUser.shareInstance.uid = uid
+                CurrentUser.shareInstance.infos.id = uid
                 print("user create success")
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(uid)
@@ -180,7 +178,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
 //                password or email is incorrect
                 print("incorrect")
             } else {
-                CurrentUser.shareInstance.uid = (user?.uid)!
+                CurrentUser.shareInstance.infos.id = (user?.uid)!
                 print("user login success")
             }
         })
