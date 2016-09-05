@@ -47,23 +47,18 @@ class EditSportTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("sportCell", forIndexPath: indexPath) as! EditSportTableViewCell
         cell.sportLabel.text = Cuser.shareObj.defaultSports[indexPath.row]
         cell.selected = false
-
+        
         if Cuser.shareObj.sportCheck[indexPath.row] == true {
             Cuser.shareObj.sportCheck[indexPath.row] = false
-            cell.accessoryType = .None
         }else {
             Cuser.shareObj.sportCheck[indexPath.row] = true
-            cell.accessoryType = .Checkmark
         }
-//        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .Checkmark : .None
+        tableView.reloadData()
         print("did select~ \(Cuser.shareObj.sportCheck[indexPath.row])")
     }
     
 
-    
-    
 
-    
 
 
     /*
