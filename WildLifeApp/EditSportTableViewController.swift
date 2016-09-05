@@ -39,24 +39,32 @@ class EditSportTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("sportCell", forIndexPath: indexPath) as! EditSportTableViewCell
         cell.sportLabel.text = Cuser.shareObj.defaultSports[indexPath.row]
-        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .DetailButton : .None
+        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .Checkmark : .None
         return cell
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.dequeueReusableCellWithIdentifier("sportCell", forIndexPath: indexPath) as! EditSportTableViewCell
         cell.sportLabel.text = Cuser.shareObj.defaultSports[indexPath.row]
+        cell.selected = false
 
-        if Cuser.shareObj.sportCheck[indexPath.row] == false {
-           Cuser.shareObj.sportCheck[indexPath.row] = true
-        }else {
+        if Cuser.shareObj.sportCheck[indexPath.row] == true {
             Cuser.shareObj.sportCheck[indexPath.row] = false
+            cell.accessoryType = .None
+        }else {
+            Cuser.shareObj.sportCheck[indexPath.row] = true
+            cell.accessoryType = .Checkmark
         }
-        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .DetailButton : .None
-        
+//        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .Checkmark : .None
         print("did select~ \(Cuser.shareObj.sportCheck[indexPath.row])")
     }
     
+
+    
+    
+
+    
+
 
     /*
     // Override to support conditional editing of the table view.
