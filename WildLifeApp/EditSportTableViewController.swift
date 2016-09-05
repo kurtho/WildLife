@@ -10,6 +10,7 @@ import UIKit
 
 class EditSportTableViewController: UITableViewController {
     var isCheck = false
+    var selectedSport = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +51,16 @@ class EditSportTableViewController: UITableViewController {
         
         if Cuser.shareObj.sportCheck[indexPath.row] == true {
             Cuser.shareObj.sportCheck[indexPath.row] = false
-        }else {
+            let removeItem = Cuser.shareObj.defaultSports[indexPath.row]
+            selectedSport.removeAtIndex(selectedSport.indexOf(removeItem)!)
+            
+            print("my remove ~ \(selectedSport)")
+        }else if Cuser.shareObj.sportCheck[indexPath.row] == false {
+            selectedSport.append(Cuser.shareObj.defaultSports[indexPath.row])
             Cuser.shareObj.sportCheck[indexPath.row] = true
+
+            
+            print("my append ~ \(selectedSport)")
         }
         tableView.reloadData()
         print("did select~ \(Cuser.shareObj.sportCheck[indexPath.row])")

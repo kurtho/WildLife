@@ -45,7 +45,7 @@ class Cuser {
         "Other"
     ]
     var sportCheck = [
-    true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
     ]
 }
 
