@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WildLifeApp/InformationViewController.swift"
-            timestampString = "494729096.379537"
+            timestampString = "494766124.835408"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "InformationViewController"
             landmarkType = "3">
          </BreakpointContent>

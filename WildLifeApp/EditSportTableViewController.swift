@@ -62,6 +62,8 @@ class EditSportTableViewController: UITableViewController {
             
             print("my append ~ \(selectedSport)")
         }
+        Cuser.shareObj.infos.sport = selectedSport
+        uploadData(["sport" : Cuser.shareObj.infos.sport])
         tableView.reloadData()
         print("did select~ \(Cuser.shareObj.sportCheck[indexPath.row])")
     }

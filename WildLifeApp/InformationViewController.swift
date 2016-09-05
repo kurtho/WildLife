@@ -169,8 +169,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }
             if response.value?.objectForKey("sport") as? String == nil {
                 Cuser.shareObj.infos.sport[0] = "What port do you like ?? "
+                
             }else {
-                Cuser.shareObj.infos.sport[0] = (response.value?.objectForKey("sport") as! String)
+                Cuser.shareObj.infos.sport = (response.value?.objectForKey("sport") as! Array)
             }
             if response.value?.objectForKey("intro") as? String == nil {
                 Cuser.shareObj.infos.intro = "Introduce yoursefl ~"
