@@ -16,11 +16,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var user = User()
 //    var userInfor = ["","","","",""]
     let queConcurrent = dispatch_queue_create("Queue", DISPATCH_QUEUE_SERIAL)
-
-    
-    
     var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
-    
+
 
     
     @IBOutlet weak var nameTextField: UITextField!

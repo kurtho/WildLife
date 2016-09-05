@@ -9,12 +9,11 @@
 import UIKit
 
 class EditSportTableViewController: UITableViewController {
-
+    var isCheck = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.hidesBarsOnSwipe = true
-
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     
@@ -40,8 +39,22 @@ class EditSportTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("sportCell", forIndexPath: indexPath) as! EditSportTableViewCell
         cell.sportLabel.text = Cuser.shareObj.defaultSports[indexPath.row]
-
+        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .DetailButton : .None
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.dequeueReusableCellWithIdentifier("sportCell", forIndexPath: indexPath) as! EditSportTableViewCell
+        cell.sportLabel.text = Cuser.shareObj.defaultSports[indexPath.row]
+
+        if Cuser.shareObj.sportCheck[indexPath.row] == false {
+           Cuser.shareObj.sportCheck[indexPath.row] = true
+        }else {
+            Cuser.shareObj.sportCheck[indexPath.row] = false
+        }
+        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .DetailButton : .None
+        
+        print("did select~ \(Cuser.shareObj.sportCheck[indexPath.row])")
     }
     
 

@@ -44,6 +44,9 @@ class Cuser {
         "Kayaking", "Paragliding",
         "Other"
     ]
+    var sportCheck = [
+    true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
+    ]
 }
 
 
