@@ -55,9 +55,9 @@ class EditViewController: UIViewController, UITextViewDelegate {
     func textViewDidEndEditing(textView: UITextView) {
         unhideNavigationBar()
         myValue = myTextView.text
-        CurrentUser.shareInstance.infos.intro = myValue
+        Cuser.shareObj.infos.intro = myValue
         uploadData(["intro" : myValue])
-        print("share instance userinfo [4]~~\(CurrentUser.shareInstance.infos.intro)")
+        print("share instance userinfo [4]~~\(Cuser.shareObj.infos.intro)")
 
     }
 

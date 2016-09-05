@@ -23,10 +23,10 @@ class HomeViewController: UIViewController {
         let viewController : UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("LogginView")
         self.presentViewController(viewController, animated: true, completion: nil)
 //        CurrentUser.shareInstance.infos.sport[0] = ""
-        CurrentUser.shareInstance.infos.intro = ""
-        CurrentUser.shareInstance.infos.place = ""
-        CurrentUser.shareInstance.infos.gender = ""
-        CurrentUser.shareInstance.infos.age = ""
+        Cuser.shareObj.infos.intro = ""
+        Cuser.shareObj.infos.place = ""
+        Cuser.shareObj.infos.gender = ""
+        Cuser.shareObj.infos.age = ""
     }
     
     
@@ -40,10 +40,10 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         readUserID()
-        testLabel.text = CurrentUser.shareInstance.infos.id
+        testLabel.text = Cuser.shareObj.infos.id
         
         
-        print("current user ~~~\(CurrentUser.shareInstance.infos.id)")
+        print("current user ~~~\(Cuser.shareObj.infos.id)")
         print("00000~~HomeVC")
         // Do any additional setup after loading the view.
     }
@@ -57,8 +57,8 @@ class HomeViewController: UIViewController {
         let id = NSUserDefaults.standardUserDefaults()
         let val = id.stringForKey("uid")
 
-        CurrentUser.shareInstance.infos.id = val!
-        print("user id = \(val) ~~~~\(CurrentUser.shareInstance.infos.id)")
+        Cuser.shareObj.infos.id = val!
+        print("user id = \(val) ~~~~\(Cuser.shareObj.infos.id)")
         
     }
 

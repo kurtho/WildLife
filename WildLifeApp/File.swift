@@ -33,8 +33,8 @@ class User: NSObject {
     
 }
 
-class CurrentUser {
-    static let shareInstance = CurrentUser()
+class Cuser {
+    static let shareObj = Cuser()
     var infos = Infos(id: "", gender: "", place: "", age: "", sport: [""], intro: "")
 
 

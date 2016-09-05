@@ -33,13 +33,13 @@ class EditSportTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return CurrentUser.shareInstance.defaultSports.count
+        return Cuser.shareObj.defaultSports.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("sportCell", forIndexPath: indexPath) as! EditSportTableViewCell
-        cell.sportLabel.text = CurrentUser.shareInstance.defaultSports[indexPath.row]
+        cell.sportLabel.text = Cuser.shareObj.defaultSports[indexPath.row]
 
         return cell
     }
