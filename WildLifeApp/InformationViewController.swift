@@ -168,10 +168,17 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 Cuser.shareObj.infos.age = (response.value?.objectForKey("age") as! String)
             }
             if response.value?.objectForKey("sport") as? String == nil {
-                Cuser.shareObj.infos.sport[0] = ""
+                Cuser.shareObj.infos.sport[0] = "Select your sport"
+                self.uploadData(["sport" : Cuser.shareObj.infos.sport])
                 Cuser.shareObj.infos.sport = (response.value?.objectForKey("sport") as! Array)
-
             }else {
+                let removeItem = "Select your sport"
+                for obj in Cuser.shareObj.infos.sport {
+                    if obj == removeItem {
+                        Cuser.shareObj.infos.sport.removeAtIndex(Cuser.shareObj.infos.sport.indexOf(removeItem)!)
+                    }
+                }
+                
                 Cuser.shareObj.infos.sport = (response.value?.objectForKey("sport") as! Array)
             }
             if response.value?.objectForKey("intro") as? String == nil {

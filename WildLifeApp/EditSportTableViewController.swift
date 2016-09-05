@@ -15,6 +15,14 @@ class EditSportTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.hidesBarsOnSwipe = true
+        let removeItem = "Select your sport"
+        for obj in Cuser.shareObj.infos.sport {
+            if obj == removeItem {
+                Cuser.shareObj.infos.sport.removeAtIndex(Cuser.shareObj.infos.sport.indexOf(removeItem)!)
+            }
+            selectedSport = Cuser.shareObj.infos.sport
+        }
+        print("select sport~\(selectedSport)")
     }
 
     
