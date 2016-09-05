@@ -68,7 +68,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("@#$%^&*()_\(Cuser.shareObj.infos.gender)")
+        print("@#$%^&*()_\(Cuser.shareObj.infos.sport)")
         self.loadBasic()
         
         
@@ -168,8 +168,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 Cuser.shareObj.infos.age = (response.value?.objectForKey("age") as! String)
             }
             if response.value?.objectForKey("sport") as? String == nil {
-                Cuser.shareObj.infos.sport[0] = "What port do you like ?? "
-                
+                Cuser.shareObj.infos.sport[0] = ""
+                Cuser.shareObj.infos.sport = (response.value?.objectForKey("sport") as! Array)
+
             }else {
                 Cuser.shareObj.infos.sport = (response.value?.objectForKey("sport") as! Array)
             }
@@ -248,7 +249,8 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         case 2:
             cell.userInfo.text = Cuser.shareObj.infos.age
         case 3:
-            cell.userInfo.text = Cuser.shareObj.infos.sport[0]
+            let arrToStr = Cuser.shareObj.infos.sport.joinWithSeparator(" ")
+            cell.userInfo.text = arrToStr
         case 4:
             cell.userInfo.text = Cuser.shareObj.infos.intro
         default:
@@ -311,7 +313,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
                 ])
             return
         case 3:
-            performSegueWithIdentifier("sportCell", sender: nil)
+            performSegueWithIdentifier("sportCell", sender: Cuser.shareObj.infos.sport)
             
             
             

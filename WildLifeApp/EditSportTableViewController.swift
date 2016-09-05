@@ -10,7 +10,7 @@ import UIKit
 
 class EditSportTableViewController: UITableViewController {
     var isCheck = false
-    var selectedSport = [String]()
+    var selectedSport = Cuser.shareObj.infos.sport
     
     override func viewDidLoad() {
         super.viewDidLoad()
