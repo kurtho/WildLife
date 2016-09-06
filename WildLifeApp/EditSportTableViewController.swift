@@ -9,7 +9,6 @@
 import UIKit
 
 class EditSportTableViewController: UITableViewController {
-    var isCheck = false
     var selectedSport = Cuser.shareObj.infos.sport
     
     @IBAction func doneSelect(sender: AnyObject) {

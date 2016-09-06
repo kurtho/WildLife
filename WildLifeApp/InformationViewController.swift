@@ -255,10 +255,15 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             cell.userInfo.text = Cuser.shareObj.infos.age
         case 3:
             
-            
-            let arrToStr = Cuser.shareObj.infos.sport!.joinWithSeparator(" ")
-            cell.userInfo.text = arrToStr
+            if let sportCell = Cuser.shareObj.infos.sport {
+                cell.userInfo.text = sportCell.joinWithSeparator(", ")
+            }else {
+                cell.userInfo.text = "Select your sports"
+            }
+
+
         case 4:
+            
             cell.userInfo.text = Cuser.shareObj.infos.intro
         default:
             break
