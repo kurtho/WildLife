@@ -169,9 +169,10 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }
             
             if response.value?.objectForKey("sport") as? [String] == nil {
-                
-                Cuser.shareObj.infos.sport[0] = "Select your sport"
-                    self.uploadData(["sport" : Cuser.shareObj.infos.sport])
+                if Cuser.shareObj.infos.sport == nil {
+                    Cuser.shareObj.infos.sport?.append("Select your sport")
+                }
+                    self.uploadData(["sport" : Cuser.shareObj.infos.sport!])
                 
             }else {
 
@@ -255,7 +256,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         case 3:
             
             
-            let arrToStr = Cuser.shareObj.infos.sport.joinWithSeparator(" ")
+            let arrToStr = Cuser.shareObj.infos.sport!.joinWithSeparator(" ")
             cell.userInfo.text = arrToStr
         case 4:
             cell.userInfo.text = Cuser.shareObj.infos.intro

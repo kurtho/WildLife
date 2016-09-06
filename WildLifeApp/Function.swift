@@ -55,7 +55,6 @@ extension UIViewController {
             if err != nil {
                 print("func upload = err \(err)")
             }
-            print("55555~~FuncVC\(Cuser.shareObj.infos.gender)")
         })
         
     }

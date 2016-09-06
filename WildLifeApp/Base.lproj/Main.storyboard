@@ -625,7 +625,7 @@
             </objects>
             <point key="canvasLocation" x="4578" y="1482"/>
         </scene>
-        <!--Title-->
+        <!--Select sport-->
         <scene sceneID="Bbs-Z2-KgZ">
             <objects>
                 <tableViewController id="wvv-xc-goU" customClass="EditSportTableViewController" customModule="WildLifeApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -673,8 +673,12 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="H9i-Db-LHl">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="FIh-0m-ovW"/>
+                    <navigationItem key="navigationItem" title="Select sport" id="H9i-Db-LHl">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="FIh-0m-ovW">
+                            <connections>
+                                <action selector="doneSelect:" destination="wvv-xc-goU" id="mk5-Dk-rTi"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>

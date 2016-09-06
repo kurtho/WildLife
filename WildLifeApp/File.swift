@@ -14,9 +14,9 @@ class Infos: NSObject {
     var gender: String
     var place: String
     var age: String
-    var sport: [String]
+    var sport: [String]?
     var intro: String
-    init(id : String, gender: String, place: String, age: String, sport: [String], intro: String){
+    init(id : String, gender: String, place: String, age: String, sport: [String]?, intro: String){
         self.id = id
         self.gender = gender
         self.place = place
@@ -35,7 +35,7 @@ class User: NSObject {
 
 class Cuser {
     static let shareObj = Cuser()
-    var infos = Infos(id: "", gender: "", place: "", age: "", sport: [""], intro: "")
+    var infos = Infos(id: "", gender: "", place: "", age: "", sport: [], intro: "")
 
 
     var defaultSports = [
