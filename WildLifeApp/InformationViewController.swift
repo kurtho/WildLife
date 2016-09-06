@@ -15,7 +15,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     var imagePicker = UIImagePickerController()
     var user = User()
 //    var userInfor = ["","","","",""]
-    let queConcurrent = dispatch_queue_create("Queue", DISPATCH_QUEUE_SERIAL)
+    let queSerial = dispatch_queue_create("Queue", DISPATCH_QUEUE_SERIAL)
+    let queConCurr = dispatch_queue_create("Queue", DISPATCH_QUEUE_CONCURRENT)
     var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
 
 
@@ -68,12 +69,11 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("@#$%^&*()_\(Cuser.shareObj.infos.sport)")
+        print(" Cuser infos sport~ \(Cuser.shareObj.infos.sport)")
         self.loadBasic()
         
         
-        print("current user .shareinstance . userinfo!!!!!!!\(Cuser.shareObj.infos)")
-//        print("response value~123~~~ \(CurrentUser.shareInstance.infos?.gender)")
+        print("current user .shareinstance . userinfo!!!!!!!\(Cuser.shareObj.infos.gender)")
         
         tableView.estimatedRowHeight = 55
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -167,20 +167,17 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }else {
                 Cuser.shareObj.infos.age = (response.value?.objectForKey("age") as! String)
             }
-            if response.value?.objectForKey("sport") as? String == nil {
-                Cuser.shareObj.infos.sport[0] = "Select your sport"
-                self.uploadData(["sport" : Cuser.shareObj.infos.sport])
-                Cuser.shareObj.infos.sport = (response.value?.objectForKey("sport") as! Array)
-            }else {
-                let removeItem = "Select your sport"
-                for obj in Cuser.shareObj.infos.sport {
-                    if obj == removeItem {
-                        Cuser.shareObj.infos.sport.removeAtIndex(Cuser.shareObj.infos.sport.indexOf(removeItem)!)
-                    }
-                }
+            
+            if response.value?.objectForKey("sport") as? [String] == nil {
                 
+                Cuser.shareObj.infos.sport[0] = "Select your sport"
+                    self.uploadData(["sport" : Cuser.shareObj.infos.sport])
+                
+            }else {
+
                 Cuser.shareObj.infos.sport = (response.value?.objectForKey("sport") as! Array)
             }
+            
             if response.value?.objectForKey("intro") as? String == nil {
                 Cuser.shareObj.infos.intro = "Introduce yoursefl ~"
             }else {
@@ -256,6 +253,8 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         case 2:
             cell.userInfo.text = Cuser.shareObj.infos.age
         case 3:
+            
+            
             let arrToStr = Cuser.shareObj.infos.sport.joinWithSeparator(" ")
             cell.userInfo.text = arrToStr
         case 4:

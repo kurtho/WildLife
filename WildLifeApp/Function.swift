@@ -57,11 +57,15 @@ extension UIViewController {
             }
             print("55555~~FuncVC\(Cuser.shareObj.infos.gender)")
         })
+        
     }
+    
+    
     
     
     func hideNavigationBar() {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
     }
     
     func unhideNavigationBar() {
