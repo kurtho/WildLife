@@ -625,7 +625,7 @@
             </objects>
             <point key="canvasLocation" x="4578" y="1482"/>
         </scene>
-        <!--Edit Sport Table View Controller-->
+        <!--Title-->
         <scene sceneID="Bbs-Z2-KgZ">
             <objects>
                 <tableViewController id="wvv-xc-goU" customClass="EditSportTableViewController" customModule="WildLifeApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -672,6 +672,11 @@
                             <outlet property="delegate" destination="wvv-xc-goU" id="W3t-rs-dTR"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="H9i-Db-LHl">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="FIh-0m-ovW"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVU-3Q-WuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
