@@ -14,9 +14,9 @@ import SDWebImage
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     var imagePicker = UIImagePickerController()
     var user = User()
-//    var userInfor = ["","","","",""]
-    let queSerial = dispatch_queue_create("Queue", DISPATCH_QUEUE_SERIAL)
-    let queConCurr = dispatch_queue_create("Queue", DISPATCH_QUEUE_CONCURRENT)
+    var tempString = ""
+//    let queSerial = dispatch_queue_create("Queue", DISPATCH_QUEUE_SERIAL)
+//    let queConCurr = dispatch_queue_create("Queue", DISPATCH_QUEUE_CONCURRENT)
     var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
 
 
@@ -169,10 +169,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }
             
             if response.value?.objectForKey("sport") as? [String] == nil {
-                
+                self.tempString = "Select your sport"
                 
             }else {
-
                 Cuser.shareObj.infos.sport = (response.value?.objectForKey("sport") as! Array)
             }
             
@@ -198,7 +197,6 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             }else {
                 self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
 
-                
                 print("44444~~InfoVC\(Cuser.shareObj.infos.gender)")
                 self.tableView.reloadData()
             }
@@ -253,12 +251,11 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         case 3:
             
             if Cuser.shareObj.infos.sport! == [] {
-                cell.userInfo.text = "Select your sports"
+                cell.userInfo.text = self.tempString
                 
             }else {
                 cell.userInfo.text = Cuser.shareObj.infos.sport!.joinWithSeparator(", ")
             }
-
 
         case 4:
             
@@ -291,7 +288,6 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
                 UIAlertAction(title: "Female", style: .Default, handler: { (action:UIAlertAction) in
                     Cuser.shareObj.infos.gender = "Female"
 
-//              下面是5555
                     print("11111~~InfoVC\(Cuser.shareObj.infos.gender)")
                     self.uploadData(["gender": "Female"])
                     self.myImage.layer.borderColor = UIColor.redColor().CGColor

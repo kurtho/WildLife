@@ -27,6 +27,7 @@ class HomeViewController: UIViewController {
         Cuser.shareObj.infos.place = ""
         Cuser.shareObj.infos.gender = ""
         Cuser.shareObj.infos.age = ""
+        Cuser.shareObj.infos.sport = []
     }
     
     
