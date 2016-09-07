@@ -22,16 +22,6 @@ class EditSportTableViewController: UITableViewController {
         super.viewDidLoad()
         navigationController?.hidesBarsOnSwipe = true
 
-      
-        
-//        let removeItem = "Select your sport"
-//        for obj in Cuser.shareObj.infos.sport! {
-//            if obj == removeItem {
-//                Cuser.shareObj.infos.sport.removeAtIndex(Cuser.shareObj.infos.sport.indexOf(removeItem)!)
-//            }
-//            selectedSport = Cuser.shareObj.infos.sport
-//        }
-        
         print("cuer shareobj sport ~\(Cuser.shareObj.infos.sport)")
         print("select sport~\(selectedSport?.count)")
     }
@@ -59,19 +49,16 @@ class EditSportTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("sportCell", forIndexPath: indexPath) as! EditSportTableViewCell
         cell.sportLabel.text = Cuser.shareObj.defaultSports[indexPath.row]
-//        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .Checkmark : .None
-        
-
+        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .Checkmark : .None
         
         for obj in selectedSport! {
+            
             if Cuser.shareObj.defaultSports.contains(obj) {
                 Cuser.shareObj.sportCheck[Cuser.shareObj.defaultSports.indexOf(obj)!] = true
-                
                 
                 cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .Checkmark : .None
             }
         }
-        
         
         
         print(" check mark of sport \(Cuser.shareObj.sportCheck[indexPath.row])")
