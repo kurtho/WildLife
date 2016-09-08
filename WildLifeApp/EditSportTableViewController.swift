@@ -49,7 +49,6 @@ class EditSportTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("sportCell", forIndexPath: indexPath) as! EditSportTableViewCell
         cell.sportLabel.text = Cuser.shareObj.defaultSports[indexPath.row]
-        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .Checkmark : .None
         
         for obj in selectedSport! {
             
@@ -60,7 +59,8 @@ class EditSportTableViewController: UITableViewController {
             }
         }
         
-        
+        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .Checkmark : .None
+
         print(" check mark of sport \(Cuser.shareObj.sportCheck[indexPath.row])")
         return cell
     }

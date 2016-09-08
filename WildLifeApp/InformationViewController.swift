@@ -18,6 +18,9 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //    let queSerial = dispatch_queue_create("Queue", DISPATCH_QUEUE_SERIAL)
 //    let queConCurr = dispatch_queue_create("Queue", DISPATCH_QUEUE_CONCURRENT)
     var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
+//  Remove listeners
+//    var handle: UInt!
+    
 
 
     
@@ -59,18 +62,12 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         textFieldDidEndEditing(idTextField)
     }
     
-
-
-
-    
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(" Cuser infos sport~ \(Cuser.shareObj.infos.sport)")
-        self.loadBasic()
         
         
         print("current user .shareinstance . userinfo!!!!!!!\(Cuser.shareObj.infos.gender)")
@@ -84,10 +81,19 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //無聊加的邊框判定
         myImage.layer.borderWidth = 2
         
-
-
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadBasic()
+
+//        let uid = Cuser.shareObj.infos.id
+//        let ref = FIRDatabase.database().reference().child("users").child(uid)
+//        handle = ref.observeEventType(.Value) { (snap: FDataSnapshot) in print (snap.value) }
+
+    
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -356,6 +362,29 @@ private func uploadDataWithUID(uid: String, values: [NSObject: AnyObject]) {
         print("Upload user photo successfully into Firebase db")
         })
     }
+    
+    
+//    private func observeMessages () {
+//        // Start by creating a query that limits the synchronization to the last 25 messages.
+//        let messagesQuery = messageRef.queryLimitedToLast(25)
+//        
+//        // Use the .ChildAdded event to observe for every child item that has been added, and will be added, at the messages location.
+//        messagesQuery.observeEventType(FEventType.ChildAdded) { (snapshot:FDataSnapshot!) -> Void in
+//            
+//            // Extract the senderId and text from snapshot.value.
+//            
+//            if let id = snapshot.value["senderId"] as? String, text = snapshot.value["text"] as? String {
+//                
+//                // Call addMessage() to add the new message to the data source.
+//                self.addMessage(id, text: text)
+//                
+//                // Inform JSQMessagesViewController that a message has been received.
+//                self.finishReceivingMessage()
+//                
+//            }
+//        }
+//    }
+    
 }
 
 
