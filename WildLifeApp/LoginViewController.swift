@@ -90,7 +90,6 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
                 let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
                 self.presentViewController(homeView, animated: true, completion: nil)
-                print("check1234~~~~~")
                 
             }
         }

@@ -124,7 +124,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     func uploadImage() {
         let imageName = NSUUID().UUIDString
 //        亂數產生個string
-        let storageRef = FIRStorage.storage().reference().child("profileImage").child("\(imageName).jpg")
+        let storageRef = FIRStorage.storage().reference().child("profileImage").child(Cuser.shareObj.infos.id).child("\(imageName).jpg")
 //        let storageRef = FIRStorage.storage().reference().child("profileImage").child("kurt.jpg")
         let uid =  Cuser.shareObj.infos.id
         print("user~~~\(uid)")
