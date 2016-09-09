@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import SDWebImage
-
+import FBSDKLoginKit
 
 class InformationViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     var imagePicker = UIImagePickerController()
@@ -18,8 +18,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //    let queSerial = dispatch_queue_create("Queue", DISPATCH_QUEUE_SERIAL)
 //    let queConCurr = dispatch_queue_create("Queue", DISPATCH_QUEUE_CONCURRENT)
     var contents = ["Gender", "Place", "Age", "Sport" , "Introduction"]
-//  Remove listeners
-//    var handle: UInt!
+
     
 
 
@@ -33,6 +32,22 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func SignOut(sender: AnyObject) {
+        try! FIRAuth.auth()!.signOut()
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+        let mainStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController : UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("LogginView")
+        self.presentViewController(viewController, animated: true, completion: nil)
+        //        CurrentUser.shareInstance.infos.sport[0] = ""
+        Cuser.shareObj.infos.intro = ""
+        Cuser.shareObj.infos.place = ""
+        Cuser.shareObj.infos.gender = ""
+        Cuser.shareObj.infos.age = ""
+        Cuser.shareObj.infos.sport = []
+        Cuser.shareObj.sportCheck = [
+            false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
+        ]
+    }
     
     
     

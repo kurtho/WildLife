@@ -8,36 +8,13 @@
 
 import UIKit
 import Firebase
-import FBSDKLoginKit
 
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var collectView: UICollectionView!
     @IBOutlet weak var testLabel: UILabel!
-    
-    
-    @IBAction func logOut(sender: AnyObject) {
-        try! FIRAuth.auth()!.signOut()
-        FBSDKAccessToken.setCurrentAccessToken(nil)
-        let mainStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController : UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("LogginView")
-        self.presentViewController(viewController, animated: true, completion: nil)
-//        CurrentUser.shareInstance.infos.sport[0] = ""
-        Cuser.shareObj.infos.intro = ""
-        Cuser.shareObj.infos.place = ""
-        Cuser.shareObj.infos.gender = ""
-        Cuser.shareObj.infos.age = ""
-        Cuser.shareObj.infos.sport = []
-        Cuser.shareObj.sportCheck = [
-            false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
-        ]
-    }
-    
-    
-    @IBAction func alertButton(sender: AnyObject) {
-        alert("這是title", contain: "這是內文")
-    }
-    
+        
     
 
     override func viewDidLoad() {
@@ -60,11 +37,48 @@ class HomeViewController: UIViewController {
     func readUserID() {
         let id = NSUserDefaults.standardUserDefaults()
         let val = id.stringForKey("uid")
-
+        
         Cuser.shareObj.infos.id = val!
         print("user id = \(val) ~~~~\(Cuser.shareObj.infos.id)")
         
     }
 
 
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let width = (UIScreen.mainScreen().bounds.width - 2 * 10)
+        let height = (UIScreen.mainScreen().bounds.height) / 3.3
+        let layout = collectView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSizeMake(CGFloat(width), CGFloat(height) )
+
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("myCell", forIndexPath: indexPath) as! HomeViewCollectionViewCell
+        cell.cellImage.image = UIImage(named: "hualien")
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.item {
+        case 0:
+            print("lobby")
+            break
+        case 1:
+            print("my channel")
+            break
+        default:
+            break
+        }
+    }
+    
+    
 }
