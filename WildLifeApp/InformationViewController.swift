@@ -78,7 +78,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     
-    
+//    🍎🍎🍎
     override func viewDidLoad() {
         super.viewDidLoad()
         let uid = Cuser.shareObj.infos.id
@@ -109,6 +109,15 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 //        handle = ref.observeEventType(.Value) { (snap: FDataSnapshot) in print (snap.value) }
 
     
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        let uid = Cuser.shareObj.infos.id
+        let ref = FIRDatabase.database().reference().child("users").child(uid)
+        let handle = ref.observeEventType(.Value, withBlock: { snapshot in
+            print("Snapshot value: \(snapshot.value)")
+        })
+        ref.removeObserverWithHandle(handle)
     }
     
     override func didReceiveMemoryWarning() {
