@@ -49,10 +49,10 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let width = (UIScreen.mainScreen().bounds.width - 2 * 10)
-        let height = (UIScreen.mainScreen().bounds.height) / 3.3
-        let layout = collectView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSizeMake(CGFloat(width), CGFloat(height) )
+//        let width = (UIScreen.mainScreen().bounds.width - 10) / 2
+//        let height = (UIScreen.mainScreen().bounds.height) / 3.3
+//        let layout = collectView.collectionViewLayout as! UICollectionViewFlowLayout
+//        layout.itemSize = CGSizeMake(CGFloat(width), CGFloat(height) )
 
     }
     
@@ -62,8 +62,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("myCell", forIndexPath: indexPath) as! HomeViewCollectionViewCell
+        
         cell.cellImage.image = UIImage(named: "hualien")
         
+//        cell.layoutIfNeeded()
+//        cell.cellImage.layer.cornerRadius = cell.cellImage.frame.size.width / 20
+//        cell.cellImage.clipsToBounds = true
+        cell.layer.borderColor = UIColor.darkGrayColor().CGColor
+        cell.layer.borderWidth = 2.0
+        cell.layer.cornerRadius = 4
         return cell
     }
     
@@ -79,6 +86,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             break
         }
     }
-    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        
+        return CGSizeMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.width) - 120)
+    }
     
 }

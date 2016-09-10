@@ -81,10 +81,12 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let uid = Cuser.shareObj.infos.id
+        let ref = FIRDatabase.database().reference().child("users").child(uid).child("email")
+        print(ref)
+        
         
         print(" Cuser infos sport~ \(Cuser.shareObj.infos.sport)")
-        
-        
         print("current user .shareinstance . userinfo!!!!!!!\(Cuser.shareObj.infos.gender)")
         
         tableView.estimatedRowHeight = 55
@@ -137,14 +139,17 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func uploadImage() {
-        let imageName = NSUUID().UUIDString
-//        亂數產生個string
-        let storageRef = FIRStorage.storage().reference().child("profileImage").child(Cuser.shareObj.infos.id).child("\(imageName).jpg")
-//        let storageRef = FIRStorage.storage().reference().child("profileImage").child("kurt.jpg")
+//        let imageName = NSUUID().UUIDString   亂數產生個string
+
+        let metaData = FIRStorageMetadata()
+        metaData.contentType = "image/jpg"
+        let storageRef = FIRStorage.storage().reference().child("profileImage").child(Cuser.shareObj.infos.id).child("imageName.jpg")
+
         let uid =  Cuser.shareObj.infos.id
+
         print("user~~~\(uid)")
         if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
-            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+            storageRef.putData(uploadData, metadata: metaData, completion: { (metadata, error) in
                 if error != nil {
                     print(error)
                 }
