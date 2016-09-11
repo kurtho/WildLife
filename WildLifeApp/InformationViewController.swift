@@ -177,7 +177,8 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         let uid = Cuser.shareObj.infos.id
         print("~~~ref\(FIRDatabase.database().reference().child("users").child(uid))")
         let ref = FIRDatabase.database().reference().child("users").child(uid)
-        ref.observeEventType(.Value, withBlock: {
+        ref.observeSingleEventOfType(.Value, withBlock: {
+//        ref.observeEventType
             response in
 
             self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as?String

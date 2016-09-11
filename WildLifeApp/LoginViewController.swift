@@ -12,7 +12,7 @@ import Firebase
 
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
-    var loginButton: FBSDKLoginButton = FBSDKLoginButton()
+    var loginButton = FBSDKLoginButton()
     
     
     
