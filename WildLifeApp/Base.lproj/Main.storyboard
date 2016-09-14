@@ -212,12 +212,24 @@
                                 </constraints>
                                 <color key="color" red="0.95158253205128207" green="0.75432436981582041" blue="0.12918185329141266" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNr-dn-Gpc">
+                                <rect key="frame" x="280" y="491" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="CZI-N3-ROL"/>
+                                    <constraint firstAttribute="width" constant="40" id="lLf-p3-Skb"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Google Logo-48"/>
+                                <connections>
+                                    <action selector="googleSignIn:" destination="f53-FI-q5o" eventType="touchUpInside" id="TuC-Lm-EX8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lKA-65-bSR" firstAttribute="centerY" secondItem="ZFN-Yp-vpK" secondAttribute="centerY" id="2vh-Y7-7vh"/>
                             <constraint firstItem="ThR-aS-hWI" firstAttribute="centerX" secondItem="QPH-6f-GeU" secondAttribute="centerX" id="486-dy-Iff"/>
                             <constraint firstItem="ThR-aS-hWI" firstAttribute="top" secondItem="QPH-6f-GeU" secondAttribute="bottom" constant="8" id="4Bo-Ne-1Il"/>
+                            <constraint firstItem="QNr-dn-Gpc" firstAttribute="centerX" secondItem="lKA-65-bSR" secondAttribute="centerX" id="5cA-Q4-zcz"/>
                             <constraint firstItem="bSv-Pc-epz" firstAttribute="top" secondItem="lKA-65-bSR" secondAttribute="bottom" constant="20" id="74G-Pq-nlk"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wan-VD-OJQ" secondAttribute="trailing" constant="11" id="9DJ-Zf-dcO"/>
                             <constraint firstItem="QPH-6f-GeU" firstAttribute="top" secondItem="732-rC-cYh" secondAttribute="bottom" constant="8" id="F61-cC-5LM"/>
@@ -227,6 +239,7 @@
                             <constraint firstItem="lKA-65-bSR" firstAttribute="centerX" secondItem="ZFN-Yp-vpK" secondAttribute="centerX" id="PcS-fa-TxV"/>
                             <constraint firstItem="732-rC-cYh" firstAttribute="top" secondItem="xkB-7n-Tql" secondAttribute="bottom" constant="189" id="XOw-gr-UXE"/>
                             <constraint firstItem="QPH-6f-GeU" firstAttribute="centerX" secondItem="732-rC-cYh" secondAttribute="centerX" id="YXW-Bx-CSy"/>
+                            <constraint firstItem="lKA-65-bSR" firstAttribute="top" secondItem="QNr-dn-Gpc" secondAttribute="bottom" constant="19" id="ZnE-ZY-yRT"/>
                             <constraint firstItem="PYM-xj-hUt" firstAttribute="top" secondItem="QPH-6f-GeU" secondAttribute="bottom" constant="120" id="nqp-rP-9nx"/>
                             <constraint firstItem="Dqt-mV-Jbf" firstAttribute="top" secondItem="xkB-7n-Tql" secondAttribute="bottom" constant="113" id="oKS-Y0-WLd"/>
                             <constraint firstItem="BPs-76-943" firstAttribute="centerX" secondItem="ThR-aS-hWI" secondAttribute="centerX" id="ubf-FT-vjn"/>
@@ -832,6 +845,7 @@
     <resources>
         <image name="Camera-20" width="20" height="20"/>
         <image name="Edit-15" width="15" height="15"/>
+        <image name="Google Logo-48" width="48" height="48"/>
         <image name="hualien" width="1170" height="500"/>
         <image name="moon" width="800" height="600"/>
     </resources>

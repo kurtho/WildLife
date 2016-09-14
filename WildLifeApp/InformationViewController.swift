@@ -33,6 +33,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func SignOut(sender: AnyObject) {
+        
         try! FIRAuth.auth()!.signOut()
         FBSDKAccessToken.setCurrentAccessToken(nil)
         let mainStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

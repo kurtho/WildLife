@@ -9,13 +9,14 @@
 import UIKit
 import FBSDKLoginKit
 import Firebase
+import GoogleSignIn
 
-
-class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFieldDelegate {
+class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInDelegate, GIDSignInUIDelegate, UITextFieldDelegate {
     var loginButton = FBSDKLoginButton()
+
     
     
-    
+//    @IBOutlet weak var googleView: UIView!
     @IBOutlet weak var signLabel: UILabel!
     @IBOutlet weak var fbView: UIView!
     @IBOutlet weak var createAccount: UIButton!
@@ -26,6 +27,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     @IBOutlet weak var loadIng: UIActivityIndicatorView!
     
     
+    @IBAction func googleSignIn(sender: AnyObject) {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+//  testing change fb button icon
+    
+
+
     
     @IBAction func signButton(sender: AnyObject) {
         if signButton.titleLabel?.text == " Sign In " {
@@ -59,20 +68,59 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     }
     
     
+    //🙄
+    
+    
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                withError error: NSError!) {
+        self.loadIng.startAnimating()
+
+        if let error = error {
+            print(error.localizedDescription)
+            self.loadIng.stopAnimating()
+
+        }
+        let authentication = user.authentication
+        let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken, accessToken: authentication.accessToken)
+        FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            print("user log in with google")
+        })
+    }
+    
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+                withError error: NSError!) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        try! FIRAuth.auth()!.signOut()
+    }
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//     😡
+        GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
         
+// 😡
         hideKeyboardWhenTappedAround()
         FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
             if user != nil {
 //                self.userInfos.id = (user?.uid)!
                 Cuser.shareObj.infos.id = (user?.uid)!
+                
 //               從這邊可以儲存uid到user default
                 
-                
-                
-                self.loginButton.readPermissions = ["email"]
                 let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(Cuser.shareObj.infos.id
                 )
@@ -81,10 +129,10 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 print("login view current  id~~~ \(Cuser.shareObj.infos.id)")
                 userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
                     if err != nil {
-                        print(err)
+                        print("....",err)
                         return
                     }
-                    print("Saved user successfully into Firebase db")
+
                 })
                 self.saveUserID(Cuser.shareObj.infos.id)
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -93,9 +141,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
                 
             }
         }
-        self.loginButton.center = self.fbView.center
+
+        
         self.view!.addSubview(self.loginButton)
-//        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
         self.loginButton.delegate = self
         
     }
@@ -104,6 +152,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         self.view.layoutIfNeeded()
         self.loginButton.center = self.fbView.center
         signButton.layer.cornerRadius = signButton.frame.height / 6
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -111,33 +160,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
         // Dispose of any resources that can be recreated.
     }
 //  MARK: - Firebase
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)  {
-        loadIng.startAnimating()
-        if error != nil {
-            loadIng.stopAnimating()
-        }else if (result.isCancelled) {
-            loadIng.stopAnimating()
-        }else {
-        let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
-        FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
-            print("user logged in firebase")
-            }
-        }
-        print("User log in*****")
-    }
-    
-    
-    
 //      upload user data
 
-    
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User did log out *****")
-    }
-
-
-    
     func createAccountFunc() {
         self.loadIng.startAnimating()
         FIRAuth.auth()?.createUserWithEmail(accountField.text!, password: passwordField.text!, completion: {
@@ -199,7 +223,32 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, UITextFie
     
 }
 
-
+extension LoginViewController {
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)  {
+        loadIng.startAnimating()
+        if error != nil {
+            loadIng.stopAnimating()
+        }else if (result.isCancelled) {
+            loadIng.stopAnimating()
+        }else {
+            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
+            FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+                print("user logged in firebase")
+            }
+        }
+        print("User log in*****")
+        
+     
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        print("User did log out *****")
+    }
+    
+    
+    
+}
 
 
 

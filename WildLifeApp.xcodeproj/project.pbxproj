@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		290B4C951D7AAFF0006C5766 /* EditSportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B4C941D7AAFF0006C5766 /* EditSportTableViewController.swift */; };
 		290B4C971D7B0710006C5766 /* EditSportTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290B4C961D7B0710006C5766 /* EditSportTableViewCell.swift */; };
-		290B4C991D7B2971006C5766 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 290B4C981D7B2971006C5766 /* GoogleService-Info.plist */; };
+		290DD5301D851B0900A19D6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 290DD52F1D851B0900A19D6E /* GoogleService-Info.plist */; };
 		291D20E31D5DC18000FD8BB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291D20E21D5DC18000FD8BB1 /* AppDelegate.swift */; };
 		291D20E81D5DC18000FD8BB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 291D20E61D5DC18000FD8BB1 /* Main.storyboard */; };
 		291D20EA1D5DC18000FD8BB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 291D20E91D5DC18000FD8BB1 /* Assets.xcassets */; };
@@ -36,7 +36,8 @@
 		287FF0F323C97CCE28DB253B /* Pods-WildLifeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WildLifeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WildLifeApp/Pods-WildLifeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		290B4C941D7AAFF0006C5766 /* EditSportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSportTableViewController.swift; sourceTree = "<group>"; };
 		290B4C961D7B0710006C5766 /* EditSportTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditSportTableViewCell.swift; sourceTree = "<group>"; };
-		290B4C981D7B2971006C5766 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		290DD52F1D851B0900A19D6E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		290DD53C1D85237700A19D6E /* WildLifeApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WildLifeApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		291D20DF1D5DC18000FD8BB1 /* WildLifeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WildLifeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		291D20E21D5DC18000FD8BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = WildLifeApp/AppDelegate.swift; sourceTree = "<group>"; };
 		291D20E71D5DC18000FD8BB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -110,8 +111,9 @@
 			children = (
 				291D20E91D5DC18000FD8BB1 /* Assets.xcassets */,
 				291D20EE1D5DC18000FD8BB1 /* Info.plist */,
-				290B4C981D7B2971006C5766 /* GoogleService-Info.plist */,
 				291D20EB1D5DC18000FD8BB1 /* LaunchScreen.storyboard */,
+				290DD52F1D851B0900A19D6E /* GoogleService-Info.plist */,
+				290DD53C1D85237700A19D6E /* WildLifeApp-Bridging-Header.h */,
 				29ECAC8A1D67BC9800B87333 /* Function.swift */,
 				29641F9A1D644D0900B941F4 /* File.swift */,
 			);
@@ -226,7 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				291D20ED1D5DC18000FD8BB1 /* LaunchScreen.storyboard in Resources */,
-				290B4C991D7B2971006C5766 /* GoogleService-Info.plist in Resources */,
+				290DD5301D851B0900A19D6E /* GoogleService-Info.plist in Resources */,
 				291D20EA1D5DC18000FD8BB1 /* Assets.xcassets in Resources */,
 				291D20E81D5DC18000FD8BB1 /* Main.storyboard in Resources */,
 			);
@@ -417,6 +419,7 @@
 			baseConfigurationReference = 287FF0F323C97CCE28DB253B /* Pods-WildLifeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WildLifeApp/Info.plist;
@@ -424,6 +427,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.self.WildLifeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WildLifeApp/WildLifeApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -432,6 +437,7 @@
 			baseConfigurationReference = 20C2B1FEA20779B855FB0527 /* Pods-WildLifeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = WildLifeApp/Info.plist;
@@ -439,6 +445,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = edu.self.WildLifeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "WildLifeApp/WildLifeApp-Bridging-Header.h";
 			};
 			name = Release;
 		};
