@@ -65,9 +65,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         cell.cellImage.image = UIImage(named: "hualien")
         
-//        cell.layoutIfNeeded()
-//        cell.cellImage.layer.cornerRadius = cell.cellImage.frame.size.width / 20
-//        cell.cellImage.clipsToBounds = true
+
         cell.layer.borderColor = UIColor.blackColor().CGColor
         cell.layer.borderWidth = 2.0
         cell.layer.cornerRadius = 4
