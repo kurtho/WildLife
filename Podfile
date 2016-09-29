@@ -8,8 +8,7 @@ target 'WildLifeApp' do
   pod 'FBSDKShareKit'
   pod 'FBSDKLoginKit'
   pod 'SDWebImage'
-  pod 'Alamofire'
-  pod 'SwiftyJSON'
+  
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
