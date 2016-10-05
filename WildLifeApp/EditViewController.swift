@@ -15,8 +15,8 @@ class EditViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var myLabel: UILabel!
     @IBOutlet weak var myTextView: UITextView!
     
-    @IBAction func sendValue(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func sendValue(_ sender: AnyObject) {
+//        self.navigationController?.popViewController(animated: true)
         unhideNavigationBar()
         uploadData(["intro" : myValue])
     
@@ -34,7 +34,7 @@ class EditViewController: UIViewController, UITextViewDelegate {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.hidesBarsWhenKeyboardAppears = true
 
@@ -47,12 +47,12 @@ class EditViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView) {
 //        hideNavigationBar()
     }
     
 
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         unhideNavigationBar()
         myValue = myTextView.text
         Cuser.shareObj.infos.intro = myValue

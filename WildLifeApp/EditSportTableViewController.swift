@@ -11,9 +11,9 @@ import UIKit
 class EditSportTableViewController: UITableViewController {
     var selectedSport = Cuser.shareObj.infos.sport
     
-    @IBAction func doneSelect(sender: AnyObject) {
+    @IBAction func doneSelect(_ sender: AnyObject) {
         uploadData(["sport" : Cuser.shareObj.infos.sport!])
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
     }
     
     
@@ -35,57 +35,57 @@ class EditSportTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return Cuser.shareObj.defaultSports.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("sportCell", forIndexPath: indexPath) as! EditSportTableViewCell
-        cell.sportLabel.text = Cuser.shareObj.defaultSports[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sportCell", for: indexPath) as! EditSportTableViewCell
+        cell.sportLabel.text = Cuser.shareObj.defaultSports[(indexPath as NSIndexPath).row]
         
         for obj in selectedSport! {
             
             if Cuser.shareObj.defaultSports.contains(obj) {
-                Cuser.shareObj.sportCheck[Cuser.shareObj.defaultSports.indexOf(obj)!] = true
+                Cuser.shareObj.sportCheck[Cuser.shareObj.defaultSports.index(of: obj)!] = true
                 
-                cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .Checkmark : .None
+                cell.accessoryType = Cuser.shareObj.sportCheck[(indexPath as NSIndexPath).row] ? .checkmark : .none
             }
         }
         
-        cell.accessoryType = Cuser.shareObj.sportCheck[indexPath.row] ? .Checkmark : .None
+        cell.accessoryType = Cuser.shareObj.sportCheck[(indexPath as NSIndexPath).row] ? .checkmark : .none
 
-        print(" check mark of sport \(Cuser.shareObj.sportCheck[indexPath.row])")
+        print(" check mark of sport \(Cuser.shareObj.sportCheck[(indexPath as NSIndexPath).row])")
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.dequeueReusableCellWithIdentifier("sportCell", forIndexPath: indexPath) as! EditSportTableViewCell
-        cell.sportLabel.text = Cuser.shareObj.defaultSports[indexPath.row]
-        cell.selected = false
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sportCell", for: indexPath) as! EditSportTableViewCell
+        cell.sportLabel.text = Cuser.shareObj.defaultSports[(indexPath as NSIndexPath).row]
+        cell.isSelected = false
         
-        if Cuser.shareObj.sportCheck[indexPath.row] == true {
-            Cuser.shareObj.sportCheck[indexPath.row] = false
+        if Cuser.shareObj.sportCheck[(indexPath as NSIndexPath).row] == true {
+            Cuser.shareObj.sportCheck[(indexPath as NSIndexPath).row] = false
             
-            selectedSport?.removeAtIndex((selectedSport?.indexOf(Cuser.shareObj.defaultSports[indexPath.row]))!)
+            selectedSport?.remove(at: (selectedSport?.index(of: Cuser.shareObj.defaultSports[(indexPath as NSIndexPath).row]))!)
             
             print("my remove ~ \(selectedSport)")
-        }else if Cuser.shareObj.sportCheck[indexPath.row] == false {
+        }else if Cuser.shareObj.sportCheck[(indexPath as NSIndexPath).row] == false {
 
-            selectedSport?.append(Cuser.shareObj.defaultSports[indexPath.row])
-            Cuser.shareObj.sportCheck[indexPath.row] = true
+            selectedSport?.append(Cuser.shareObj.defaultSports[(indexPath as NSIndexPath).row])
+            Cuser.shareObj.sportCheck[(indexPath as NSIndexPath).row] = true
     
             print("my append ~ \(selectedSport)")
         }
         Cuser.shareObj.infos.sport = selectedSport
         tableView.reloadData()
-        print("did select~ \(Cuser.shareObj.sportCheck[indexPath.row])")
+        print("did select~ \(Cuser.shareObj.sportCheck[(indexPath as NSIndexPath).row])")
     }
     
 

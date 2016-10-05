@@ -35,8 +35,8 @@ class HomeViewController: UIViewController {
     }
     
     func readUserID() {
-        let id = NSUserDefaults.standardUserDefaults()
-        let val = id.stringForKey("uid")
+        let id = UserDefaults.standard
+        let val = id.string(forKey: "uid")
         
         Cuser.shareObj.infos.id = val!
         print("user id = \(val) ~~~~\(Cuser.shareObj.infos.id)")
@@ -47,7 +47,7 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        let width = (UIScreen.mainScreen().bounds.width - 10) / 2
 //        let height = (UIScreen.mainScreen().bounds.height) / 3.3
@@ -56,24 +56,24 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 4
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("myCell", forIndexPath: indexPath) as! HomeViewCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! HomeViewCollectionViewCell
         
         cell.cellImage.image = UIImage(named: "hualien")
         
 
-        cell.layer.borderColor = UIColor.blackColor().CGColor
+        cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 2.0
         cell.layer.cornerRadius = 4
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        switch indexPath.item {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch (indexPath as NSIndexPath).item {
         case 0:
             print("lobby")
             break
@@ -84,9 +84,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             break
         }
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        return CGSizeMake((self.view.frame.size.width / 2) - 15, (self.view.frame.size.width) - 150)
+        return CGSize(width: (self.view.frame.size.width / 2) - 15, height: (self.view.frame.size.width) - 150)
     }
     
 }

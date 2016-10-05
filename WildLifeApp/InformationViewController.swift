@@ -32,13 +32,13 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func SignOut(sender: AnyObject) {
+    @IBAction func SignOut(_ sender: AnyObject) {
         
         try! FIRAuth.auth()!.signOut()
-        FBSDKAccessToken.setCurrentAccessToken(nil)
+        FBSDKAccessToken.setCurrent(nil)
         let mainStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController : UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("LogginView")
-        self.presentViewController(viewController, animated: true, completion: nil)
+        let viewController : UIViewController = mainStoryBoard.instantiateViewController(withIdentifier: "LogginView")
+        self.present(viewController, animated: true, completion: nil)
         //        CurrentUser.shareInstance.infos.sport[0] = ""
         Cuser.shareObj.infos.intro = ""
         Cuser.shareObj.infos.place = ""
@@ -52,28 +52,28 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     
     
-    @IBAction func nameEdit(sender: AnyObject) {
+    @IBAction func nameEdit(_ sender: AnyObject) {
         nameTextField.becomeFirstResponder()
     }
     
-    @IBAction func idEdit(sender: AnyObject) {
+    @IBAction func idEdit(_ sender: AnyObject) {
         idTextField.becomeFirstResponder()
     }
     
     
-    @IBAction func invisibleButton(sender: AnyObject) {
+    @IBAction func invisibleButton(_ sender: AnyObject) {
         pickImageFromLocal()
     }
-    @IBAction func camaraButton(sender: AnyObject) {
+    @IBAction func camaraButton(_ sender: AnyObject) {
         pickImageFromLocal()
     }
     
-    @IBAction func nameTextField(sender: AnyObject) {
+    @IBAction func nameTextField(_ sender: AnyObject) {
         self.uploadData(["name" : nameTextField.text!])
         textFieldDidEndEditing(nameTextField)
 
     }
-    @IBAction func idTextField(sender: AnyObject) {
+    @IBAction func idTextField(_ sender: AnyObject) {
         self.uploadData(["userId" : idTextField.text!])
         textFieldDidEndEditing(idTextField)
     }
@@ -92,16 +92,19 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         
         tableView.estimatedRowHeight = 55
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.myImage.layoutIfNeeded()
+        self.camaraButton.layoutIfNeeded()
         (self.myImage.clipsToBounds, self.camaraButton.clipsToBounds) = (true, true)
         (self.myImage.layer.cornerRadius, self.camaraButton.layer.cornerRadius) = (self.myImage.frame.size.height / 2, self.camaraButton.frame.size.height / 2)
-        camaraButton.layer.borderColor = UIColor.darkGrayColor().CGColor
+        camaraButton.layer.borderColor = UIColor.darkGray.cgColor
         camaraButton.layer.borderWidth = 1
 //無聊加的邊框判定
         myImage.layer.borderWidth = 2
         
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadBasic()
 
@@ -112,13 +115,13 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         let uid = Cuser.shareObj.infos.id
         let ref = FIRDatabase.database().reference().child("users").child(uid)
-        let handle = ref.observeEventType(.Value, withBlock: { snapshot in
+        let handle = ref.observe(.value, with: { snapshot in
             print("Snapshot value: \(snapshot.value)")
         })
-        ref.removeObserverWithHandle(handle)
+        ref.removeObserver(withHandle: handle)
     }
     
     override func didReceiveMemoryWarning() {
@@ -127,14 +130,14 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
     }
     
 
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info["UIImagePickerControllerEditedImage"] as! UIImage
         self.myImage.image = image
         
 //        CurrentUser.shareInstance.infos?.photo = image
 //        print("我的current user share instance in photo \(CurrentUser.shareInstance.infos?.photo)")
 //        UIImageWriteToSavedPhotosAlbum(self.myImage.image!, nil, nil, nil)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         myImage.image = image
         uploadImage()
     }
@@ -145,7 +148,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
         imagePicker.delegate = self
         //        imagePicker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
         imagePicker.allowsEditing = true
-        self.presentViewController(imagePicker, animated: true, completion: nil)
+        self.present(imagePicker, animated: true, completion: nil)
     }
     
     func uploadImage() {
@@ -159,7 +162,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 
         print("user~~~\(uid)")
         if let uploadData = UIImagePNGRepresentation(self.myImage.image!) {
-            storageRef.putData(uploadData, metadata: metaData, completion: { (metadata, error) in
+            storageRef.put(uploadData, metadata: metaData, completion: { (metadata, error) in
                 if error != nil {
                     print(error)
                 }
@@ -172,57 +175,61 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
             })
         }
     }
-
-
+    
     func loadBasic() {
         let uid = Cuser.shareObj.infos.id
         print("~~~ref\(FIRDatabase.database().reference().child("users").child(uid))")
         let ref = FIRDatabase.database().reference().child("users").child(uid)
-        ref.observeSingleEventOfType(.Value, withBlock: {
-//        ref.observeEventType
-            response in
+        
+        
 
-            self.user.profileImageUrl = response.value?.objectForKey("profileImageURL") as?String
-            self.user.name = response.value?.objectForKey("name") as? String
-            self.user.myID = response.value?.objectForKey("userId") as? String
+        ref.observeSingleEvent(of: .value, with: {
+            snapshot in
             
-            print("123~\(Cuser.shareObj.infos)")
+
+
+            self.user.profileImageUrl = (snapshot.value! as AnyObject).object(forKey: "profileImageURL") as? String
             
-            if response.value?.objectForKey("gender") as? String == nil {
+            self.user.name = (snapshot.value! as AnyObject).object(forKey: "name") as? String
+            self.user.myID = (snapshot.value! as AnyObject).object(forKey: "userId") as? String
+            
+            print("123~\(self.user.name)")
+        
+            if (snapshot.value! as AnyObject).object(forKey: "gender") as? String == nil {
                 Cuser.shareObj.infos.gender = "Male / Female ??"
             }else {
-                Cuser.shareObj.infos.gender = (response.value?.objectForKey("gender") as! String)
+                Cuser.shareObj.infos.gender = ((snapshot.value! as AnyObject).object(forKey: "gender") as! String)
             }
             
-            if response.value?.objectForKey("place") as? String == nil {
+            if (snapshot.value! as AnyObject).object(forKey: "place") as? String == nil {
                 Cuser.shareObj.infos.place = "Where do you live ??"
             }else {
-                Cuser.shareObj.infos.place = (response.value?.objectForKey("place") as! String)
+                Cuser.shareObj.infos.place = ((snapshot.value! as AnyObject).object(forKey: "place") as! String)
             }
-            if response.value?.objectForKey("age") as? String == nil {
+            if (snapshot.value! as AnyObject).object(forKey: "age") as? String == nil {
                 Cuser.shareObj.infos.age = "Your age ??"
             }else {
-                Cuser.shareObj.infos.age = (response.value?.objectForKey("age") as! String)
+                Cuser.shareObj.infos.age = ((snapshot.value! as AnyObject).object(forKey: "age") as! String)
             }
             
-            if response.value?.objectForKey("sport") as? [String] == nil {
+            if (snapshot.value! as AnyObject).object(forKey: "sport") as? [String] == nil {
                 self.tempString = "Select your sport"
                 
             }else {
-                Cuser.shareObj.infos.sport = (response.value?.objectForKey("sport") as! Array)
+                Cuser.shareObj.infos.sport = ((snapshot.value! as AnyObject).object(forKey: "sport") as! Array)
             }
             
-            if response.value?.objectForKey("intro") as? String == nil {
+            if (snapshot.value! as AnyObject).object(forKey: "intro") as? String == nil {
                 Cuser.shareObj.infos.intro = "Introduce yoursefl ~"
             }else {
-                Cuser.shareObj.infos.intro = (response.value?.objectForKey("intro") as! String)
+                Cuser.shareObj.infos.intro = ((snapshot.value! as AnyObject).object(forKey: "intro") as! String)
             }
             
             
             if Cuser.shareObj.infos.gender == "Female" {
-                self.myImage.layer.borderColor = UIColor.redColor().CGColor
+                self.myImage.layer.borderColor = UIColor.red.cgColor
             } else {
-                self.myImage.layer.borderColor = UIColor.blueColor().CGColor
+                self.myImage.layer.borderColor = UIColor.blue.cgColor
             }
             self.nameTextField.text = self.user.name
             self.idTextField.text = self.user.myID
@@ -232,33 +239,34 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 self.tableView.reloadData()
                 return
             }else {
-                self.myImage.sd_setImageWithURL(NSURL(string: self.user.profileImageUrl!), completed: nil)
+                self.myImage.sd_setImage(with: URL(string: self.user.profileImageUrl!), completed: nil)
 
                 print("44444~~InfoVC\(Cuser.shareObj.infos.gender)")
                 self.tableView.reloadData()
             }
-        })
 
+        })
+  
     }
     
     func showPopUp() {
-        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("sbPopUpID") as!
+        let popOverVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sbPopUpID") as!
         PopUpViewController
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
-        popOverVC.didMoveToParentViewController(self)
+        popOverVC.didMove(toParentViewController: self)
     }
     
     
 
 //  鎖定旋轉
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return false
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.portrait
     }
     
 
@@ -267,18 +275,18 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
 
 // MARK: - extension table view
 extension InformationViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("myCell", forIndexPath: indexPath) as! InformationTableViewCell
-        cell.myLabel.text = contents[indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! InformationTableViewCell
+        cell.myLabel.text = contents[(indexPath as NSIndexPath).row]
 //        cell.userInfo.text = userInfor[indexPath.row]
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case 0:
             cell.userInfo.text = Cuser.shareObj.infos.gender
         case 1:
@@ -291,7 +299,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
                 cell.userInfo.text = self.tempString
                 
             }else {
-                cell.userInfo.text = Cuser.shareObj.infos.sport!.joinWithSeparator(", ")
+                cell.userInfo.text = Cuser.shareObj.infos.sport!.joined(separator: ", ")
             }
 
         case 4:
@@ -307,27 +315,27 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     
 
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.dequeueReusableCellWithIdentifier("myCell") as! InformationTableViewCell
-        switch indexPath.row {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell") as! InformationTableViewCell
+        switch (indexPath as NSIndexPath).row {
         case 0:
             userInfoAler("Gender", value: [
-                UIAlertAction(title: "Male", style: .Default, handler: { (action: UIAlertAction) in
+                UIAlertAction(title: "Male", style: .default, handler: { (action: UIAlertAction) in
                     Cuser.shareObj.infos.gender = "Male"
 
                     print("11111~~InfoVC\(Cuser.shareObj.infos.gender)")
 //              下面是5555
                     self.uploadData(["gender": "Male"])
-                    self.myImage.layer.borderColor = UIColor.blueColor().CGColor
+                    self.myImage.layer.borderColor = UIColor.blue.cgColor
 
                     self.tableView.reloadData()
                 }),
-                UIAlertAction(title: "Female", style: .Default, handler: { (action:UIAlertAction) in
+                UIAlertAction(title: "Female", style: .default, handler: { (action:UIAlertAction) in
                     Cuser.shareObj.infos.gender = "Female"
 
                     print("11111~~InfoVC\(Cuser.shareObj.infos.gender)")
                     self.uploadData(["gender": "Female"])
-                    self.myImage.layer.borderColor = UIColor.redColor().CGColor
+                    self.myImage.layer.borderColor = UIColor.red.cgColor
                     self.tableView.reloadData()
                 })
                 ]
@@ -338,31 +346,31 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
             return
         case 2:
             
-            func genderAlert(age: String) {
+            func genderAlert(_ age: String) {
                 Cuser.shareObj.infos.age = age
                 uploadData(["age" : age])
                 tableView.reloadData()
             }
             userInfoAler("Age", value: [
-                UIAlertAction(title: "16~20", style: .Default, handler: { (action: UIAlertAction) in genderAlert("16~20")}),
-                UIAlertAction(title: "21~25", style: .Default, handler: { (action: UIAlertAction) in genderAlert("21~25")}),
-                UIAlertAction(title: "26~30", style: .Default, handler: { (action: UIAlertAction) in genderAlert("26~30")}),
-                UIAlertAction(title: "31~35", style: .Default, handler: { (action: UIAlertAction) in genderAlert("31~35")}),
-                UIAlertAction(title: "36~40", style: .Default, handler: { (action: UIAlertAction) in genderAlert("36~40")}),
-                UIAlertAction(title: "41~45", style: .Default, handler: { (action: UIAlertAction) in genderAlert("41~45")}),
-                UIAlertAction(title: "46~50", style: .Default, handler: { (action: UIAlertAction) in genderAlert("46~50")}),
-                UIAlertAction(title: "51~55", style: .Default, handler: { (action: UIAlertAction) in genderAlert("51~55")}),
+                UIAlertAction(title: "16~20", style: .default, handler: { (action: UIAlertAction) in genderAlert("16~20")}),
+                UIAlertAction(title: "21~25", style: .default, handler: { (action: UIAlertAction) in genderAlert("21~25")}),
+                UIAlertAction(title: "26~30", style: .default, handler: { (action: UIAlertAction) in genderAlert("26~30")}),
+                UIAlertAction(title: "31~35", style: .default, handler: { (action: UIAlertAction) in genderAlert("31~35")}),
+                UIAlertAction(title: "36~40", style: .default, handler: { (action: UIAlertAction) in genderAlert("36~40")}),
+                UIAlertAction(title: "41~45", style: .default, handler: { (action: UIAlertAction) in genderAlert("41~45")}),
+                UIAlertAction(title: "46~50", style: .default, handler: { (action: UIAlertAction) in genderAlert("46~50")}),
+                UIAlertAction(title: "51~55", style: .default, handler: { (action: UIAlertAction) in genderAlert("51~55")}),
                 
                 ])
             return
         case 3:
-            performSegueWithIdentifier("sportCell", sender: Cuser.shareObj.infos.sport)
+            performSegue(withIdentifier: "sportCell", sender: Cuser.shareObj.infos.sport)
             
             
             
             return
         case 4:
-            performSegueWithIdentifier("myCell", sender: Cuser.shareObj.infos.intro)
+            performSegue(withIdentifier: "myCell", sender: Cuser.shareObj.infos.intro)
             
             return
         default:
@@ -371,9 +379,9 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "myCell" {
-            let vc = segue.destinationViewController as! EditViewController
+            let vc = segue.destination as! EditViewController
             vc.myValue = Cuser.shareObj.infos.intro
         }
     }
@@ -383,8 +391,8 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
 
 
 extension InformationViewController {
-private func uploadDataWithUID(uid: String, values: [NSObject: AnyObject]) {
-    let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
+fileprivate func uploadDataWithUID(_ uid: String, values: [AnyHashable: Any]) {
+    let ref = FIRDatabase.database().reference(fromURL: "https://willlifeapp.firebaseio.com/")
     let userReference = ref.child("users").child(uid)
     userReference.updateChildValues(values, withCompletionBlock: {(err, ref) in
         if err != nil {
@@ -415,6 +423,8 @@ private func uploadDataWithUID(uid: String, values: [NSObject: AnyObject]) {
 //            }
 //        }
 //    }
+    
+    
     
 }
 

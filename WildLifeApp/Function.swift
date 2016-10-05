@@ -19,36 +19,36 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
     }
     
     
     
     
-    func alert(title: String, contain: String) {
-        let alertButton = UIAlertController(title: title, message: nil, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: contain, style: .Cancel, handler: nil)
+    func alert(_ title: String, contain: String) {
+        let alertButton = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: contain, style: .cancel, handler: nil)
         alertButton.addAction(okAction)
-        self.presentViewController(alertButton, animated: true, completion: nil)
+        self.present(alertButton, animated: true, completion: nil)
     }
     
-    func userInfoAler(title: String, value: [UIAlertAction] ) {
-        let alertButton = UIAlertController(title: title, message: nil, preferredStyle: .ActionSheet)
-        let okAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+    func userInfoAler(_ title: String, value: [UIAlertAction] ) {
+        let alertButton = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        let okAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertButton.addAction(okAction)
         for action in value{
             alertButton.addAction(action)
         }
-        self.presentViewController(alertButton, animated: true, completion: nil)
+        self.present(alertButton, animated: true, completion: nil)
     }
 
 
-    func uploadData(values: [NSObject : AnyObject] ) {
-        let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
+    func uploadData(_ values: [AnyHashable: Any] ) {
+        let ref = FIRDatabase.database().reference(fromURL: "https://willlifeapp.firebaseio.com/")
         let uid =  Cuser.shareObj.infos.id
         let userRef = ref.child("users").child(uid)
         userRef.updateChildValues(values, withCompletionBlock: {(err, ref) in

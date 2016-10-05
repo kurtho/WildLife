@@ -10,8 +10,27 @@ import UIKit
 import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInDelegate, GIDSignInUIDelegate, UITextFieldDelegate {
+    /*!
+     @abstract Sent to the delegate when the button was used to login.
+     @param loginButton the sender
+     @param result The results of the login
+     @param error The error (if any) from the login
+     */
+
+
     var loginButton = FBSDKLoginButton()
 
     
@@ -27,7 +46,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     @IBOutlet weak var loadIng: UIActivityIndicatorView!
     
     
-    @IBAction func googleSignIn(sender: AnyObject) {
+    @IBAction func googleSignIn(_ sender: AnyObject) {
         GIDSignIn.sharedInstance().signIn()
     }
     
@@ -36,7 +55,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
 
 
     
-    @IBAction func signButton(sender: AnyObject) {
+    @IBAction func signButton(_ sender: AnyObject) {
         if signButton.titleLabel?.text == " Sign In " {
             login()
         } else {
@@ -52,18 +71,18 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         }
     
     
-    @IBAction func createAccount(sender: AnyObject) {
+    @IBAction func createAccount(_ sender: AnyObject) {
         if signButton.titleLabel?.text == " Sign In " {
             signLabel.text = "Sign Up"
             signButton.backgroundColor = UIColor(red: 82/255, green: 190/255, blue: 91/255, alpha: 1)
-            signButton.setTitle("Sign Up", forState: .Normal)
-            createAccount.setTitle("Already Have Account", forState: .Normal)
+            signButton.setTitle("Sign Up", for: UIControlState())
+            createAccount.setTitle("Already Have Account", for: UIControlState())
             
         }else if signButton.titleLabel?.text == "Sign Up" {
             signLabel.text = "Sign In"
             signButton.backgroundColor = UIColor(red: 4/255, green: 175/255, blue: 200/255, alpha: 1)
-            signButton.setTitle(" Sign In ", forState: .Normal)
-            createAccount.setTitle("Back To Sign Up", forState: .Normal)
+            signButton.setTitle(" Sign In ", for: UIControlState())
+            createAccount.setTitle("Back To Sign Up", for: UIControlState())
         }
     }
     
@@ -72,8 +91,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     
     
     
-    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
-                withError error: NSError!) {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
+                withError error: Error!) {
         self.loadIng.startAnimating()
 
         if let error = error {
@@ -82,8 +101,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
 
         }
         let authentication = user.authentication
-        let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken, accessToken: authentication.accessToken)
-        FIRAuth.auth()?.signInWithCredential(credential, completion: { (user, error) in
+        let credential = FIRGoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!, accessToken: (authentication?.accessToken)!)
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil {
                 print(error!.localizedDescription)
             }
@@ -91,7 +110,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         })
     }
     
-    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user:GIDGoogleUser!,
                 withError error: NSError!) {
         if let error = error {
             print(error.localizedDescription)
@@ -114,14 +133,14 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         
 // 😡
         hideKeyboardWhenTappedAround()
-        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if user != nil {
 //                self.userInfos.id = (user?.uid)!
                 Cuser.shareObj.infos.id = (user?.uid)!
                 
 //               從這邊可以儲存uid到user default
                 
-                let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
+                let ref = FIRDatabase.database().reference(fromURL: "https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(Cuser.shareObj.infos.id
                 )
                 let value = ["email": (FIRAuth.auth()?.currentUser?.email)!]
@@ -136,8 +155,8 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
                 })
                 self.saveUserID(Cuser.shareObj.infos.id)
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-                let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
-                self.presentViewController(homeView, animated: true, completion: nil)
+                let homeView: UIViewController = mainStoryBoard.instantiateViewController(withIdentifier: "HomeView")
+                self.present(homeView, animated: true, completion: nil)
                 
             }
         }
@@ -148,7 +167,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.view.layoutIfNeeded()
         self.loginButton.center = self.fbView.center
         signButton.layer.cornerRadius = signButton.frame.height / 6
@@ -164,7 +183,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
 
     func createAccountFunc() {
         self.loadIng.startAnimating()
-        FIRAuth.auth()?.createUserWithEmail(accountField.text!, password: passwordField.text!, completion: {
+        FIRAuth.auth()?.createUser(withEmail: accountField.text!, password: passwordField.text!, completion: {
             (user: FIRUser?, error) in
             if error != nil {
                 self.alert("此帳號已有人使用", contain: "知道了")
@@ -177,7 +196,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
                 }
                 Cuser.shareObj.infos.id = uid
                 print("user create success")
-                let ref = FIRDatabase.database().referenceFromURL("https://willlifeapp.firebaseio.com/")
+                let ref = FIRDatabase.database().reference(fromURL: "https://willlifeapp.firebaseio.com/")
                 let userReference = ref.child("users").child(uid)
                 let value = ["email": self.accountField.text!]
                 userReference.updateChildValues(value, withCompletionBlock: {(err, ref) in
@@ -193,7 +212,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     
     func login() {
         self.loadIng.startAnimating()
-        FIRAuth.auth()?.signInWithEmail(accountField.text!, password: passwordField.text!, completion: {
+        FIRAuth.auth()?.signIn(withEmail: accountField.text!, password: passwordField.text!, completion: {
             (user: FIRUser?, error) in
             if error != nil {
                 self.alert("帳號密碼錯誤", contain: "知道了")
@@ -210,45 +229,41 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     
     // user default
     
-    func saveUserID(uid: String?) {
-        let id = NSUserDefaults.standardUserDefaults()
+    func saveUserID(_ uid: String?) {
+        let id = UserDefaults.standard
         if uid != nil {
-            id.setObject(uid, forKey: "uid")
+            id.set(uid, forKey: "uid")
             id.synchronize()
         }
         print("logview controller. user id \(uid)")
     }
     
-
+    // facebook login
     
-}
-
-extension LoginViewController {
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!)  {
+    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         loadIng.startAnimating()
         if error != nil {
             loadIng.stopAnimating()
         }else if (result.isCancelled) {
             loadIng.stopAnimating()
         }else {
-            let credential = FIRFacebookAuthProvider.credentialWithAccessToken(FBSDKAccessToken.currentAccessToken().tokenString)
-            FIRAuth.auth()?.signInWithCredential(credential) { (user, error) in
+            let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+            FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                 print("user logged in firebase")
             }
         }
         print("User log in*****")
-        
-     
     }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User did log out *****")
     }
     
-    
-    
 }
+
+
+    
+
 
 
 

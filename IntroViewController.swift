@@ -17,12 +17,12 @@ class IntroViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        nextButton.hidden = true
-        FIRAuth.auth()?.addAuthStateDidChangeListener { auth, user in
+        nextButton.isHidden = true
+        FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if user != nil {
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-                let homeView: UIViewController = mainStoryBoard.instantiateViewControllerWithIdentifier("HomeView")
-                self.presentViewController(homeView, animated: true, completion: nil)
+                let homeView: UIViewController = mainStoryBoard.instantiateViewController(withIdentifier: "HomeView")
+                self.present(homeView, animated: true, completion: nil)
             }
         }
     }
@@ -38,36 +38,36 @@ class IntroViewController: UIViewController {
 
 
 extension IntroViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return IntroContent.contents.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("myCell", forIndexPath: indexPath) as! IntroCollectionViewCell
-        cell.myImage.image = UIImage(named: IntroContent.contents[indexPath.row].myImage)
-        cell.myLabel.text = IntroContent.contents[indexPath.row].myLabel
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! IntroCollectionViewCell
+        cell.myImage.image = UIImage(named: IntroContent.contents[(indexPath as NSIndexPath).row].myImage)
+        cell.myLabel.text = IntroContent.contents[(indexPath as NSIndexPath).row].myLabel
         return cell
     }
     
     
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize
     {
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenSize: CGRect = UIScreen.main.bounds
         
         return CGSize(width: screenSize.width, height: screenSize.width * 1.5)
     }
     
     
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNum = round(scrollView.contentOffset.x / scrollView.frame.size.width)
         self.pageControl!.currentPage = Int(pageNum)
         if self.pageControl!.currentPage == 2 {
-            nextButton.hidden = false
+            nextButton.isHidden = false
         }
     }
     
