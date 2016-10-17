@@ -10,16 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import Firebase
 import GoogleSignIn
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
+
 
 
 class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignInDelegate, GIDSignInUIDelegate, UITextFieldDelegate {
@@ -59,9 +50,9 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
         if signButton.titleLabel?.text == " Sign In " {
             login()
         } else {
-            if accountField.text?.characters.count < 8 {
+            if (accountField.text?.characters.count)! < 8 {
                 alert("帳號太短", contain: "知道了")
-            } else if passwordField.text?.characters.count < 8 {
+            } else if (passwordField.text?.characters.count)! < 8 {
                 alert("密碼至少要八位數", contain: "知道了")
             }else {
                 createAccountFunc()
@@ -111,7 +102,7 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user:GIDGoogleUser!,
-                withError error: NSError!) {
+                withError error: Error!) {
         if let error = error {
             print(error.localizedDescription)
             return
@@ -126,12 +117,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//     😡
+
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        
-// 😡
+
         hideKeyboardWhenTappedAround()
         FIRAuth.auth()?.addStateDidChangeListener { auth, user in
             if user != nil {
@@ -251,9 +241,11 @@ class LoginViewController: UIViewController, FBSDKLoginButtonDelegate, GIDSignIn
             let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
             FIRAuth.auth()?.signIn(with: credential) { (user, error) in
                 print("user logged in firebase")
+                
             }
         }
         print("User log in*****")
+        
     }
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("User did log out *****")

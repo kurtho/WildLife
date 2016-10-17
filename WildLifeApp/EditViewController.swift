@@ -16,7 +16,7 @@ class EditViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var myTextView: UITextView!
     
     @IBAction func sendValue(_ sender: AnyObject) {
-//        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
         unhideNavigationBar()
         uploadData(["intro" : myValue])
     

@@ -4,9 +4,9 @@
 target 'WildLifeApp' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   pod 'GoogleSignIn'
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKShareKit'
-  pod 'FBSDKLoginKit'
+  pod 'FBSDKCoreKit', '4.15.1'
+  pod 'FBSDKShareKit', '4.15.1'
+  pod 'FBSDKLoginKit', '4.15.1'
   pod 'SDWebImage'
   
   pod 'Firebase/Database'
