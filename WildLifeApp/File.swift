@@ -39,13 +39,13 @@ class Cuser {
 
 
     var defaultSports = [
-        "Diving", "Surfing", "Swimming", "Snorkelling", "Climbing", "Biking", "Camping",
+        "Tree Climb", "Diving", "Surfing", "Swimming", "Snorkelling", "Climbing", "Biking", "Camping",
         "Wind surfin", "Skateboard", "Fishing", "River Tracing", "Mountain climbing",
         "Kayaking", "Paragliding",
         "Other"
     ]
     var sportCheck = [
-    false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false,
+    false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
     ]
 }
 

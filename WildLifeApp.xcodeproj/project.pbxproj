@@ -207,6 +207,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 8H7X36TF25;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -440,6 +441,7 @@
 				CODE_SIGN_ENTITLEMENTS = WildLifeApp/WildLifeApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = WildLifeApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks ~/Documents/Ways/FacebookSDK";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.self.WildLifeApp;
@@ -460,6 +462,7 @@
 				CODE_SIGN_ENTITLEMENTS = WildLifeApp/WildLifeApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8H7X36TF25;
 				INFOPLIST_FILE = WildLifeApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks ~/Documents/Ways/FacebookSDK";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.self.WildLifeApp;

@@ -13,7 +13,7 @@ class EditSportTableViewController: UITableViewController {
     
     @IBAction func doneSelect(_ sender: AnyObject) {
         uploadData(["sport" : Cuser.shareObj.infos.sport!])
-//        navigationController?.popViewController(animated: true)
+       _ = navigationController?.popViewController(animated: true)
     }
     
     

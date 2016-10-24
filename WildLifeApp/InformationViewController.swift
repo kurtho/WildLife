@@ -217,6 +217,7 @@ class InformationViewController: UIViewController, UIImagePickerControllerDelega
                 
             }else {
                 Cuser.shareObj.infos.sport = ((snapshot.value! as AnyObject).object(forKey: "sport") as! Array)
+                
             }
             
             if (snapshot.value! as AnyObject).object(forKey: "intro") as? String == nil {
